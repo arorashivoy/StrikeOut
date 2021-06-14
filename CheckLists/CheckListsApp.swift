@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct CheckListsApp: App {
+	@StateObject private var modelData = ModelData()
+	
     var body: some Scene {
         WindowGroup {
             ContentView()
