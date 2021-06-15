@@ -24,7 +24,7 @@ struct ItemList: View {
 			let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
 			let upper: Int = modelData.checkLists[indexList].items.count
 			
-			ForEach(0 ..< upper) {index in
+			ForEach(0 ..< upper, id:\.self) {index in
 				
 				HStack{
 					Image(systemName: modelData.checkLists[indexList].items[index].isCompleted ? "checkmark.circle.fill":"circle")
