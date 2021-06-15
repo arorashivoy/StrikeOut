@@ -23,11 +23,10 @@ struct ItemInfo: View {
 				Button("Done"){
 					showInfo = false
 //					TODO: Change id to take unused id
-					if item.id == 0 && item.itemName.trimmingCharacters(in: [" "]) != "" {
+					if item.id == UUID(uuidString: "00000000-0000-0000-0000-000000000000") && item.itemName.trimmingCharacters(in: [" "]) != "" {
 						let index: Int = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
-						let len: Int = checkList.items.count
 						
-						item.id = 1 + len
+						item.id = UUID()
 						
 						modelData.checkLists[index].items.append(item)
 					}

@@ -23,15 +23,15 @@ struct CheckList: Hashable,Codable, Identifiable {
 	
 	var items: [Items]
 	
-	struct Items: Hashable, Codable,Identifiable {
+	struct Items: Hashable, Codable, Identifiable {
 		
-		var id: Int
+		var id = UUID()
 		var itemName: String
 		var itemQuantity: Int?
 		var isCompleted: Bool
 		var note: String
 		
-		static let `default` = Items(id: 0, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
+		static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
 		
 	}
 }
