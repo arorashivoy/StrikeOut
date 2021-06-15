@@ -17,9 +17,6 @@ struct ItemList: View {
 	var indexList: Int?
 	
 	var body: some View {
-		
-		
-		
 		List(){
 			let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
 			let upper: Int = modelData.checkLists[indexList].items.count

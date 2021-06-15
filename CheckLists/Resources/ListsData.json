@@ -1,7 +1,7 @@
 [
 	{
 		"listName": "Shopping",
-		"id":1001,
+		"id":"ccc0cf68-ce2e-11eb-b8bc-0242ac130003",
 		"isPin": true,
 		"imageName": "list.bullet",
 		"showQuantity": true,
@@ -26,7 +26,7 @@
 	},
 	{
 		"listName": "To Do",
-		"id":1002,
+		"id":"dce0c646-ce2e-11eb-b8bc-0242ac130003",
 		"isPin": false,
 		"imageName": "list.bullet",
 		"showQuantity":false,

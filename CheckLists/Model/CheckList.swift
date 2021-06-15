@@ -10,8 +10,8 @@ import SwiftUI
 
 struct CheckList: Hashable,Codable, Identifiable {
 	var listName: String
-	var id: Int
-	var description: String?
+	var id = UUID()
+	var description: String
 	var showQuantity: Bool
 	
 	private var imageName: String
@@ -34,4 +34,7 @@ struct CheckList: Hashable,Codable, Identifiable {
 		static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
 		
 	}
+	
+	static let `default` = CheckList(listName: "", id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, description: "", showQuantity: false, imageName: "list.bullet", isPin: false, items: [Items.default])
+	
 }
