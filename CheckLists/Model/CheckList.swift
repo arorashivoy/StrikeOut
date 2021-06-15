@@ -31,7 +31,7 @@ struct CheckList: Hashable,Codable, Identifiable {
 		var isCompleted: Bool
 		var note: String
 		
-		static let `default` = Items(id: 0, itemName: "Name", itemQuantity: 0, isCompleted: false, note: "Notes")
+		static let `default` = Items(id: 0, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
 		
 	}
 }

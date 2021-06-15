@@ -9,14 +9,14 @@
 		"items": [
 			{
 				"itemName": "CornFlakes",
-				"id":101,
+				"id":1,
 				"itemQuantity": 2,
 				"isCompleted":true,
 				"note": "This is note"
 			},
 			{
 				"itemName": "Milk",
-				"id": 102,
+				"id": 2,
 				"isCompleted": false,
 				"itemQuantity": 1,
 				"note": ""
@@ -34,13 +34,13 @@
 		"items": [
 			{
 				"itemName": "shower",
-				"id": 101,
+				"id": 1,
 				"isCompleted":false,
 				"note": "This is note"
 			},
 			{
 				"itemName": "Code",
-				"id": 102,
+				"id": 2,
 				"isCompleted":true,
 				"note": ""
 			}
