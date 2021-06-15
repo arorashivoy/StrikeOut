@@ -1,0 +1,51 @@
+[
+	{
+		"listName": "Shopping",
+		"id":1001,
+		"isPin": true,
+		"imageName": "list.bullet",
+		"showQuantity": true,
+		"description":"This list is to track my shopping list",
+		"items": [
+			{
+				"itemName": "CornFlakes",
+				"id":101,
+				"itemQuantity": 2,
+				"isCompleted":true,
+				"note": "This is note"
+			},
+			{
+				"itemName": "Milk",
+				"id": 102,
+				"isCompleted": false,
+				"itemQuantity": 1,
+				"note": ""
+			}
+		]
+		
+	},
+	{
+		"listName": "To Do",
+		"id":1002,
+		"isPin": false,
+		"imageName": "list.bullet",
+		"showQuantity":false,
+		"description":"This list is to track my tasks",
+		"items": [
+			{
+				"itemName": "shower",
+				"id": 101,
+				"isCompleted":false,
+				"note": "This is note"
+			},
+			{
+				"itemName": "Code",
+				"id": 102,
+				"isCompleted":true,
+				"note": ""
+			}
+		]
+		
+	}
+]
+

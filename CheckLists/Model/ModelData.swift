@@ -9,8 +9,7 @@ import Foundation
 import Combine
 
 final class ModelData: ObservableObject {
-	var checkLists: [CheckList] = load("ListsData.json")
-	
+	@Published var checkLists: [CheckList] = load("ListsData.json")
 }
 
 func load<T: Decodable>(_ filename: String) -> T {

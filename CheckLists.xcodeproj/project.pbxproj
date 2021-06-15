@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDAB2677EAF9000A21C7 /* ItemList.swift */; };
+		8339EDB42677EDAB000A21C7 /* ListsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8339EDB32677EDAB000A21C7 /* ListsData.json */; };
+		8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDB72678DBE7000A21C7 /* ItemInfo.swift */; };
 		83D4B0132677857600C3994A /* CheckListsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B0122677857600C3994A /* CheckListsApp.swift */; };
 		83D4B0152677857600C3994A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B0142677857600C3994A /* ContentView.swift */; };
 		83D4B0172677857800C3994A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83D4B0162677857800C3994A /* Assets.xcassets */; };
 		83D4B01A2677857800C3994A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83D4B0192677857800C3994A /* Preview Assets.xcassets */; };
 		83D4B02326779A0900C3994A /* ListSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02226779A0900C3994A /* ListSelection.swift */; };
 		83D4B02526779A5E00C3994A /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02426779A5E00C3994A /* ListRow.swift */; };
-		83D4B02B26779DF600C3994A /* ListsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D4B02A26779DF600C3994A /* ListsData.json */; };
 		83D4B02D2677A0F800C3994A /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02C2677A0F800C3994A /* CheckList.swift */; };
 		83D4B02F2677A95800C3994A /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02E2677A95800C3994A /* ModelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8339EDAB2677EAF9000A21C7 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
+		8339EDB32677EDAB000A21C7 /* ListsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListsData.json; sourceTree = "<group>"; };
+		8339EDB72678DBE7000A21C7 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		83D4B00F2677857600C3994A /* CheckLists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckLists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D4B0122677857600C3994A /* CheckListsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListsApp.swift; sourceTree = "<group>"; };
 		83D4B0142677857600C3994A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,7 +32,6 @@
 		83D4B01B2677857800C3994A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83D4B02226779A0900C3994A /* ListSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSelection.swift; sourceTree = "<group>"; };
 		83D4B02426779A5E00C3994A /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
-		83D4B02A26779DF600C3994A /* ListsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ListsData.json; sourceTree = "<group>"; };
 		83D4B02C2677A0F800C3994A /* CheckList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
 		83D4B02E2677A95800C3994A /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +47,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8339EDAD2677EB97000A21C7 /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				83D4B02226779A0900C3994A /* ListSelection.swift */,
+				83D4B02426779A5E00C3994A /* ListRow.swift */,
+			);
+			path = Lists;
+			sourceTree = "<group>";
+		};
+		8339EDAE2677EBA9000A21C7 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				8339EDAB2677EAF9000A21C7 /* ItemList.swift */,
+				8339EDB72678DBE7000A21C7 /* ItemInfo.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
 		83D4B0062677857600C3994A = {
 			isa = PBXGroup;
 			children = (
@@ -85,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				83D4B0142677857600C3994A /* ContentView.swift */,
-				83D4B02226779A0900C3994A /* ListSelection.swift */,
-				83D4B02426779A5E00C3994A /* ListRow.swift */,
+				8339EDAD2677EB97000A21C7 /* Lists */,
+				8339EDAE2677EBA9000A21C7 /* Items */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -103,7 +125,7 @@
 		83D4B02726779D3F00C3994A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				83D4B02A26779DF600C3994A /* ListsData.json */,
+				8339EDB32677EDAB000A21C7 /* ListsData.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -167,7 +189,7 @@
 			files = (
 				83D4B01A2677857800C3994A /* Preview Assets.xcassets in Resources */,
 				83D4B0172677857800C3994A /* Assets.xcassets in Resources */,
-				83D4B02B26779DF600C3994A /* ListsData.json in Resources */,
+				8339EDB42677EDAB000A21C7 /* ListsData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +203,8 @@
 				83D4B02526779A5E00C3994A /* ListRow.swift in Sources */,
 				83D4B0152677857600C3994A /* ContentView.swift in Sources */,
 				83D4B02326779A0900C3994A /* ListSelection.swift in Sources */,
+				8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */,
+				8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */,
 				83D4B02D2677A0F800C3994A /* CheckList.swift in Sources */,
 				83D4B0132677857600C3994A /* CheckListsApp.swift in Sources */,
 				83D4B02F2677A95800C3994A /* ModelData.swift in Sources */,
@@ -321,7 +345,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.CheckLists;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.CheckLists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -343,7 +367,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.CheckLists;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.CheckLists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

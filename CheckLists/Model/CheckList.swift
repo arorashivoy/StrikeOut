@@ -12,21 +12,26 @@ struct CheckList: Hashable,Codable, Identifiable {
 	var listName: String
 	var id: Int
 	var description: String?
+	var showQuantity: Bool
 	
 	private var imageName: String
 	var image: Image {
-		Image(imageName)
+		Image(systemName: "\(imageName)")
 	}
 	
 	var isPin: Bool
 	
 	var items: [Items]
 	
-	struct Items: Hashable, Codable {
-		var idItem: Int
+	struct Items: Hashable, Codable,Identifiable {
+		
+		var id: Int
 		var itemName: String
-//		var itemQuantity: Int?
-		var note: String?
+		var itemQuantity: Int?
+		var isCompleted: Bool
+		var note: String
+		
+		static let `default` = Items(id: 0, itemName: "Name", itemQuantity: 0, isCompleted: false, note: "Notes")
 		
 	}
 }

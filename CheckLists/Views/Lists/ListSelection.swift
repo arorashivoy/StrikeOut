@@ -13,11 +13,14 @@ struct ListSelection: View {
 	var body: some View {
 		NavigationView {
 			List(){
-				ListRow(checkList: modelData.checkLists[0])
+				ForEach(modelData.checkLists){ checkList in
+					NavigationLink(destination: ItemList(checkList: checkList).environmentObject(modelData)){
+						ListRow(checkList: checkList)
+					}
+				}
 			}
+			.navigationTitle("Lists")
 		}
-		.navigationTitle("Title")
-		
 	}
 }
 
