@@ -10,36 +10,31 @@ import SwiftUI
 struct ItemList: View {
 	@EnvironmentObject var modelData: ModelData
 	@State private var showInfo: Bool = false
-	@State private var newItem: CheckList.Items = CheckList.Items.default
+	@State private var newItem: Bool = false
 	
 	var checkList: CheckList
 	
-	var indexList: Int?
 	
 	var body: some View {
+		
+		let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
+		
 		List(){
-			let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
-			let upper: Int = modelData.checkLists[indexList].items.count
 			
-			ForEach(0 ..< upper, id:\.self) {index in
+			ForEach(modelData.checkLists[indexList].items) { item in
 				
 				HStack{
-					Image(systemName: modelData.checkLists[indexList].items[index].isCompleted ? "checkmark.circle.fill":"circle")
-						.resizable()
-						.frame(width: 25, height: 25, alignment: .center)
-						.foregroundColor(modelData.checkLists[indexList].items[index].isCompleted ? .blue:.gray)
-						.onTapGesture(perform: {
-							modelData.checkLists[indexList].items[index].isCompleted.toggle()
-						})
+					ToggleCompleted(item: item, indexList: indexList)
+						.environmentObject(modelData)
 					
-					Text(modelData.checkLists[indexList].items[index].itemName)
-						.foregroundColor(modelData.checkLists[indexList].items[index].isCompleted ? .gray:.white)
+					Text(item.itemName)
+						.foregroundColor(item.isCompleted ? .gray:.white)
 						.padding()
 					Spacer()
 					
 					if modelData.checkLists[indexList].showQuantity {
 						
-						Text("\(modelData.checkLists[indexList].items[index].itemQuantity!)")
+						Text("\(item.itemQuantity!)")
 							.foregroundColor(.gray)
 							.font(.subheadline)
 							.padding()
@@ -54,33 +49,44 @@ struct ItemList: View {
 						
 					}
 					.sheet(isPresented: $showInfo) {
-						ItemInfo(showInfo: $showInfo, item: $modelData.checkLists[indexList].items[index], checkList: checkList )
+						ItemInfo(showInfo: $showInfo, ID: item.id, checkList: checkList)
 							.environmentObject(modelData)
+							.onDisappear(){
+								
+								modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
+								
+							}
 					}
 					
 				}
-				
 			}
 			
-			Button{showInfo.toggle()} label: {
+			Button{
+				newItem.toggle()
+				modelData.checkLists[indexList].items.append(CheckList.Items.default)
+				
+			} label: {
 				Image(systemName: "plus")
 					.resizable()
 					.frame(width: 20, height: 20, alignment: .leading)
 					.foregroundColor(.blue)
 			}
-			.sheet(isPresented: $showInfo) {
-				ItemInfo(showInfo: $showInfo, item: $newItem, checkList: checkList )
+			.sheet(isPresented: $newItem) {
+				ItemInfo(showInfo: $newItem, ID:CheckList.Items.default.id , checkList: checkList )
 					.environmentObject(modelData)
+//					.onAppear(){
+//						modelData.checkLists[indexList].items.append(CheckList.Items.default)
+//					}
 					.onDisappear{
-						newItem = CheckList.Items.default
+						modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
 					}
+				
+				
 			}
-			.padding(.leading, 4.5)
-			
-			
 		}
 		.navigationTitle(checkList.listName)
 	}
+	
 }
 
 struct ItemList_Previews: PreviewProvider {
