@@ -22,11 +22,16 @@ struct ItemInfo: View {
 		VStack(alignment: .leading, spacing: 20) {
 			
 			HStack {
+				if ID == CheckList.Items.default.id {
+					Button("Cancel"){
+						showInfo = false
+					}
+				}
 				Spacer()
 				Button("Done"){
 					showInfo = false
 					
-					if (ID == UUID(uuidString: "00000000-0000-0000-0000-000000000000") && modelData.checkLists[indexList].items[index].itemName.trimmingCharacters(in: [" "]) != "") {
+					if (ID == CheckList.Items.default.id && modelData.checkLists[indexList].items[index].itemName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
 						
 						modelData.checkLists[indexList].items[index].id = UUID()
 					}
@@ -61,7 +66,7 @@ struct ItemInfo: View {
 					TextEditor(text: $modelData.checkLists[indexList].items[index].note)
 						.font(.body)
 						.foregroundColor(.gray)
-					if modelData.checkLists[indexList].items[index].note.trimmingCharacters(in: [" "]) == ""{
+					if modelData.checkLists[indexList].items[index].note.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == ""{
 						Text("Notes")
 							.font(.body)
 							.foregroundColor(.secondary)
@@ -69,12 +74,10 @@ struct ItemInfo: View {
 					}
 				}
 				
-				if modelData.checkLists[indexList].items[index].id != UUID(uuidString: "00000000-0000-0000-0000-000000000000") {
+				if modelData.checkLists[indexList].items[index].id != CheckList.Items.default.id {
 					
 					Button{
 						showInfo = false
-//					TODO: make a new variable in json and delete it on disappear and remove delete from this block
-//						modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter({$0.id != item.id})
 						modelData.checkLists[indexList].items[index] = CheckList.Items.default
 						
 					} label: {

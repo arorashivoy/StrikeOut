@@ -10,6 +10,7 @@ import Combine
 
 final class ModelData: ObservableObject {
 	@Published var checkLists: [CheckList] = load("ListsData.json")
+	@Published var listSelector: UUID?
 }
 
 func load<T: Decodable>(_ filename: String) -> T {

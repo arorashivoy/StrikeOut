@@ -20,7 +20,6 @@ struct ItemList: View {
 		let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
 		
 		List(){
-			
 			ForEach(modelData.checkLists[indexList].items) { item in
 				
 				HStack{
@@ -74,9 +73,6 @@ struct ItemList: View {
 			.sheet(isPresented: $newItem) {
 				ItemInfo(showInfo: $newItem, ID:CheckList.Items.default.id , checkList: checkList )
 					.environmentObject(modelData)
-//					.onAppear(){
-//						modelData.checkLists[indexList].items.append(CheckList.Items.default)
-//					}
 					.onDisappear{
 						modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
 					}
@@ -84,9 +80,7 @@ struct ItemList: View {
 				
 			}
 		}
-		.navigationTitle(checkList.listName)
-	}
-	
+	}	
 }
 
 struct ItemList_Previews: PreviewProvider {

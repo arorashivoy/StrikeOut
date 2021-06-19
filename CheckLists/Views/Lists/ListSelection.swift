@@ -9,15 +9,47 @@ import SwiftUI
 
 struct ListSelection: View {
 	@EnvironmentObject var modelData: ModelData
+	@State var addSheet: Bool = false
 	
 	var body: some View {
 		NavigationView {
 			List(){
 				ForEach(modelData.checkLists){ checkList in
-					NavigationLink(destination: ItemList(checkList: checkList).environmentObject(modelData)){
+					NavigationLink(
+						destination: ItemHost(checkList: checkList)
+							.environmentObject(modelData)
+							.onDisappear(){
+								if modelData.checkLists.count <= 1{
+									modelData.checkLists.append(CheckList.default)
+								}else {
+								modelData.checkLists = modelData.checkLists.filter( {$0.listName != CheckList.default.listName})
+								}
+								
+							},
+						tag: checkList.id,
+						selection: $modelData.listSelector
+					){
 						ListRow(checkList: checkList)
 					}
 				}
+				Button{
+					addSheet.toggle()
+					modelData.checkLists.append(CheckList.default)
+				}label: {
+					Image(systemName: "plus")
+						.resizable()
+						.frame(width: 20, height: 20, alignment: .leading)
+						.foregroundColor(.blue)
+						.padding(.leading)
+				}
+				.sheet(isPresented: $addSheet, content: {
+					ListInfo(addSheet: $addSheet, checkList: CheckList.default)
+						.onDisappear(){
+							if modelData.checkLists.count > 1 {
+								modelData.checkLists = modelData.checkLists.filter( {$0.id != CheckList.default.id})
+							}
+						}
+				})
 			}
 			.navigationTitle("Lists")
 		}

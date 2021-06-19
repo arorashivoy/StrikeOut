@@ -30,17 +30,19 @@
 		"isPin": false,
 		"imageName": "list.bullet",
 		"showQuantity":false,
-		"description":"This list is to track my tasks",
+		"description":"",
 		"items": [
 			{
 				"itemName": "shower",
 				"id":"d418c01e-ce2d-11eb-b8bc-0242ac130003",
+				"itemQuantity": 0,
 				"isCompleted":false,
 				"note": "This is note"
 			},
 			{
 				"itemName": "Code",
 				"id":"f49c19a8-ce2d-11eb-b8bc-0242ac130003",
+				"itemQuantity": 0,
 				"isCompleted":true,
 				"note": ""
 			}
