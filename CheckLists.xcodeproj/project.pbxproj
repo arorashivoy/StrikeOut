@@ -10,8 +10,9 @@
 		8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDAB2677EAF9000A21C7 /* ItemList.swift */; };
 		8339EDB42677EDAB000A21C7 /* ListsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8339EDB32677EDAB000A21C7 /* ListsData.json */; };
 		8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDB72678DBE7000A21C7 /* ItemInfo.swift */; };
+		834D4FC9267DF40100F83046 /* ListHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D4FC8267DF40100F83046 /* ListHost.swift */; };
+		834D4FCB267DF50100F83046 /* EditSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D4FCA267DF50100F83046 /* EditSelection.swift */; };
 		838754BC267A348C00E71CD7 /* ToggleCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838754BB267A348C00E71CD7 /* ToggleCompleted.swift */; };
-		83AF5011267B76120040D6BC /* ItemHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF5010267B76120040D6BC /* ItemHost.swift */; };
 		83BBCACF267C0BED00CB8DA6 /* ListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */; };
 		83D4B0132677857600C3994A /* CheckListsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B0122677857600C3994A /* CheckListsApp.swift */; };
 		83D4B0152677857600C3994A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B0142677857600C3994A /* ContentView.swift */; };
@@ -27,8 +28,9 @@
 		8339EDAB2677EAF9000A21C7 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		8339EDB32677EDAB000A21C7 /* ListsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ListsData.json; sourceTree = "<group>"; };
 		8339EDB72678DBE7000A21C7 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
+		834D4FC8267DF40100F83046 /* ListHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHost.swift; sourceTree = "<group>"; };
+		834D4FCA267DF50100F83046 /* EditSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSelection.swift; sourceTree = "<group>"; };
 		838754BB267A348C00E71CD7 /* ToggleCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCompleted.swift; sourceTree = "<group>"; };
-		83AF5010267B76120040D6BC /* ItemHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHost.swift; sourceTree = "<group>"; };
 		83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInfo.swift; sourceTree = "<group>"; };
 		83D4B00F2677857600C3994A /* CheckLists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckLists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D4B0122677857600C3994A /* CheckListsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListsApp.swift; sourceTree = "<group>"; };
@@ -59,6 +61,8 @@
 				83D4B02226779A0900C3994A /* ListSelection.swift */,
 				83D4B02426779A5E00C3994A /* ListRow.swift */,
 				83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */,
+				834D4FC8267DF40100F83046 /* ListHost.swift */,
+				834D4FCA267DF50100F83046 /* EditSelection.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -68,7 +72,6 @@
 			children = (
 				8339EDAB2677EAF9000A21C7 /* ItemList.swift */,
 				8339EDB72678DBE7000A21C7 /* ItemInfo.swift */,
-				83AF5010267B76120040D6BC /* ItemHost.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -220,12 +223,13 @@
 				83BBCACF267C0BED00CB8DA6 /* ListInfo.swift in Sources */,
 				83D4B02526779A5E00C3994A /* ListRow.swift in Sources */,
 				83D4B0152677857600C3994A /* ContentView.swift in Sources */,
+				834D4FC9267DF40100F83046 /* ListHost.swift in Sources */,
 				83D4B02326779A0900C3994A /* ListSelection.swift in Sources */,
 				8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */,
 				838754BC267A348C00E71CD7 /* ToggleCompleted.swift in Sources */,
 				8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */,
 				83D4B02D2677A0F800C3994A /* CheckList.swift in Sources */,
-				83AF5011267B76120040D6BC /* ItemHost.swift in Sources */,
+				834D4FCB267DF50100F83046 /* EditSelection.swift in Sources */,
 				83D4B0132677857600C3994A /* CheckListsApp.swift in Sources */,
 				83D4B02F2677A95800C3994A /* ModelData.swift in Sources */,
 			);

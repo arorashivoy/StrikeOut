@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
 	@EnvironmentObject var modelData: ModelData
     var body: some View {
-        ListSelection()
+        ListHost()
 			.environmentObject(modelData)
     }
 }

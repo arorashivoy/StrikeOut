@@ -16,16 +16,7 @@ struct ListSelection: View {
 			List(){
 				ForEach(modelData.checkLists){ checkList in
 					NavigationLink(
-						destination: ItemHost(checkList: checkList)
-							.environmentObject(modelData)
-							.onDisappear(){
-								if modelData.checkLists.count <= 1{
-									modelData.checkLists.append(CheckList.default)
-								}else {
-								modelData.checkLists = modelData.checkLists.filter( {$0.listName != CheckList.default.listName})
-								}
-								
-							},
+						destination: ItemList(checkList: checkList).environmentObject(modelData),
 						tag: checkList.id,
 						selection: $modelData.listSelector
 					){
@@ -43,7 +34,7 @@ struct ListSelection: View {
 						.padding(.leading)
 				}
 				.sheet(isPresented: $addSheet, content: {
-					ListInfo(addSheet: $addSheet, checkList: CheckList.default)
+					ListInfo(addSheet: $addSheet, listEdit: .constant(EditMode.inactive), checkList: CheckList.default)
 						.onDisappear(){
 							if modelData.checkLists.count > 1 {
 								modelData.checkLists = modelData.checkLists.filter( {$0.id != CheckList.default.id})
