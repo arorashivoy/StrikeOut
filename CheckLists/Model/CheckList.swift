@@ -11,6 +11,7 @@ import SwiftUI
 struct CheckList: Hashable,Codable, Identifiable {
 	var listName: String
 	var id = UUID()
+//	var color:
 	var description: String
 	var showQuantity: Bool
 	

@@ -59,6 +59,9 @@ struct ItemList: View {
 					
 				}
 			}
+			.onDelete(perform: { indexSet in
+				modelData.checkLists[indexList].items.remove(atOffsets: indexSet)
+			})
 			
 			Button{
 				newItem.toggle()
@@ -80,6 +83,8 @@ struct ItemList: View {
 				
 			}
 		}
+		.listStyle(InsetGroupedListStyle())
+		.navigationTitle(checkList.listName)
 	}	
 }
 

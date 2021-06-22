@@ -27,6 +27,9 @@ struct EditSelection: View {
 						ListRow(checkList: checkList)
 					}
 				}
+				.onDelete(perform: { indexSet in
+					modelData.checkLists.remove(atOffsets: indexSet)
+				})
 			}
 			.navigationTitle("Edit Lists")
 		}

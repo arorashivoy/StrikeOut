@@ -23,6 +23,9 @@ struct ListSelection: View {
 						ListRow(checkList: checkList)
 					}
 				}
+				.onDelete(perform: { indexSet in
+					modelData.checkLists.remove(atOffsets: indexSet)
+				})
 				Button{
 					addSheet.toggle()
 					modelData.checkLists.append(CheckList.default)

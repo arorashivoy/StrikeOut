@@ -19,7 +19,7 @@ struct ItemInfo: View {
 		let indexList: Int = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
 		let index: Int = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == ID}) ?? 0
 		
-		VStack(alignment: .leading, spacing: 20) {
+		VStack(alignment: .center, spacing: 20) {
 			
 			HStack {
 				if ID == CheckList.Items.default.id {
@@ -73,22 +73,23 @@ struct ItemInfo: View {
 							.padding([.top, .leading], 5.0)
 					}
 				}
+			}
+			.listStyle(DefaultListStyle())
+			
+			if modelData.checkLists[indexList].items[index].id != CheckList.Items.default.id {
 				
-				if modelData.checkLists[indexList].items[index].id != CheckList.Items.default.id {
+				Button{
+					showInfo = false
+					modelData.checkLists[indexList].items[index] = CheckList.Items.default
 					
-					Button{
-						showInfo = false
-						modelData.checkLists[indexList].items[index] = CheckList.Items.default
-						
-					} label: {
-						Text("Delete Record")
-							.font(.title3)
-							.bold()
-							.frame(alignment: .center)
-							.foregroundColor(.red)
-						
-					}
-					.frame(width: 300, alignment: .center)
+				} label: {
+					Text("Delete Record")
+						.font(.title3)
+						.bold()
+						.frame(alignment: .center)
+						.foregroundColor(.red)
+						.padding()
+					
 				}
 			}
 		}

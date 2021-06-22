@@ -2,6 +2,7 @@
 	{
 		"listName": "Shopping",
 		"id":"ccc0cf68-ce2e-11eb-b8bc-0242ac130003",
+		"color":".blue",
 		"isPin": true,
 		"imageName": "list.bullet",
 		"showQuantity": true,
@@ -27,6 +28,7 @@
 	{
 		"listName": "To Do",
 		"id":"dce0c646-ce2e-11eb-b8bc-0242ac130003",
+		"color":".pink",
 		"isPin": false,
 		"imageName": "list.bullet",
 		"showQuantity":false,
