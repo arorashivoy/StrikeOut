@@ -9,9 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
 	@EnvironmentObject var modelData: ModelData
+    @Environment(\.scenePhase) private var scenePhase
+    
     var body: some View {
         ListHost()
 			.environmentObject(modelData)
+            .onChange(of: scenePhase, perform: { phase in
+                if phase == .inactive {
+                    modelData.save(to: "ListsData.json")
+                }
+            })
     }
 }
 
