@@ -33,7 +33,7 @@ struct ItemList: View {
 					
 					if modelData.checkLists[indexList].showQuantity {
 						
-						Text("\(item.itemQuantity!)")
+						Text("\(item.itemQuantity)")
 							.foregroundColor(.gray)
 							.font(.subheadline)
 							.padding()

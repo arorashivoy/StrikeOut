@@ -16,7 +16,7 @@ struct CheckListsApp: App {
             ContentView()
 				.environmentObject(modelData)
                 .onAppear(){
-                    modelData.checkLists = modelData.load("ListsData.json")
+                    modelData.load()
                 }
         }
     }

@@ -16,7 +16,7 @@ struct ContentView: View {
 			.environmentObject(modelData)
             .onChange(of: scenePhase, perform: { phase in
                 if phase == .inactive {
-                    modelData.save(to: "ListsData.json")
+                    modelData.save()
                 }
             })
     }

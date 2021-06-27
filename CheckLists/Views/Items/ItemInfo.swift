@@ -50,10 +50,10 @@ struct ItemInfo: View {
 				}
 				if checkList.showQuantity {
 					HStack {
-						Stepper("Quantity: \(modelData.checkLists[indexList].items[index].itemQuantity!)", onIncrement: {
-							modelData.checkLists[indexList].items[index].itemQuantity! += 1
+						Stepper("Quantity: \(modelData.checkLists[indexList].items[index].itemQuantity)", onIncrement: {
+							modelData.checkLists[indexList].items[index].itemQuantity += 1
 						},onDecrement: {
-							modelData.checkLists[indexList].items[index].itemQuantity! -= 1
+							modelData.checkLists[indexList].items[index].itemQuantity -= 1
 						})
 					}
 				}

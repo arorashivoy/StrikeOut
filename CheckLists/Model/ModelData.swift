@@ -11,46 +11,53 @@ import Combine
 final class ModelData: ObservableObject {
 	@Published var checkLists: [CheckList] = []
 	@Published var listSelector: UUID?
+    var fileName: String = "ListsData.json"
     
+//    To get documents folder
     
-//    To load and save data
-    
-    func load<T: Decodable>(_ filename: String) -> T {
-        let data : Data
-        
-        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-        else {
-            fatalError("Couldn't find \(filename) in main bundle.")
+    private static var documentsFolder: URL {
+            do {
+                return try FileManager.default.url(for: .documentDirectory,
+                                                   in: .userDomainMask,
+                                                   appropriateFor: nil,
+                                                   create: false)
+            } catch {
+                fatalError("Can't find documents directory.")
+            }
         }
-        
-        do{
-            data = try Data(contentsOf: file)
-        }catch{
-            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+    
+    private static var fileURL: URL {
+        return documentsFolder.appendingPathComponent(ModelData().fileName)
         }
-        
-        do{
-            let decoder = JSONDecoder()
-            return try decoder.decode(T.self, from: data)
-        }catch{
-            fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
+    //    To load and save data
+    
+    func load() {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let data = try? Data(contentsOf: Self.fileURL) else {
+                DispatchQueue.main.async {
+                    self?.checkLists = [CheckList.data]
+                }
+                return
+            }
+            guard let lists = try? JSONDecoder().decode([CheckList].self, from: data) else {
+                fatalError("Can't decode saved scrum data.")
+            }
+            DispatchQueue.main.async {
+                self?.checkLists = lists
+            }
         }
     }
-
     
-    func save(to filename: String) {
-        let encoder = JSONEncoder()
-        guard let data = try? encoder.encode(self.checkLists) else { fatalError("Error encoding data") }
-        
-        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-        else {
-            fatalError("Couldn't find \(filename) in main bundle.")
-        }
-        
-        do{
-            try data.write(to: file)
-        }catch{
-            fatalError("Couldn't write to the \(filename)")
+    func save() {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let checkLists = self?.checkLists else { fatalError("Self out of scope") }
+            guard let data = try? JSONEncoder().encode(checkLists) else { fatalError("Error encoding data") }
+            do {
+                let outfile = Self.fileURL
+                try data.write(to: outfile)
+            } catch {
+                fatalError("Can't write to file")
+            }
         }
     }
 }
