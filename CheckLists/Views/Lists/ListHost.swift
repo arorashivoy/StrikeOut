@@ -21,14 +21,17 @@ struct ListHost: View {
 				
 			}else {
 				EditSelection(listEdit: listEdit)
-					.environmentObject(modelData)
-			}
+                    .environmentObject(modelData)
+            }
 			HStack{
-				Spacer()
-				EditButton()
-					.padding()
-			}
-		}
+                Spacer()
+                if modelData.listSelector == nil {
+                    EditButton()
+                        .padding()
+                        .foregroundColor(.accentColor)
+                }
+            }
+        }
     }
 }
 
@@ -36,5 +39,6 @@ struct ListHost_Previews: PreviewProvider {
     static var previews: some View {
         ListHost()
 			.environmentObject(ModelData())
+            .preferredColorScheme(.dark)
     }
 }

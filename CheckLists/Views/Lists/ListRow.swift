@@ -12,8 +12,9 @@ struct ListRow: View {
     var body: some View {
 		HStack{
 			checkList.image
-				.resizable()
-				.frame(width: 30, height: 20, alignment: .center)
+                .font(.title)
+                .scaledToFit()
+                .foregroundColor(checkList.color)
 			Text(checkList.listName)
 			Spacer()
 		}
@@ -29,7 +30,7 @@ struct ListRow_Previews: PreviewProvider {
 			ListRow(checkList: checkLists[1])
 		}
 		.previewLayout(.fixed(width: 300, height: 70))
-		.preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+		.preferredColorScheme(.dark)
 		
     }
 }

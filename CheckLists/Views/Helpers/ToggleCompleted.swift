@@ -18,7 +18,7 @@ struct ToggleCompleted: View {
 		Image(systemName: item.isCompleted ? "checkmark.circle.fill":"circle")
 			.resizable()
 			.frame(width: 25, height: 25, alignment: .center)
-			.foregroundColor(item.isCompleted ? .blue:.gray)
+            .foregroundColor(item.isCompleted ? modelData.checkLists[indexList].color:.gray)
 			.onTapGesture(perform: {
 				modelData.checkLists[indexList].items[index!].isCompleted.toggle()
 			})

@@ -21,14 +21,17 @@ struct ItemInfo: View {
 		
 		VStack(alignment: .center, spacing: 20) {
 			
+///         To display cancel(only when the new item is created) and done button
 			HStack {
 				if ID == CheckList.Items.default.id {
-					Button("Cancel"){
+					Button{
 						showInfo = false
-					}
+                    }label:{
+                        Text("Cancel")
+                    }
 				}
 				Spacer()
-				Button("Done"){
+				Button{
 					showInfo = false
 					
 					if (ID == CheckList.Items.default.id && modelData.checkLists[indexList].items[index].itemName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
@@ -36,9 +39,16 @@ struct ItemInfo: View {
 						modelData.checkLists[indexList].items[index].id = UUID()
 					}
 					
-				}
+                }label: {
+                    Text("Done")
+                }
 			}
+            .foregroundColor(modelData.checkLists[indexList].color)
+            
+///         Item editing options
 			List{
+                
+///             Item name
 				HStack{
 					Text("Name")
 						.font(.headline)
@@ -47,7 +57,10 @@ struct ItemInfo: View {
 						.brightness(0.40)
 					TextField("Item Name", text: $modelData.checkLists[indexList].items[index].itemName)
 						.font(.subheadline)
+                        .foregroundColor(.primary)
 				}
+                
+///             Quantity stepper only when showQuantity is enabled for checklist
 				if checkList.showQuantity {
 					HStack {
 						Stepper("Quantity: \(modelData.checkLists[indexList].items[index].itemQuantity)", onIncrement: {
@@ -58,14 +71,17 @@ struct ItemInfo: View {
 					}
 				}
 				
+                
+///             Complete toggle
 				Toggle(isOn: $modelData.checkLists[indexList].items[index].isCompleted, label: {
 					Text("Completed")
 				})
-				
+                
+///             Notes text editor
 				ZStack(alignment: .topLeading) {
 					TextEditor(text: $modelData.checkLists[indexList].items[index].note)
 						.font(.body)
-						.foregroundColor(.gray)
+                        .foregroundColor(.secondary)
 					if modelData.checkLists[indexList].items[index].note.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == ""{
 						Text("Notes")
 							.font(.body)
@@ -76,6 +92,8 @@ struct ItemInfo: View {
 			}
 			.listStyle(DefaultListStyle())
 			
+            
+///         Delete button
 			if modelData.checkLists[indexList].items[index].id != CheckList.Items.default.id {
 				
 				Button{
@@ -93,6 +111,7 @@ struct ItemInfo: View {
 				}
 			}
 		}
+        .foregroundColor(modelData.checkLists[indexList].color)
 		.padding()
 		
 	}

@@ -31,15 +31,13 @@ struct ListSelection: View {
 					Image(systemName: "plus")
 						.resizable()
 						.frame(width: 20, height: 20, alignment: .leading)
-						.foregroundColor(.blue)
+						.foregroundColor(.accentColor)
 						.padding(.leading)
 				}
 				.sheet(isPresented: $addSheet, content: {
 					ListInfo(addSheet: $addSheet, listEdit: .constant(EditMode.inactive), checkList: CheckList.default)
 						.onDisappear(){
-							if modelData.checkLists.count > 1 {
-								modelData.checkLists = modelData.checkLists.filter( {$0.id != CheckList.default.id})
-							}
+                            modelData.checkLists = modelData.checkLists.filter( {$0.id != CheckList.default.id})
 						}
 				})
 			}

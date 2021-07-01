@@ -40,7 +40,7 @@ final class ModelData: ObservableObject {
                 return
             }
             guard let lists = try? JSONDecoder().decode([CheckList].self, from: data) else {
-                fatalError("Can't decode saved scrum data.")
+                fatalError("Can't decode saved Lists data.")
             }
             DispatchQueue.main.async {
                 self?.checkLists = lists

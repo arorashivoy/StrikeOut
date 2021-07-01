@@ -23,14 +23,18 @@ struct ItemList: View {
 			ForEach(modelData.checkLists[indexList].items) { item in
 				
 				HStack{
+                    
+///                 Completed button
 					ToggleCompleted(item: item, indexList: indexList)
 						.environmentObject(modelData)
-					
+                    
+///                 Item name
 					Text(item.itemName)
 						.foregroundColor(item.isCompleted ? .gray:.white)
 						.padding()
 					Spacer()
-					
+                    
+///                 quantity
 					if modelData.checkLists[indexList].showQuantity {
 						
 						Text("\(item.itemQuantity)")
@@ -39,12 +43,12 @@ struct ItemList: View {
 							.padding()
 					}
 					
-					
+///                 info button
 					Button{showInfo.toggle()} label: {
 						Image(systemName: "info.circle")
 							.resizable()
 							.frame(width: 25, height: 25, alignment: .center)
-							.foregroundColor(.blue)
+                            .foregroundColor(modelData.checkLists[indexList].color)
 						
 					}
 					.sheet(isPresented: $showInfo) {
@@ -63,6 +67,7 @@ struct ItemList: View {
 				modelData.checkLists[indexList].items.remove(atOffsets: indexSet)
 			})
 			
+///         new item button
 			Button{
 				newItem.toggle()
 				modelData.checkLists[indexList].items.append(CheckList.Items.default)
@@ -71,7 +76,7 @@ struct ItemList: View {
 				Image(systemName: "plus")
 					.resizable()
 					.frame(width: 20, height: 20, alignment: .leading)
-					.foregroundColor(.blue)
+                    .foregroundColor(modelData.checkLists[indexList].color)
 			}
 			.sheet(isPresented: $newItem) {
 				ItemInfo(showInfo: $newItem, ID:CheckList.Items.default.id , checkList: checkList )
@@ -85,7 +90,8 @@ struct ItemList: View {
 		}
 		.listStyle(InsetGroupedListStyle())
 		.navigationTitle(checkList.listName)
-	}	
+        .foregroundColor(modelData.checkLists[indexList].color)
+	}
 }
 
 struct ItemList_Previews: PreviewProvider {
