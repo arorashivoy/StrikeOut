@@ -12,18 +12,22 @@ struct ListSelection: View {
 	@State var addSheet: Bool = false
 	
 	var body: some View {
+        
+        let filteredList = modelData.checkLists.filter{ $0.isPinned } + modelData.checkLists.filter{ !$0.isPinned }
+        
 		NavigationView {
 			List(){
-				ForEach(modelData.checkLists){ checkList in
+                ///Showing all the available list
+				ForEach(filteredList){ checkList in
 					NavigationLink(
 						destination: ItemList(checkList: checkList).environmentObject(modelData),
 						tag: checkList.id,
 						selection: $modelData.listSelector
 					){
 						ListRow(checkList: checkList)
-					}
+                    }
 				}
-                
+                ///adding list button
 				Button{
 					addSheet.toggle()
 					modelData.checkLists.append(CheckList.default)

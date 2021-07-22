@@ -60,6 +60,11 @@ struct ListInfo: View {
                         .foregroundColor(.primary)
 				}
                 
+///             To pin the list
+                Toggle(isOn: $modelData.checkLists[index].isPinned, label: {
+                    Text("Pin")
+                })
+                
 ///             show quantity for lists
 				Toggle(isOn: $modelData.checkLists[index].showQuantity, label: {
 					Text("Show Quantity")

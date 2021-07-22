@@ -12,8 +12,11 @@ struct CheckList: Hashable,Codable, Identifiable {
 	var listName: String
 	var id = UUID()
 	var color: Color
-	var description: String
-	var showQuantity: Bool
+	var description: String = ""
+	var showQuantity: Bool = false
+    var showCompleted: Bool = false
+    var completedAtBottom: Bool = false
+    var isPinned: Bool = false
 	
 	var imageName: String
 	var image: Image {
@@ -26,14 +29,14 @@ struct CheckList: Hashable,Codable, Identifiable {
 		
 		var id = UUID()
 		var itemName: String
-		var itemQuantity: Int
-		var isCompleted: Bool
-		var note: String
+		var itemQuantity: Int = 0
+		var isCompleted: Bool = false
+		var note: String = ""
         
 ///     setting some inbuilt item
 		static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
         
-        static let data = Items(id: UUID(), itemName: "Donate", itemQuantity: 0, isCompleted: false, note: "Support me by donating")
+        static let data = Items(itemName: "Donate", itemQuantity: 0, isCompleted: false, note: "Support me by donating")
 		
 	}
     
@@ -120,8 +123,8 @@ struct CheckList: Hashable,Codable, Identifiable {
     }
 
 /// setting some inbuilt checklists
-    static let `default` = CheckList(listName: "", id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, color: .blue, description: "", showQuantity: false, imageName: "list.bullet", items: [Items.default])
+    static let `default` = CheckList(listName: "", id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [Items.default])
     
-    static let data = CheckList(listName: "To Do", id: UUID(), color: .blue, description: "", showQuantity: false, imageName: "list.bullet", items: [Items.data])
+    static let data = CheckList(listName: "To Do", id: UUID(), color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [Items.data])
 	
 }

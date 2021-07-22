@@ -17,6 +17,10 @@ struct ListRow: View {
                 .foregroundColor(checkList.color)
 			Text(checkList.listName)
 			Spacer()
+            if checkList.isPinned {
+                Image(systemName: "flag.fill")
+                    .foregroundColor(checkList.color)
+            }
 		}
 		.padding()
     }

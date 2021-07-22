@@ -13,9 +13,12 @@ struct EditSelection: View {
 	var listEdit: Binding<EditMode>?
 	
     var body: some View {
+        
+        let filteredList = modelData.checkLists.filter{ $0.isPinned } + modelData.checkLists.filter{ !$0.isPinned }
+        
 		NavigationView {
 			List{
-				ForEach(modelData.checkLists){ checkList in
+				ForEach(filteredList){ checkList in
 					NavigationLink(
 						destination: ListInfo(addSheet: .constant(false), listEdit: listEdit, checkList: checkList)
 							.environmentObject(modelData)

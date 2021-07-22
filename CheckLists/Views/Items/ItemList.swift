@@ -14,13 +14,14 @@ struct ItemList: View {
 	
 	var checkList: CheckList
 	
-	
 	var body: some View {
 		
 		let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
 		
+        let filteredItems = filterItems(checkList: modelData.checkLists[indexList])
+        
 		List(){
-			ForEach(modelData.checkLists[indexList].items) { item in
+			ForEach(filteredItems) { item in
 				
 				HStack{
                     
@@ -63,6 +64,7 @@ struct ItemList: View {
 					
 				}
 			}
+            ///Drag to delete
 			.onDelete(perform: { indexSet in
 				modelData.checkLists[indexList].items.remove(atOffsets: indexSet)
 			})
@@ -91,7 +93,42 @@ struct ItemList: View {
 		.listStyle(InsetGroupedListStyle())
 		.navigationTitle(checkList.listName)
         .foregroundColor(modelData.checkLists[indexList].color)
+        .toolbar{
+            ///Menu
+            Menu{
+                ///show Completed button
+                Button{
+                    modelData.checkLists[indexList].showCompleted.toggle()
+                } label: {
+                    if modelData.checkLists[indexList].showCompleted {
+                        Text("Hide Completed")
+                    } else {
+                        Text("Show Completed")
+                    }
+                }
+                
+                ///sort Completed
+                if modelData.checkLists[indexList].showCompleted {
+                    Button{
+                        modelData.checkLists[indexList].completedAtBottom.toggle()
+                    } label: {
+                        Label("Sort Completed", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+                
+            } label: {
+                Label("Menu", systemImage: "ellipsis.circle")
+                    .font(.headline)
+            }
+        }
 	}
+    func filterItems(checkList: CheckList) -> [CheckList.Items] {
+        if checkList.showCompleted {
+            return checkList.items.filter{ !$0.isCompleted || !checkList.completedAtBottom } + checkList.items.filter{ $0.isCompleted && checkList.completedAtBottom }
+        }else {
+            return checkList.items.filter{ !$0.isCompleted }
+        }
+    }
 }
 
 struct ItemList_Previews: PreviewProvider {
