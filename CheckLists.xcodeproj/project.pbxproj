@@ -11,6 +11,19 @@
 		8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDB72678DBE7000A21C7 /* ItemInfo.swift */; };
 		834D4FC9267DF40100F83046 /* ListHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D4FC8267DF40100F83046 /* ListHost.swift */; };
 		834D4FCB267DF50100F83046 /* EditSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D4FCA267DF50100F83046 /* EditSelection.swift */; };
+		837D205A2690CF87002F9547 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D20592690CF87002F9547 /* ContentView.swift */; };
+		837D205C2690CF89002F9547 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 837D205B2690CF89002F9547 /* Assets.xcassets */; };
+		837D205F2690CF89002F9547 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 837D205E2690CF89002F9547 /* Preview Assets.xcassets */; };
+		837D20652690D017002F9547 /* Color+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0CFAD268A2C3200BD1553 /* Color+Codable.swift */; };
+		837D20662690D017002F9547 /* ListSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02226779A0900C3994A /* ListSelection.swift */; };
+		837D20682690D017002F9547 /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02C2677A0F800C3994A /* CheckList.swift */; };
+		837D20692690D017002F9547 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDB72678DBE7000A21C7 /* ItemInfo.swift */; };
+		837D206A2690D017002F9547 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02E2677A95800C3994A /* ModelData.swift */; };
+		837D206B2690D017002F9547 /* CheckListsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B0122677857600C3994A /* CheckListsApp.swift */; };
+		837D206C2690D017002F9547 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02426779A5E00C3994A /* ListRow.swift */; };
+		837D206D2690D017002F9547 /* ToggleCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838754BB267A348C00E71CD7 /* ToggleCompleted.swift */; };
+		837D206F2690D017002F9547 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83D4B0162677857800C3994A /* Assets.xcassets */; };
+		837D20722690D351002F9547 /* ListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D20712690D351002F9547 /* ListInfo.swift */; };
 		838754BC267A348C00E71CD7 /* ToggleCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838754BB267A348C00E71CD7 /* ToggleCompleted.swift */; };
 		83BBCACF267C0BED00CB8DA6 /* ListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */; };
 		83D0CFAE268A2C3200BD1553 /* Color+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0CFAD268A2C3200BD1553 /* Color+Codable.swift */; };
@@ -29,6 +42,13 @@
 		8339EDB72678DBE7000A21C7 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		834D4FC8267DF40100F83046 /* ListHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHost.swift; sourceTree = "<group>"; };
 		834D4FCA267DF50100F83046 /* EditSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSelection.swift; sourceTree = "<group>"; };
+		837D20552690CF87002F9547 /* MacCheckLists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacCheckLists.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		837D20592690CF87002F9547 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		837D205B2690CF89002F9547 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		837D205E2690CF89002F9547 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		837D20602690CF89002F9547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		837D20612690CF89002F9547 /* MacCheckLists.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacCheckLists.entitlements; sourceTree = "<group>"; };
+		837D20712690D351002F9547 /* ListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInfo.swift; sourceTree = "<group>"; };
 		838754BB267A348C00E71CD7 /* ToggleCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCompleted.swift; sourceTree = "<group>"; };
 		83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInfo.swift; sourceTree = "<group>"; };
 		83D0CFAD268A2C3200BD1553 /* Color+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Codable.swift"; sourceTree = "<group>"; };
@@ -45,6 +65,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		837D20522690CF87002F9547 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83D4B00C2677857600C3994A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -76,6 +103,27 @@
 			path = Items;
 			sourceTree = "<group>";
 		};
+		837D20562690CF87002F9547 /* MacCheckLists */ = {
+			isa = PBXGroup;
+			children = (
+				837D20592690CF87002F9547 /* ContentView.swift */,
+				837D20712690D351002F9547 /* ListInfo.swift */,
+				837D205B2690CF89002F9547 /* Assets.xcassets */,
+				837D20602690CF89002F9547 /* Info.plist */,
+				837D20612690CF89002F9547 /* MacCheckLists.entitlements */,
+				837D205D2690CF89002F9547 /* Preview Content */,
+			);
+			path = MacCheckLists;
+			sourceTree = "<group>";
+		};
+		837D205D2690CF89002F9547 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				837D205E2690CF89002F9547 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		838754BD267A349400E71CD7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				83D4B0112677857600C3994A /* CheckLists */,
+				837D20562690CF87002F9547 /* MacCheckLists */,
 				83D4B0102677857600C3994A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				83D4B00F2677857600C3994A /* CheckLists.app */,
+				837D20552690CF87002F9547 /* MacCheckLists.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +195,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		837D20542690CF87002F9547 /* MacCheckLists */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 837D20642690CF89002F9547 /* Build configuration list for PBXNativeTarget "MacCheckLists" */;
+			buildPhases = (
+				837D20512690CF87002F9547 /* Sources */,
+				837D20522690CF87002F9547 /* Frameworks */,
+				837D20532690CF87002F9547 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacCheckLists;
+			productName = MacCheckLists;
+			productReference = 837D20552690CF87002F9547 /* MacCheckLists.app */;
+			productType = "com.apple.product-type.application";
+		};
 		83D4B00E2677857600C3994A /* CheckLists */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83D4B01E2677857800C3994A /* Build configuration list for PBXNativeTarget "CheckLists" */;
@@ -171,6 +238,9 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					837D20542690CF87002F9547 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					83D4B00E2677857600C3994A = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -190,11 +260,22 @@
 			projectRoot = "";
 			targets = (
 				83D4B00E2677857600C3994A /* CheckLists */,
+				837D20542690CF87002F9547 /* MacCheckLists */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		837D20532690CF87002F9547 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				837D205F2690CF89002F9547 /* Preview Assets.xcassets in Resources */,
+				837D206F2690D017002F9547 /* Assets.xcassets in Resources */,
+				837D205C2690CF89002F9547 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83D4B00D2677857600C3994A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -207,6 +288,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		837D20512690CF87002F9547 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				837D20722690D351002F9547 /* ListInfo.swift in Sources */,
+				837D20652690D017002F9547 /* Color+Codable.swift in Sources */,
+				837D20662690D017002F9547 /* ListSelection.swift in Sources */,
+				837D20682690D017002F9547 /* CheckList.swift in Sources */,
+				837D206B2690D017002F9547 /* CheckListsApp.swift in Sources */,
+				837D206D2690D017002F9547 /* ToggleCompleted.swift in Sources */,
+				837D20692690D017002F9547 /* ItemInfo.swift in Sources */,
+				837D205A2690CF87002F9547 /* ContentView.swift in Sources */,
+				837D206A2690D017002F9547 /* ModelData.swift in Sources */,
+				837D206C2690D017002F9547 /* ListRow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83D4B00B2677857600C3994A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,6 +328,56 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		837D20622690CF89002F9547 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacCheckLists/MacCheckLists.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MacCheckLists/Preview Content\"";
+				DEVELOPMENT_TEAM = 62W399JN7W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MacCheckLists/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.MacCheckLists;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		837D20632690CF89002F9547 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacCheckLists/MacCheckLists.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MacCheckLists/Preview Content\"";
+				DEVELOPMENT_TEAM = 62W399JN7W;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MacCheckLists/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.MacCheckLists;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		83D4B01C2677857800C3994A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -393,6 +541,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		837D20642690CF89002F9547 /* Build configuration list for PBXNativeTarget "MacCheckLists" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				837D20622690CF89002F9547 /* Debug */,
+				837D20632690CF89002F9547 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		83D4B00A2677857600C3994A /* Build configuration list for PBXProject "CheckLists" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

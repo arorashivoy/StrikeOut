@@ -10,7 +10,6 @@ import SwiftUI
 struct ListInfo: View {
 	@EnvironmentObject var modelData: ModelData
 	@Binding var addSheet: Bool
-    @State private var ImagePicker: Bool = false
 	var listEdit: Binding<EditMode>?
 	
 	var checkList: CheckList
@@ -119,7 +118,7 @@ struct ListInfo: View {
 
 struct ListInfo_Previews: PreviewProvider {
 	static var previews: some View {
-        ListInfo(addSheet: .constant(false), listEdit: .constant(EditMode.active), checkList: ModelData().checkLists[0])
+        ListInfo(addSheet: .constant(false), listEdit: .constant(EditMode.active), checkList: CheckList.data)
 			.environmentObject(ModelData())
 			.preferredColorScheme(.dark)
 	}

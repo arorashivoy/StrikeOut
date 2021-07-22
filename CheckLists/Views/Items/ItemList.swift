@@ -30,7 +30,7 @@ struct ItemList: View {
                     
 ///                 Item name
 					Text(item.itemName)
-						.foregroundColor(item.isCompleted ? .gray:.white)
+						.foregroundColor(item.isCompleted ? .secondary:.primary)
 						.padding()
 					Spacer()
                     
@@ -88,7 +88,7 @@ struct ItemList: View {
 				
 			}
 		}
-		.listStyle(InsetGroupedListStyle())
+//		.listStyle(InsetGroupedListStyle())
 		.navigationTitle(checkList.listName)
         .foregroundColor(modelData.checkLists[indexList].color)
 	}

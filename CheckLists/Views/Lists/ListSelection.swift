@@ -36,6 +36,7 @@ struct ListSelection: View {
 				}
 				.sheet(isPresented: $addSheet, content: {
 					ListInfo(addSheet: $addSheet, listEdit: .constant(EditMode.inactive), checkList: CheckList.default)
+                        .environmentObject(modelData)
 						.onDisappear(){
                             modelData.checkLists = modelData.checkLists.filter( {$0.id != CheckList.default.id})
 						}
