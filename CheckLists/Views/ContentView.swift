@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ContentView: View {
 	@EnvironmentObject var modelData: ModelData
@@ -26,7 +27,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ContentView()
-                .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+                .preferredColorScheme(.dark)
                 .environmentObject(ModelData())
         }
     }

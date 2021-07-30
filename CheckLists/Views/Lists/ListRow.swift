@@ -18,7 +18,7 @@ struct ListRow: View {
 			Text(checkList.listName)
 			Spacer()
             if checkList.isPinned {
-                Image(systemName: "flag.fill")
+                Image(systemName: "pin.fill")
                     .foregroundColor(checkList.color)
             }
 		}
@@ -30,8 +30,7 @@ struct ListRow_Previews: PreviewProvider {
 	static var checkLists = ModelData().checkLists
     static var previews: some View {
 		Group {
-			ListRow(checkList: checkLists[0])
-			ListRow(checkList: checkLists[1])
+            ListRow(checkList: checkLists[0])
 		}
 		.previewLayout(.fixed(width: 300, height: 70))
 		.preferredColorScheme(.dark)

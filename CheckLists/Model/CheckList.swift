@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+//TODO: make default json decode work
+
 struct CheckList: Hashable,Codable, Identifiable {
 	var listName: String
 	var id = UUID()
@@ -17,6 +19,7 @@ struct CheckList: Hashable,Codable, Identifiable {
     var showCompleted: Bool = false
     var completedAtBottom: Bool = false
     var isPinned: Bool = false
+    var defaultTime: Date = defTimeMaker(hour: 8, minute: 0)
 	
 	var imageName: String
 	var image: Image {
@@ -32,9 +35,12 @@ struct CheckList: Hashable,Codable, Identifiable {
 		var itemQuantity: Int = 0
 		var isCompleted: Bool = false
 		var note: String = ""
+        var dueDate: Date?
+        var haveDueDate: Bool = false
+        var haveDueTime: Bool = false
         
 ///     setting some inbuilt item
-		static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
+        static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "", dueDate: nil)
         
         static let data = Items(itemName: "Donate", itemQuantity: 0, isCompleted: false, note: "Support me by donating")
 		
@@ -127,4 +133,12 @@ struct CheckList: Hashable,Codable, Identifiable {
     
     static let data = CheckList(listName: "To Do", id: UUID(), color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [Items.data])
 	
+}
+
+func defTimeMaker(hour hr: Int, minute min: Int) -> Date {
+    var timeComp = DateComponents()
+    timeComp.hour = hr
+    timeComp.minute = min
+    
+    return Calendar.current.date(from: timeComp)!
 }

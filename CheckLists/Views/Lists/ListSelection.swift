@@ -39,7 +39,7 @@ struct ListSelection: View {
 						.padding(.leading)
 				}
 				.sheet(isPresented: $addSheet, content: {
-					ListInfo(addSheet: $addSheet, listEdit: .constant(EditMode.inactive), checkList: CheckList.default)
+                    ListInfo(addSheet: $addSheet, ID: CheckList.default.id)
 						.onDisappear(){
                             modelData.checkLists = modelData.checkLists.filter( {$0.id != CheckList.default.id})
 						}

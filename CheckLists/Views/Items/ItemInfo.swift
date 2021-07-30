@@ -10,6 +10,9 @@ import SwiftUI
 struct ItemInfo: View {
 	@EnvironmentObject var modelData: ModelData
 	@Binding var showInfo: Bool
+    
+    var newItem: Bool
+    
 	var ID: CheckList.Items.ID
 	
 	var checkList: CheckList
@@ -22,28 +25,8 @@ struct ItemInfo: View {
 		VStack(alignment: .center, spacing: 20) {
 			
 ///         To display cancel(only when the new item is created) and done button
-			HStack {
-				if ID == CheckList.Items.default.id {
-					Button{
-						showInfo = false
-                    }label:{
-                        Text("Cancel")
-                    }
-				}
-				Spacer()
-				Button{
-					showInfo = false
-					
-					if (ID == CheckList.Items.default.id && modelData.checkLists[indexList].items[index].itemName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
-						
-						modelData.checkLists[indexList].items[index].id = UUID()
-					}
-					
-                }label: {
-                    Text("Done")
-                }
-			}
-            .foregroundColor(modelData.checkLists[indexList].color)
+			ItemToolBar(showInfo: $showInfo, indexList: indexList, index: index, ID: ID)
+                .environmentObject(modelData)
             
 ///         Item editing options
 			List{
@@ -71,24 +54,25 @@ struct ItemInfo: View {
 					}
 				}
 				
-                
 ///             Complete toggle
 				Toggle(isOn: $modelData.checkLists[indexList].items[index].isCompleted, label: {
 					Text("Completed")
 				})
+                .onChange(of: modelData.checkLists[indexList].items[index].isCompleted) { val in
+                    if val {
+                        AppNotification().remove(ID: modelData.checkLists[indexList].items[index].id)
+                    }
+                }
+                
+///             Date and time
+                DateSelection(dueDate: modelData.checkLists[indexList].items[index].dueDate ?? Date(),
+                              dueTime: modelData.checkLists[indexList].items[index].dueDate ?? Date(), indexList: indexList,
+                              index: index)
+                    .environmentObject(modelData)
                 
 ///             Notes text editor
-				ZStack(alignment: .topLeading) {
-					TextEditor(text: $modelData.checkLists[indexList].items[index].note)
-						.font(.body)
-                        .foregroundColor(.secondary)
-					if modelData.checkLists[indexList].items[index].note.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == ""{
-						Text("Notes")
-							.font(.body)
-							.foregroundColor(.secondary)
-							.padding([.top, .leading], 5.0)
-					}
-				}
+                ItemNote(indexList: indexList, index: index)
+                    .environmentObject(modelData)
 			}
 			.listStyle(DefaultListStyle())
 			
@@ -98,6 +82,7 @@ struct ItemInfo: View {
 				
 				Button{
 					showInfo = false
+                    AppNotification().remove(ID: modelData.checkLists[indexList].items[index].id)
 					modelData.checkLists[indexList].items[index] = CheckList.Items.default
 					
 				} label: {
@@ -119,7 +104,7 @@ struct ItemInfo: View {
 
 struct ItemInfo_Previews: PreviewProvider {
 	static var previews: some View {
-		ItemInfo(showInfo: .constant(true), ID: ModelData().checkLists[0].items[1].id, checkList: ModelData().checkLists[0] )
+        ItemInfo(showInfo: .constant(true), newItem: true, ID: ModelData().checkLists[0].items[0].id, checkList: ModelData().checkLists[0] )
 			.preferredColorScheme(.dark)
 			.environmentObject(ModelData())
 	}

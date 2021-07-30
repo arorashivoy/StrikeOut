@@ -20,7 +20,7 @@ struct EditSelection: View {
 			List{
 				ForEach(filteredList){ checkList in
 					NavigationLink(
-						destination: ListInfo(addSheet: .constant(false), listEdit: listEdit, checkList: checkList)
+                        destination: ListInfo(addSheet: .constant(false), listEdit: listEdit, ID: checkList.id)
 							.environmentObject(modelData)
 							.onDisappear(){
 								modelData.checkLists = modelData.checkLists.filter( {$0.id != CheckList.default.id})
@@ -30,6 +30,14 @@ struct EditSelection: View {
 					}
 				}
 				.onDelete(perform: { indexSet in
+                    
+                    ///To remove notification of all the items in the list
+                    for index in indexSet {
+                        for item in modelData.checkLists[index].items {
+                            AppNotification().remove(ID: item.id)
+                        }
+                    }
+                    
 					modelData.checkLists.remove(atOffsets: indexSet)
 				})
                 Button{
@@ -43,7 +51,7 @@ struct EditSelection: View {
                         .padding(.leading)
                 }
                 .sheet(isPresented: $addSheet, content: {
-                    ListInfo(addSheet: $addSheet, listEdit: .constant(EditMode.inactive), checkList: CheckList.default)
+                    ListInfo(addSheet: $addSheet, listEdit: listEdit, ID: CheckList.default.id)
                         .onDisappear(){
                             modelData.checkLists = modelData.checkLists.filter( {$0.id != CheckList.default.id})
                         }

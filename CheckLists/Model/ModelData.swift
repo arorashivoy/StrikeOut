@@ -9,12 +9,12 @@ import Foundation
 import Combine
 
 final class ModelData: ObservableObject {
-	@Published var checkLists: [CheckList] = []
+    @Published var checkLists: [CheckList] = [CheckList.data]
 	@Published var listSelector: UUID?
+    
     var fileName: String = "ListsData.json"
     
-//    To get documents folder
-    
+/// To get documents folder
     private static var documentsFolder: URL {
             do {
                 return try FileManager.default.url(for: .documentDirectory,
@@ -29,8 +29,8 @@ final class ModelData: ObservableObject {
     private static var fileURL: URL {
         return documentsFolder.appendingPathComponent(ModelData().fileName)
         }
-    //    To load and save data
     
+    ///to load data
     func load() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let data = try? Data(contentsOf: Self.fileURL) else {
@@ -48,6 +48,7 @@ final class ModelData: ObservableObject {
         }
     }
     
+    ///to save data
     func save() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let checkLists = self?.checkLists else { fatalError("Self out of scope") }

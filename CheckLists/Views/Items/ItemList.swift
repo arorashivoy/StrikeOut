@@ -12,6 +12,9 @@ struct ItemList: View {
 	@State private var showInfo: Bool = false
 	@State private var newItem: Bool = false
 	
+    //for giving the index of newly added item in list to ItemInfo
+    @State private var newIndex: Int?
+    
 	var checkList: CheckList
 	
 	var body: some View {
@@ -30,9 +33,8 @@ struct ItemList: View {
 						.environmentObject(modelData)
                     
 ///                 Item name
-					Text(item.itemName)
-						.foregroundColor(item.isCompleted ? .gray:.white)
-						.padding()
+                    ItemName(item: item)
+                        .environmentObject(modelData)
 					Spacer()
                     
 ///                 quantity
@@ -53,7 +55,7 @@ struct ItemList: View {
 						
 					}
 					.sheet(isPresented: $showInfo) {
-						ItemInfo(showInfo: $showInfo, ID: item.id, checkList: checkList)
+                        ItemInfo(showInfo: $showInfo, newItem: false, ID: item.id, checkList: checkList)
 							.environmentObject(modelData)
 							.onDisappear(){
 								
@@ -64,8 +66,14 @@ struct ItemList: View {
 					
 				}
 			}
+            
             ///Drag to delete
 			.onDelete(perform: { indexSet in
+                ///removing notification
+                for i in indexSet {
+                    AppNotification().remove(ID: modelData.checkLists[indexList].items[i].id)
+                }
+                
 				modelData.checkLists[indexList].items.remove(atOffsets: indexSet)
 			})
 			
@@ -73,6 +81,11 @@ struct ItemList: View {
 			Button{
 				newItem.toggle()
 				modelData.checkLists[indexList].items.append(CheckList.Items.default)
+                
+                ///To give the new item a id for MAYBE  fixing notification error
+                newIndex = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == CheckList.Items.default.id})
+                
+                modelData.checkLists[indexList].items[newIndex!].id = UUID()
 				
 			} label: {
 				Image(systemName: "plus")
@@ -81,7 +94,7 @@ struct ItemList: View {
                     .foregroundColor(modelData.checkLists[indexList].color)
 			}
 			.sheet(isPresented: $newItem) {
-				ItemInfo(showInfo: $newItem, ID:CheckList.Items.default.id , checkList: checkList )
+                ItemInfo(showInfo: $newItem, newItem: true, ID: modelData.checkLists[indexList].items[newIndex!].id, checkList: checkList )
 					.environmentObject(modelData)
 					.onDisappear{
 						modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
@@ -95,45 +108,23 @@ struct ItemList: View {
         .foregroundColor(modelData.checkLists[indexList].color)
         .toolbar{
             ///Menu
-            Menu{
-                ///show Completed button
-                Button{
-                    modelData.checkLists[indexList].showCompleted.toggle()
-                } label: {
-                    if modelData.checkLists[indexList].showCompleted {
-                        Text("Hide Completed")
-                    } else {
-                        Text("Show Completed")
-                    }
-                }
-                
-                ///sort Completed
-                if modelData.checkLists[indexList].showCompleted {
-                    Button{
-                        modelData.checkLists[indexList].completedAtBottom.toggle()
-                    } label: {
-                        Label("Sort Completed", systemImage: "arrow.up.arrow.down")
-                    }
-                }
-                
-            } label: {
-                Label("Menu", systemImage: "ellipsis.circle")
-                    .font(.headline)
-            }
+            ItemMenu(indexList: indexList)
+                .environmentObject(modelData)
         }
 	}
-    func filterItems(checkList: CheckList) -> [CheckList.Items] {
-        if checkList.showCompleted {
-            return checkList.items.filter{ !$0.isCompleted || !checkList.completedAtBottom } + checkList.items.filter{ $0.isCompleted && checkList.completedAtBottom }
-        }else {
-            return checkList.items.filter{ !$0.isCompleted }
-        }
+}
+
+func filterItems(checkList: CheckList) -> [CheckList.Items] {
+    if checkList.showCompleted {
+        return checkList.items.filter{ !$0.isCompleted || !checkList.completedAtBottom } + checkList.items.filter{ $0.isCompleted && checkList.completedAtBottom }
+    }else {
+        return checkList.items.filter{ !$0.isCompleted }
     }
 }
 
 struct ItemList_Previews: PreviewProvider {
 	static var previews: some View {
-		ItemList(checkList: ModelData().checkLists[0])
+        ItemList(checkList: ModelData().checkLists[0])
 			.environmentObject(ModelData())
 			.preferredColorScheme(.dark)
 	}

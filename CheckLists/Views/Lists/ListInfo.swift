@@ -13,41 +13,19 @@ struct ListInfo: View {
     @State private var ImagePicker: Bool = false
 	var listEdit: Binding<EditMode>?
 	
-	var checkList: CheckList
+    var ID: CheckList.ID
     
 	var body: some View {
 ///		finding index
-		let index: Int = modelData.checkLists.firstIndex(where: {$0.id == checkList.id}) ?? 0
+        let index: Int = modelData.checkLists.firstIndex(where: {$0.id == ID}) ?? 0
         
 		VStack(alignment: .center) {
             
 ///         cancel and done button for new list view
-			HStack{
-				if checkList.id == CheckList.default.id {
-					Button{
-						addSheet = false
-					}label: {
-						Text("Cancel")
-							.padding()
-                            .foregroundColor(.accentColor)
-					}
-					Spacer()
-					Button{
-						if modelData.checkLists[index].listName.trimmingCharacters(in: CharacterSet.whitespaces) != "" {
-							modelData.checkLists[index].id = UUID()
-						}
-						addSheet = false
-					}label: {
-						Text("Done")
-							.padding()
-                            .foregroundColor(.accentColor)
-					}
-				}
-			}
-			
+            ListToolBar(addSheet: $addSheet, index: index, ID: ID)
+            
 ///         List editing options
 			List{
-                
 ///				Text field for list name
 				HStack{
 					Text("Name")
@@ -71,16 +49,21 @@ struct ListInfo: View {
 						.bold()
 				})
                 
+///             Default time picker
+                DatePicker("Select default Time",
+                           selection: $modelData.checkLists[index].defaultTime,
+                           displayedComponents: .hourAndMinute)
+                
 ///             Picking color for lists
                 ColorPicker("Select List Color", selection: $modelData.checkLists[index].color, supportsOpacity: false)
                 
 ///             List thumbnail picking
                 Section(header: Text("Choose Thumbnail Image")){
-                Picker("Choose the thumbnail image", selection: $modelData.checkLists[index].imageName){
-                    ForEach(CheckList.Images.allCases){
-                        Image(systemName: "\($0.rawValue)").tag($0)
+                    Picker("Choose the thumbnail image", selection: $modelData.checkLists[index].imageName){
+                        ForEach(CheckList.Images.allCases){
+                            Image(systemName: "\($0.rawValue)").tag($0)
+                        }
                     }
-                }
                 }
 
 ///             For description
@@ -96,14 +79,21 @@ struct ListInfo: View {
                     }
                 }
             }
+            .listStyle(DefaultListStyle())
             Spacer()
             
 ///         Delete button
-			if checkList.id != CheckList.default.id {
+			if ID != CheckList.default.id {
 				
 				Button{
-					modelData.listSelector = nil
 					listEdit?.animation().wrappedValue = .inactive
+                    
+                    ///To remove notification of all the items in the list
+                    for item in modelData.checkLists[index].items {
+                        AppNotification().remove(ID: item.id)
+                    }
+                    
+                    modelData.listSelector = nil
 					modelData.checkLists[index]=CheckList.default
 					
 				}label: {
@@ -124,7 +114,7 @@ struct ListInfo: View {
 
 struct ListInfo_Previews: PreviewProvider {
 	static var previews: some View {
-        ListInfo(addSheet: .constant(false), listEdit: .constant(EditMode.active), checkList: ModelData().checkLists[0])
+        ListInfo(addSheet: .constant(false), listEdit: .constant(EditMode.inactive), ID: ModelData().checkLists[0].id)
 			.environmentObject(ModelData())
 			.preferredColorScheme(.dark)
 	}

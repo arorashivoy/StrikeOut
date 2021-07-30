@@ -21,6 +21,12 @@ struct ToggleCompleted: View {
             .foregroundColor(item.isCompleted ? modelData.checkLists[indexList].color:.gray)
 			.onTapGesture(perform: {
 				modelData.checkLists[indexList].items[index!].isCompleted.toggle()
+                
+                if modelData.checkLists[indexList].items[index!].isCompleted {
+                    ///remove notification
+                    AppNotification().remove(ID: item.id)
+
+                }
 			})
     }
 }
