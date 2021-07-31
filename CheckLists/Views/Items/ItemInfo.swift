@@ -20,7 +20,6 @@ struct ItemInfo: View {
 	var body: some View {
 		
 		let indexList: Int = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
-//		let index: Int = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == ID}) ?? 0
 		
 		VStack(alignment: .center, spacing: 20) {
 			

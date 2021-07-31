@@ -58,9 +58,7 @@ struct ItemList: View {
 					.sheet(isPresented: $showInfo) {
                         ItemInfo(showInfo: $showInfo, editItem: $editItem, ID: item.id, checkList: checkList)
 							.environmentObject(modelData)
-//							.onDisappear(){
-//								modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
-//							}
+                        
 					}
 					
 				}
@@ -90,10 +88,6 @@ struct ItemList: View {
 			.sheet(isPresented: $newItem) {
                 ItemInfo(showInfo: $newItem, editItem: $editItem, ID: CheckList.Items.default.id, checkList: checkList)
 					.environmentObject(modelData)
-//					.onDisappear{
-//						modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
-//					}
-				
 				
 			}
 		}

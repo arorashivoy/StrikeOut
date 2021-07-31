@@ -14,6 +14,8 @@ struct NotificationPermission: View {
     
     var body: some View {
         VStack{
+            
+            ///Cancel Button
             HStack{
                 Button{
                     notiPermission = false
@@ -25,9 +27,11 @@ struct NotificationPermission: View {
             LottieView(name: "NotificationBell", loopMode: .loop)
                 .frame(width: 300, height: 300, alignment: .center)
             
-            Text("Allow Push Notifications to get reminded about the events")
+            Text("Allow Push Notifications to get reminded about the event")
                 .padding()
             Spacer()
+            
+            ///Enable notification button
             Button{
                 AppNotification().requestPermission()
                 notiPermission = false
@@ -39,6 +43,7 @@ struct NotificationPermission: View {
                     Text("Enable Notifications")
                         .foregroundColor(.white)
                 }
+                .padding()
             }
         }
         .padding()
