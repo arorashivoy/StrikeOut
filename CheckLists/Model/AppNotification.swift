@@ -12,15 +12,13 @@ import NotificationCenter
 
 class AppNotification {
     
-    init() {
+    func requestPermission() -> Void {
         /// To request permission to show notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if let error = error {
                 print(error.localizedDescription)
             }
         }
-        
-        
     }
     
     func schedule(item: CheckList.Items) -> Void {

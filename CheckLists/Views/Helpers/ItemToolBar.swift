@@ -9,31 +9,49 @@ import SwiftUI
 
 struct ItemToolBar: View {
     @EnvironmentObject var modelData: ModelData
+    @Binding var editItem: CheckList.Items
     @Binding var showInfo: Bool
     
-    var newItem: Bool
     var indexList: Int
-    var index: Int
-    var ID: CheckList.Items.ID
     
     var body: some View {
         HStack {
-            if newItem {
-                Button{
-                    showInfo = false
-                    modelData.checkLists[indexList].items[index].id = CheckList.Items.default.id
-                    
-                }label:{
-                    Text("Cancel")
-                }
+            
+            ///Cancel Button
+            Button{
+                showInfo = false
+                editItem = CheckList.Items.default
+                
+            }label:{
+                Text("Cancel")
             }
+
             Spacer()
+            
+            ///Done button
             Button{
                 showInfo = false
                 
-                if (ID == CheckList.Items.default.id && modelData.checkLists[indexList].items[index].itemName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
+                if (editItem.id == CheckList.Items.default.id && editItem.itemName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
                     
-                    modelData.checkLists[indexList].items[index].id = UUID()
+                    editItem.id = UUID()
+                    ///adding new Item to the list
+                    modelData.checkLists[indexList].items.append(editItem)
+                    
+                }else {
+                    ///Changing the data of item if it already existed
+                    let index: Int = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == editItem.id})!
+                    
+                    modelData.checkLists[indexList].items[index] = editItem
+                }
+                
+                // Notification
+                if editItem.haveDueDate {
+                    ///sending notification
+                    AppNotification().schedule(item: editItem)
+                }else {
+                    ///removing notification
+                    AppNotification().remove(ID: editItem.id)
                 }
                 
             }label: {
@@ -46,7 +64,7 @@ struct ItemToolBar: View {
 
 struct ItemToolBar_Previews: PreviewProvider {
     static var previews: some View {
-        ItemToolBar(showInfo: .constant(true), newItem: true, indexList: 0, index: 0, ID: ModelData().checkLists[0].items[0].id)
+        ItemToolBar(editItem: .constant(ModelData().checkLists[0].items[0]), showInfo: .constant(true), indexList: 0)
             .environmentObject(ModelData())
     }
 }

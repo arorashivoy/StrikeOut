@@ -11,40 +11,45 @@ struct DateSelection: View {
     @EnvironmentObject var modelData: ModelData
     @State var dueDate: Date
     @State var dueTime: Date
+    @State var notiPermission: Bool = false
+    @Binding var editItem: CheckList.Items
+    
+    @AppStorage("notiAsked") var notiAsked: Bool = false
     
     var indexList: Int
-    var index: Int
     
     var body: some View {
         ///Date toggle
-        Toggle(isOn: $modelData.checkLists[indexList].items[index].haveDueDate, label: {
+        Toggle(isOn: $editItem.haveDueDate, label: {
             Text("Date")
         })
-        .onChange(of: modelData.checkLists[indexList].items[index].haveDueDate) { val in
+        .onChange(of: editItem.haveDueDate) { val in
             if val {
                 ///when date is toggled on
-                dueDate = modelData.checkLists[indexList].items[index].dueDate ?? Date()
+                dueDate = editItem.dueDate ?? Date()
                 
-                modelData.checkLists[indexList].items[index].dueDate = setDateTime(date: dueDate, time: modelData.checkLists[indexList].defaultTime)
+                editItem.dueDate = setDateTime(date: dueDate, time: modelData.checkLists[indexList].defaultTime)
                 
-                ///send notification
-                AppNotification().schedule(item: modelData.checkLists[indexList].items[index])
+                ///To ask for notification permission if haven't asked before
+                if !notiAsked {
+                    notiPermission.toggle()
+                }
                 
-                
-            }
-            else {
+            }else {
                 ///when date is toggled off
-                modelData.checkLists[indexList].items[index].dueDate = nil
+                editItem.dueDate = nil
                 
-                dueDate = modelData.checkLists[indexList].items[index].dueDate ?? Date()
-                modelData.checkLists[indexList].items[index].haveDueTime = false
+                dueDate = editItem.dueDate ?? Date()
+                editItem.haveDueTime = false
                 
-                ///removing notification request
-                AppNotification().remove(ID: modelData.checkLists[indexList].items[index].id)
             }
         }
+        ///full screen cover for notification permission view
+        .sheet(isPresented: $notiPermission, content: {
+            NotificationPermission(notiPermission: $notiPermission)
+        })
         
-        if modelData.checkLists[indexList].items[index].haveDueDate {
+        if editItem.haveDueDate {
             
             ///Date selector
             DatePicker("",
@@ -53,41 +58,33 @@ struct DateSelection: View {
                 .onChange(of: dueDate) { val in
                     let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: val)
                     
-                    if modelData.checkLists[indexList].items[index].haveDueTime {
-                        modelData.checkLists[indexList].items[index].dueDate = Calendar.current.date(from: dateComponents)
+                    if editItem.haveDueTime {
+                        editItem.dueDate = Calendar.current.date(from: dateComponents)
                     }else {
-                        modelData.checkLists[indexList].items[index].dueDate = setDateTime(date: val, time: modelData.checkLists[indexList].defaultTime)
+                        editItem.dueDate = setDateTime(date: val, time: modelData.checkLists[indexList].defaultTime)
                     }
-                    
-                    ///send notification
-                    AppNotification().schedule(item: modelData.checkLists[indexList].items[index])
                     
                 }
             
             ///Time Toggle
-            Toggle(isOn: $modelData.checkLists[indexList].items[index].haveDueTime, label: {
+            Toggle(isOn: $editItem.haveDueTime, label: {
                 Text("Time")
             })
-            .onChange(of: modelData.checkLists[indexList].items[index].haveDueTime) { val in
+            .onChange(of: editItem.haveDueTime) { val in
                 if val {
                     ///when time is toggled on
-                    dueTime = modelData.checkLists[indexList].items[index].dueDate ?? Date()
+                    dueTime = editItem.dueDate ?? Date()
                     
-                    modelData.checkLists[indexList].items[index].dueDate = setDateTime(date: dueDate, time: modelData.checkLists[indexList].defaultTime)
+                    editItem.dueDate = setDateTime(date: dueDate, time: modelData.checkLists[indexList].defaultTime)
                     
-                    ///send notification
-                    AppNotification().schedule(item: modelData.checkLists[indexList].items[index])
                 }else{
                     ///when time is toggled off
-                    modelData.checkLists[indexList].items[index].dueDate = setDateTime(date: dueDate, time: modelData.checkLists[indexList].defaultTime)
-                    
-                    ///send notification
-                    AppNotification().schedule(item: modelData.checkLists[indexList].items[index])
+                    editItem.dueDate = setDateTime(date: dueDate, time: modelData.checkLists[indexList].defaultTime)
                     
                 }
             }
             
-            if modelData.checkLists[indexList].items[index].haveDueTime {
+            if editItem.haveDueTime {
                 
                 ///Time selector
                 DatePicker("",
@@ -95,10 +92,8 @@ struct DateSelection: View {
                            displayedComponents: .hourAndMinute)
                     .onChange(of: dueTime) { val in
                         
-                        modelData.checkLists[indexList].items[index].dueDate = setDateTime(date: dueDate, time: dueTime)
-                        
-                        ///send notification
-                        AppNotification().schedule(item: modelData.checkLists[indexList].items[index])
+                        editItem.dueDate = setDateTime(date: dueDate, time: dueTime)
+
                     }
             }
         }
@@ -122,7 +117,7 @@ func setDateTime(date: Date, time: Date) -> Date? {
 
 struct DateSelection_Previews: PreviewProvider {
     static var previews: some View {
-        DateSelection(dueDate: Date(), dueTime: Date(), indexList: 0, index: 0)
+        DateSelection(dueDate: Date(), dueTime: Date(), editItem: .constant(ModelData().checkLists[0].items[0]), indexList: 0)
             .environmentObject(ModelData())
     }
 }

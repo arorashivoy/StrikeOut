@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct ItemNote: View {
-    @EnvironmentObject var modelData: ModelData
-    var indexList: Int
-    var index: Int
+    @Binding var editItem: CheckList.Items
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            TextEditor(text: $modelData.checkLists[indexList].items[index].note)
+            TextEditor(text: $editItem.note)
                 .font(.body)
                 .foregroundColor(.secondary)
-            if modelData.checkLists[indexList].items[index].note.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == ""{
+            if editItem.note.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == ""{
                 Text("Notes")
                     .font(.body)
                     .foregroundColor(.secondary)
@@ -29,7 +27,7 @@ struct ItemNote: View {
 
 struct ItemNote_Previews: PreviewProvider {
     static var previews: some View {
-        ItemNote(indexList: 0, index: 0)
+        ItemNote(editItem: .constant(ModelData().checkLists[0].items[0]))
             .environmentObject(ModelData())
     }
 }

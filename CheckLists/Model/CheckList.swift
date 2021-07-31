@@ -129,7 +129,7 @@ struct CheckList: Hashable,Codable, Identifiable {
     }
 
 /// setting some inbuilt checklists
-    static let `default` = CheckList(listName: "", id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [Items.default])
+    static let `default` = CheckList(listName: "", id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [])
     
     static let data = CheckList(listName: "To Do", id: UUID(), color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [Items.data])
 	

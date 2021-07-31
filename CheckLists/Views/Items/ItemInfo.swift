@@ -11,7 +11,7 @@ struct ItemInfo: View {
 	@EnvironmentObject var modelData: ModelData
 	@Binding var showInfo: Bool
     
-    var newItem: Bool
+    @Binding var editItem: CheckList.Items
     
 	var ID: CheckList.Items.ID
 	
@@ -20,12 +20,12 @@ struct ItemInfo: View {
 	var body: some View {
 		
 		let indexList: Int = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
-		let index: Int = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == ID}) ?? 0
+//		let index: Int = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == ID}) ?? 0
 		
 		VStack(alignment: .center, spacing: 20) {
 			
 ///         To display cancel(only when the new item is created) and done button
-			ItemToolBar(showInfo: $showInfo, indexList: indexList, index: index, ID: ID)
+            ItemToolBar(editItem: $editItem, showInfo: $showInfo, indexList: indexList)
                 .environmentObject(modelData)
             
 ///         Item editing options
@@ -38,7 +38,7 @@ struct ItemInfo: View {
 						.bold()
 					Divider()
 						.brightness(0.40)
-					TextField("Item Name", text: $modelData.checkLists[indexList].items[index].itemName)
+                    TextField("Item Name", text: $editItem.itemName)
 						.font(.subheadline)
                         .foregroundColor(.primary)
 				}
@@ -46,55 +46,40 @@ struct ItemInfo: View {
 ///             Quantity stepper only when showQuantity is enabled for checklist
 				if checkList.showQuantity {
 					HStack {
-						Stepper("Quantity: \(modelData.checkLists[indexList].items[index].itemQuantity)", onIncrement: {
-							modelData.checkLists[indexList].items[index].itemQuantity += 1
+						Stepper("Quantity: \(editItem.itemQuantity)", onIncrement: {
+							editItem.itemQuantity += 1
 						},onDecrement: {
-							modelData.checkLists[indexList].items[index].itemQuantity -= 1
+							editItem.itemQuantity -= 1
 						})
 					}
 				}
 				
 ///             Complete toggle
-				Toggle(isOn: $modelData.checkLists[indexList].items[index].isCompleted, label: {
+				Toggle(isOn: $editItem.isCompleted, label: {
 					Text("Completed")
 				})
-                .onChange(of: modelData.checkLists[indexList].items[index].isCompleted) { val in
+                .onChange(of: editItem.isCompleted) { val in
                     if val {
-                        AppNotification().remove(ID: modelData.checkLists[indexList].items[index].id)
+                        AppNotification().remove(ID: editItem.id)
                     }
                 }
                 
 ///             Date and time
-                DateSelection(dueDate: modelData.checkLists[indexList].items[index].dueDate ?? Date(),
-                              dueTime: modelData.checkLists[indexList].items[index].dueDate ?? Date(), indexList: indexList,
-                              index: index)
+                DateSelection(dueDate: editItem.dueDate ?? Date(),
+                              dueTime: editItem.dueDate ?? Date(), editItem: $editItem, indexList: indexList)
                     .environmentObject(modelData)
                 
 ///             Notes text editor
-                ItemNote(indexList: indexList, index: index)
+                ItemNote(editItem: $editItem)
                     .environmentObject(modelData)
 			}
 			.listStyle(DefaultListStyle())
 			
             
 ///         Delete button
-			if modelData.checkLists[indexList].items[index].id != CheckList.Items.default.id {
-				
-				Button{
-					showInfo = false
-                    AppNotification().remove(ID: modelData.checkLists[indexList].items[index].id)
-					modelData.checkLists[indexList].items[index] = CheckList.Items.default
-					
-				} label: {
-					Text("Delete Record")
-						.font(.title3)
-						.bold()
-						.frame(alignment: .center)
-						.foregroundColor(.red)
-						.padding()
-					
-				}
-			}
+			DeleteItem(showInfo: $showInfo, ID: ID, indexList: indexList)
+                .environmentObject(modelData)
+            
 		}
         .foregroundColor(modelData.checkLists[indexList].color)
 		.padding()
@@ -104,7 +89,7 @@ struct ItemInfo: View {
 
 struct ItemInfo_Previews: PreviewProvider {
 	static var previews: some View {
-        ItemInfo(showInfo: .constant(true), newItem: true, ID: ModelData().checkLists[0].items[0].id, checkList: ModelData().checkLists[0] )
+        ItemInfo(showInfo: .constant(true), editItem: .constant(ModelData().checkLists[0].items[0]), ID: ModelData().checkLists[0].items[0].id, checkList: ModelData().checkLists[0])
 			.preferredColorScheme(.dark)
 			.environmentObject(ModelData())
 	}

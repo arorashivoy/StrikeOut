@@ -10,10 +10,8 @@ import SwiftUI
 struct ItemList: View {
 	@EnvironmentObject var modelData: ModelData
 	@State private var showInfo: Bool = false
-	@State private var newItem: Bool = false
-	
-    //for giving the index of newly added item in list to ItemInfo
-    @State private var newIndex: Int?
+    @State private var newItem: Bool = false
+    @State private var editItem: CheckList.Items = CheckList.Items.default
     
 	var checkList: CheckList
 	
@@ -47,7 +45,10 @@ struct ItemList: View {
 					}
 					
 ///                 info button
-					Button{showInfo.toggle()} label: {
+					Button{
+                        showInfo.toggle()
+                        editItem = item
+                    } label: {
 						Image(systemName: "info.circle")
 							.resizable()
 							.frame(width: 25, height: 25, alignment: .center)
@@ -55,13 +56,11 @@ struct ItemList: View {
 						
 					}
 					.sheet(isPresented: $showInfo) {
-                        ItemInfo(showInfo: $showInfo, newItem: false, ID: item.id, checkList: checkList)
+                        ItemInfo(showInfo: $showInfo, editItem: $editItem, ID: item.id, checkList: checkList)
 							.environmentObject(modelData)
-							.onDisappear(){
-								
-								modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
-								
-							}
+//							.onDisappear(){
+//								modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
+//							}
 					}
 					
 				}
@@ -80,12 +79,7 @@ struct ItemList: View {
 ///         new item button
 			Button{
 				newItem.toggle()
-				modelData.checkLists[indexList].items.append(CheckList.Items.default)
-                
-                ///To give the new item a id for MAYBE  fixing notification error
-                newIndex = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == CheckList.Items.default.id})
-                
-                modelData.checkLists[indexList].items[newIndex!].id = UUID()
+                editItem = CheckList.Items.default
 				
 			} label: {
 				Image(systemName: "plus")
@@ -94,11 +88,11 @@ struct ItemList: View {
                     .foregroundColor(modelData.checkLists[indexList].color)
 			}
 			.sheet(isPresented: $newItem) {
-                ItemInfo(showInfo: $newItem, newItem: true, ID: modelData.checkLists[indexList].items[newIndex!].id, checkList: checkList )
+                ItemInfo(showInfo: $newItem, editItem: $editItem, ID: CheckList.Items.default.id, checkList: checkList)
 					.environmentObject(modelData)
-					.onDisappear{
-						modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
-					}
+//					.onDisappear{
+//						modelData.checkLists[indexList].items = modelData.checkLists[indexList].items.filter( {$0.id != CheckList.Items.default.id})
+//					}
 				
 				
 			}
