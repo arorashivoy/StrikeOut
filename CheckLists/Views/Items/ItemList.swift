@@ -32,7 +32,7 @@ struct ItemList: View {
                     
 ///                 Item name
                     ItemName(item: item)
-                        .environmentObject(modelData)
+                    
 					Spacer()
                     
 ///                 quantity

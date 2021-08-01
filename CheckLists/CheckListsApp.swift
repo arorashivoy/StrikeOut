@@ -10,7 +10,8 @@ import SwiftUI
 @main
 struct CheckListsApp: App {
 	@StateObject private var modelData = ModelData()
-	
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -19,5 +20,14 @@ struct CheckListsApp: App {
                     modelData.load()
                 }
         }
+    }
+}
+
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    ///foreground notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound])
     }
 }

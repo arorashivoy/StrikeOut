@@ -47,7 +47,6 @@ func colorChoose(date: Date) -> Bool {
 struct ItemName_Previews: PreviewProvider {
     static var previews: some View {
         ItemName(item: ModelData().checkLists[0].items[0])
-            .environmentObject(ModelData())
         
     }
 }
