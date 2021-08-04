@@ -24,10 +24,18 @@ struct CheckListsApp: App {
 }
 
 
+/// Extension for foreground notification
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
     ///foreground notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner, .sound])
+    }
+}
+
+/// Extension for swipe buttons
+extension View {
+    func addButtonActions(leadingButtons: [SwipeButton], trailingButtons: [SwipeButton], onClick: @escaping (SwipeButton) -> Void) -> some View {
+        self.modifier(SwipeContainer(leadingButtons: leadingButtons, trailingButtons: trailingButtons, onCLick: onClick))
     }
 }

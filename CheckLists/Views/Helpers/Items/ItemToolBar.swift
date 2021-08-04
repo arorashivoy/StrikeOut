@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemToolBar: View {
     @EnvironmentObject var modelData: ModelData
-    @Binding var editItem: CheckList.Items
+    @Binding var draftItem: CheckList.Items
     @Binding var showInfo: Bool
     
     var indexList: Int
@@ -20,7 +20,7 @@ struct ItemToolBar: View {
             ///Cancel Button
             Button{
                 showInfo = false
-                editItem = CheckList.Items.default
+                draftItem = CheckList.Items.default
                 
             }label:{
                 Text("Cancel")
@@ -32,26 +32,26 @@ struct ItemToolBar: View {
             Button{
                 showInfo = false
                 
-                if (editItem.id == CheckList.Items.default.id && editItem.itemName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
+                if (draftItem.id == CheckList.Items.default.id && draftItem.itemName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
                     
-                    editItem.id = UUID()
+                    draftItem.id = UUID()
                     ///adding new Item to the list
-                    modelData.checkLists[indexList].items.append(editItem)
+                    modelData.checkLists[indexList].items.append(draftItem)
                     
-                }else {
+                }else if draftItem.id != CheckList.Items.default.id {
                     ///Changing the data of item if it already existed
-                    let index: Int = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == editItem.id})!
+                    let index: Int = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == draftItem.id})!
                     
-                    modelData.checkLists[indexList].items[index] = editItem
+                    modelData.checkLists[indexList].items[index] = draftItem
                 }
                 
                 // Notification
-                if editItem.haveDueDate {
+                if draftItem.haveDueDate {
                     ///sending notification
-                    AppNotification().schedule(item: editItem)
+                    AppNotification().schedule(item: draftItem)
                 }else {
                     ///removing notification
-                    AppNotification().remove(ID: editItem.id)
+                    AppNotification().remove(ID: draftItem.id)
                 }
                 
             }label: {
@@ -64,7 +64,7 @@ struct ItemToolBar: View {
 
 struct ItemToolBar_Previews: PreviewProvider {
     static var previews: some View {
-        ItemToolBar(editItem: .constant(ModelData().checkLists[0].items[0]), showInfo: .constant(true), indexList: 0)
+        ItemToolBar(draftItem: .constant(ModelData().checkLists[0].items[0]), showInfo: .constant(true), indexList: 0)
             .environmentObject(ModelData())
     }
 }

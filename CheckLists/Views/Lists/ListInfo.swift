@@ -9,23 +9,20 @@ import SwiftUI
 
 struct ListInfo: View {
 	@EnvironmentObject var modelData: ModelData
-	@Binding var addSheet: Bool
     @State private var ImagePicker: Bool = false
-	var listEdit: Binding<EditMode>?
-	
-    var ID: CheckList.ID
+    @Binding var showInfo: Bool
+    @Binding var draftList: CheckList
     
 	var body: some View {
-///		finding index
-        let index: Int = modelData.checkLists.firstIndex(where: {$0.id == ID}) ?? 0
-        
 		VStack(alignment: .center) {
             
 ///         cancel and done button for new list view
-            ListToolBar(addSheet: $addSheet, index: index, ID: ID)
+            ListToolBar(showInfo: $showInfo, draftList: $draftList)
+                .environmentObject(modelData)
             
 ///         List editing options
 			List{
+                
 ///				Text field for list name
 				HStack{
 					Text("Name")
@@ -33,33 +30,33 @@ struct ListInfo: View {
 						.font(.headline)
 					Divider()
 						.brightness(0.4)
-					TextField("List Name", text: $modelData.checkLists[index].listName)
+					TextField("List Name", text: $draftList.listName)
 						.font(.subheadline)
                         .foregroundColor(.primary)
 				}
                 
 ///             To pin the list
-                Toggle(isOn: $modelData.checkLists[index].isPinned, label: {
+                Toggle(isOn: $draftList.isPinned, label: {
                     Text("Pin")
                 })
                 
 ///             show quantity for lists
-				Toggle(isOn: $modelData.checkLists[index].showQuantity, label: {
+				Toggle(isOn: $draftList.showQuantity, label: {
 					Text("Show Quantity")
 						.bold()
 				})
                 
 ///             Default time picker
                 DatePicker("Select default Time",
-                           selection: $modelData.checkLists[index].defaultTime,
+                           selection: $draftList.defaultTime,
                            displayedComponents: .hourAndMinute)
                 
 ///             Picking color for lists
-                ColorPicker("Select List Color", selection: $modelData.checkLists[index].color, supportsOpacity: false)
+                ColorPicker("Select List Color", selection: $draftList.color, supportsOpacity: false)
                 
 ///             List thumbnail picking
                 Section(header: Text("Choose Thumbnail Image")){
-                    Picker("Choose the thumbnail image", selection: $modelData.checkLists[index].imageName){
+                    Picker("Choose the thumbnail image", selection: $draftList.imageName){
                         ForEach(CheckList.Images.allCases){
                             Image(systemName: "\($0.rawValue)").tag($0)
                         }
@@ -68,10 +65,10 @@ struct ListInfo: View {
 
 ///             For description
                 ZStack(alignment:.leading){
-                    TextEditor(text: $modelData.checkLists[index].description)
+                    TextEditor(text: $draftList.description)
                         .font(.body)
                         .foregroundColor(.secondary)
-                    if modelData.checkLists[index].description.trimmingCharacters(in: [" "]) == "" {
+                    if draftList.description.trimmingCharacters(in: [" "]) == "" {
                         Text("Description")
                             .font(.body)
                             .foregroundColor(.secondary)
@@ -83,38 +80,20 @@ struct ListInfo: View {
             Spacer()
             
 ///         Delete button
-			if ID != CheckList.default.id {
-				
-				Button{
-					listEdit?.animation().wrappedValue = .inactive
-                    
-                    ///To remove notification of all the items in the list
-                    for item in modelData.checkLists[index].items {
-                        AppNotification().remove(ID: item.id)
-                    }
-                    
-                    modelData.listSelector = nil
-					modelData.checkLists[index]=CheckList.default
-					
-				}label: {
-					Text("Delete List")
-						.font(.title3)
-						.bold()
-						.foregroundColor(.red)
-						.padding()
-				}
-			}
+            DeleteList(showInfo: $showInfo, ID: draftList.id)
+                .environmentObject(modelData)
+            
 			Spacer()
 		}
-        .foregroundColor(modelData.checkLists[index].color)
-        .navigationTitle(modelData.checkLists[index].listName)
+        .foregroundColor(draftList.color)
+        .navigationTitle(draftList.listName)
 	}
 }
 
 
 struct ListInfo_Previews: PreviewProvider {
 	static var previews: some View {
-        ListInfo(addSheet: .constant(false), listEdit: .constant(EditMode.inactive), ID: ModelData().checkLists[0].id)
+        ListInfo(showInfo: .constant(true), draftList: .constant(ModelData().checkLists[0]))
 			.environmentObject(ModelData())
 			.preferredColorScheme(.dark)
 	}

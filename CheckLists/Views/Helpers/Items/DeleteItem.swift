@@ -11,7 +11,7 @@ struct DeleteItem: View {
     @EnvironmentObject var modelData: ModelData
     @Binding var showInfo: Bool
     
-    var ID: UUID
+    var ID: CheckList.Items.ID
     var indexList: Int
     
     var body: some View {

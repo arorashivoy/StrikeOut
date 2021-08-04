@@ -13,7 +13,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
-        ListHost()
+        ListSelection()
 			.environmentObject(modelData)
             .onChange(of: scenePhase, perform: { phase in
                 if phase == .inactive {

@@ -11,7 +11,7 @@ struct ItemList: View {
 	@EnvironmentObject var modelData: ModelData
 	@State private var showInfo: Bool = false
     @State private var newItem: Bool = false
-    @State private var editItem: CheckList.Items = CheckList.Items.default
+    @State private var draftItem: CheckList.Items = CheckList.Items.default
     
 	var checkList: CheckList
 	
@@ -47,7 +47,7 @@ struct ItemList: View {
 ///                 info button
 					Button{
                         showInfo.toggle()
-                        editItem = item
+                        draftItem = item
                     } label: {
 						Image(systemName: "info.circle")
 							.resizable()
@@ -56,7 +56,7 @@ struct ItemList: View {
 						
 					}
 					.sheet(isPresented: $showInfo) {
-                        ItemInfo(showInfo: $showInfo, editItem: $editItem, ID: item.id, checkList: checkList)
+                        ItemInfo(showInfo: $showInfo, draftItem: $draftItem, checkList: checkList)
 							.environmentObject(modelData)
                         
 					}
@@ -77,7 +77,7 @@ struct ItemList: View {
 ///         new item button
 			Button{
 				newItem.toggle()
-                editItem = CheckList.Items.default
+                draftItem = CheckList.Items.default
 				
 			} label: {
 				Image(systemName: "plus")
@@ -86,7 +86,7 @@ struct ItemList: View {
                     .foregroundColor(modelData.checkLists[indexList].color)
 			}
 			.sheet(isPresented: $newItem) {
-                ItemInfo(showInfo: $newItem, editItem: $editItem, ID: CheckList.Items.default.id, checkList: checkList)
+                ItemInfo(showInfo: $newItem, draftItem: $draftItem, checkList: checkList)
 					.environmentObject(modelData)
 				
 			}

@@ -16,6 +16,7 @@ struct ListRow: View {
                 .scaledToFit()
                 .foregroundColor(checkList.color)
 			Text(checkList.listName)
+                .foregroundColor(.primary)
 			Spacer()
             if checkList.isPinned {
                 Image(systemName: "pin.fill")
