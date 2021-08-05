@@ -18,7 +18,6 @@ struct DeleteList: View {
             
             Button{
                 showInfo = false
-                modelData.listSelector = nil
                 
                 let indexList: Int = modelData.checkLists.firstIndex(where: { $0.id == ID })!
                 
@@ -27,7 +26,9 @@ struct DeleteList: View {
                     AppNotification().remove(ID: item.id)
                 }
                 
-                modelData.checkLists.remove(at: indexList)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) {
+                    modelData.checkLists.remove(at: indexList)
+                }
             }label: {
                 Text("Delete List")
                     .font(.title3)

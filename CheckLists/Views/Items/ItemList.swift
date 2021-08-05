@@ -17,7 +17,7 @@ struct ItemList: View {
 	
 	var body: some View {
 		
-		let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
+        if let indexList: Int = modelData.checkLists.firstIndex(where: {$0.id == checkList.id}) {
 		
         let filteredItems = filterItems(checkList: modelData.checkLists[indexList])
         
@@ -98,6 +98,7 @@ struct ItemList: View {
             ///Menu
             ItemMenu(indexList: indexList)
                 .environmentObject(modelData)
+        }
         }
 	}
 }

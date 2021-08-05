@@ -13,6 +13,7 @@ struct ItemMenu: View {
     var indexList: Int
     
     var body: some View {
+        if indexList <= (modelData.checkLists.count - 1) {
         Menu{
             ///show Completed button
             Button{
@@ -34,9 +35,18 @@ struct ItemMenu: View {
                 }
             }
             
+            Button{
+//                modelData.listSelector = nil
+                
+                modelData.checkLists.remove(at: indexList)
+            }label: {
+                Text("Delete List")
+            }
+            
         } label: {
             Label("Menu", systemImage: "ellipsis.circle")
                 .font(.title3)
+        }
         }
     }
 }

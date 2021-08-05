@@ -13,6 +13,7 @@ struct ToggleCompleted: View {
 	var indexList: Int
 	
     var body: some View {
+        if indexList <= (modelData.checkLists.count - 1) {
 		let index = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == item.id})
 		
 		Image(systemName: item.isCompleted ? "checkmark.circle.fill":"circle")
@@ -28,6 +29,7 @@ struct ToggleCompleted: View {
 
                 }
 			})
+        }
     }
 }
 

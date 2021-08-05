@@ -54,6 +54,8 @@ struct ItemToolBar: View {
                     AppNotification().remove(ID: draftItem.id)
                 }
                 
+                modelData.listSelector = modelData.checkLists[indexList].id
+                
             }label: {
                 Text("Done")
             }

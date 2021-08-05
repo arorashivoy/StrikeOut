@@ -38,6 +38,19 @@ struct ListToolBar: View {
                     modelData.checkLists.append(draftList)
                 }else if draftList.id != CheckList.default.id {
                     
+                    /// Rescheduling notification when default time is changed
+                    for index in (0 ..< draftList.items.count) {
+                        if draftList.items[index].haveDueDate && !draftList.items[index].haveDueTime {
+                            
+                            /// Changing dueDate
+                            draftList.items[index].dueDate = setDateTime(date: draftList.items[index].dueDate!, time: draftList.defaultTime)
+                            
+                            /// Rescheduling
+                            AppNotification().schedule(item: draftList.items[index])
+                        }
+                    }
+
+                    
                     ///Changing the data of list if already exist
                     let indexList: Int = modelData.checkLists.firstIndex(where: { $0.id == draftList.id })!
                     
