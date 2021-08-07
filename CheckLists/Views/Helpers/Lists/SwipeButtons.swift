@@ -8,13 +8,14 @@
 import Foundation
 import SwiftUI
 
-let buttonWidth: CGFloat = 60
+let buttonWidth: CGFloat = 70
 
 /// Enum of swipe buttons
 enum SwipeButton: Identifiable {
     case info
     case delete
     case pin
+    case unpin
     
     var id: String {
         return "\(self)"
@@ -35,25 +36,28 @@ struct SwipeButtonView: View {
     func getView(for image: String, title: String) -> some View {
         VStack{
             Image(systemName: image)
-            Text(title)
+//            Text(title)
         }
         .padding(5)
-        .foregroundColor(.primary)
-        .font(.subheadline)
+        .foregroundColor(.white)
+        .font(.title2)
         .frame(width: buttonWidth, height: cellHeight)
     }
     
     var body: some View {
         switch data {
         case .info:
-            getView(for: "info.circle", title: "info")
+            getView(for: "info.circle.fill", title: "info")
                 .background(Color.gray)
         case .delete:
-            getView(for: "trash.circle", title: "Delete")
+            getView(for: "trash.fill", title: "Delete")
                 .background(Color.red)
         case .pin:
             getView(for: "pin.fill", title: "Pin")
-                .background(Color.yellow)
+                .background(Color.orange)
+        case .unpin:
+            getView(for: "pin.slash.fill", title: "UnPin")
+                .background(Color.orange)
         }
     }
 }

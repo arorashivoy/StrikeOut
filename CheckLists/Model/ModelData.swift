@@ -54,8 +54,8 @@ final class ModelData: ObservableObject {
             guard let checkLists = self?.checkLists else { fatalError("Self out of scope") }
             guard let data = try? JSONEncoder().encode(checkLists) else { fatalError("Error encoding data") }
             do {
-                let outfile = Self.fileURL
-                try data.write(to: outfile)
+                let outFile = Self.fileURL
+                try data.write(to: outFile)
             } catch {
                 fatalError("Can't write to file")
             }

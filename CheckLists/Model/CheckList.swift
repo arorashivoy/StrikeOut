@@ -40,7 +40,7 @@ struct CheckList: Hashable,Codable, Identifiable {
         var haveDueTime: Bool = false
         
 ///     setting some inbuilt item
-        static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "", dueDate: nil)
+        static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
         
         static let data = Items(itemName: "Donate", itemQuantity: 0, isCompleted: false, note: "Support me by donating")
 		
@@ -56,7 +56,7 @@ struct CheckList: Hashable,Codable, Identifiable {
         case noteText = "note.text"
         case calendar = "calendar"
         case bookFill = "book.fill"
-        case newpaperFill = "newspaper.fill"
+        case newspaperFill = "newspaper.fill"
         case booksVerticalFill = "books.vertical.fill"
         case bookClosedFill = "book.closed.fill"
         case charBook = "character.book.closed"
@@ -131,7 +131,7 @@ struct CheckList: Hashable,Codable, Identifiable {
 /// setting some inbuilt checklists
     static let `default` = CheckList(listName: "", id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [])
     
-    static let data = CheckList(listName: "To Do", id: UUID(), color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [Items.data])
+    static let data = CheckList(listName: "To Do", color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [Items.data])
 	
 }
 

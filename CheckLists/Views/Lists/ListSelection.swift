@@ -29,9 +29,11 @@ struct ListSelection: View {
                             selection: $modelData.listSelector
                         ){
                             ListRow(checkList: checkList)
-                                .addButtonActions(leadingButtons: [.pin], trailingButtons: [.info, .delete], onClick: { button in
-                                    sendSwipeButtonClick(Button: button, checkList: checkList)
-                                })
+                                .addButtonActions(leadingButtons: pinUnpinButton(checkList: checkList),
+                                                  trailingButtons: [.info, .delete],
+                                                  onClick: { button in
+                                                    sendSwipeButtonClick(Button: button, checkList: checkList)
+                                                  })
                                 .sheet(isPresented: $editSheet) {
                                     ListInfo(showInfo: $editSheet, draftList: $draftList)
                                         .environmentObject(modelData)
@@ -49,7 +51,8 @@ struct ListSelection: View {
                             .resizable()
                             .frame(width: 20, height: 20, alignment: .leading)
                             .foregroundColor(.accentColor)
-                            .padding(.leading)
+                            .padding(.leading, 20)
+                            .padding([.top,.bottom])
                     }
                     .sheet(isPresented: $addSheet, content: {
                         ListInfo(showInfo: $addSheet, draftList: $draftList)
@@ -62,13 +65,22 @@ struct ListSelection: View {
     }
     
     
+    /// what to do when one of the swipe button is clicked
+    /// - Parameters:
+    ///   - Button: which button of swipe button is clicked
+    ///   - checkList: the list whose swipe button is clicked
+    /// - Returns: Does the function of respective buttons
     func sendSwipeButtonClick(Button: SwipeButton, checkList: CheckList) -> Void {
         
         let indexList: Int = modelData.checkLists.firstIndex(where: { $0.id == checkList.id })!
         
         switch Button {
         case .pin:
-            modelData.checkLists[indexList].isPinned.toggle()
+            modelData.checkLists[indexList].isPinned = true
+            
+        case .unpin:
+            modelData.checkLists[indexList].isPinned = false
+            
         case .delete:
             
             /// To remove notification of all the items in the list
@@ -77,6 +89,7 @@ struct ListSelection: View {
             }
             
             modelData.checkLists.remove(at: indexList)
+            
         case .info:
             editSheet.toggle()
             draftList = checkList
@@ -84,6 +97,17 @@ struct ListSelection: View {
     }
 }
 
+
+/// To send pin or unpin button in swipe buttons
+/// - Parameter checkList: the list whose swipe options are shown
+/// - Returns: pin or unpin button
+func pinUnpinButton(checkList: CheckList) -> [SwipeButton] {
+    if checkList.isPinned {
+        return [.unpin]
+    }else {
+        return [.pin]
+    }
+}
 
 
 struct ListSelection_Previews: PreviewProvider {

@@ -18,11 +18,12 @@ struct ItemMenu: View {
             ///show Completed button
             Button{
                 modelData.checkLists[indexList].showCompleted.toggle()
+                
             } label: {
                 if modelData.checkLists[indexList].showCompleted {
-                    Text("Hide Completed")
+                    Label("Hide Completed", systemImage: "eye.slash")
                 } else {
-                    Text("Show Completed")
+                    Label("Show Completed", systemImage: "eye")
                 }
             }
             
@@ -30,17 +31,17 @@ struct ItemMenu: View {
             if modelData.checkLists[indexList].showCompleted {
                 Button{
                     modelData.checkLists[indexList].completedAtBottom.toggle()
+                    
                 } label: {
                     Label("Sort Completed", systemImage: "arrow.up.arrow.down")
                 }
             }
             
             Button{
-//                modelData.listSelector = nil
-                
                 modelData.checkLists.remove(at: indexList)
             }label: {
-                Text("Delete List")
+                Label("Delete", systemImage: "trash")
+                    .foregroundColor(.red)
             }
             
         } label: {

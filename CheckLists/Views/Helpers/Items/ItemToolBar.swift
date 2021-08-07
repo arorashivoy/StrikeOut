@@ -54,6 +54,7 @@ struct ItemToolBar: View {
                     AppNotification().remove(ID: draftItem.id)
                 }
                 
+                /// Stay in the ItemList View
                 modelData.listSelector = modelData.checkLists[indexList].id
                 
             }label: {
