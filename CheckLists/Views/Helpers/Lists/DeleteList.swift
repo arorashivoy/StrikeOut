@@ -17,16 +17,17 @@ struct DeleteList: View {
         if ID != CheckList.default.id {
             
             Button{
+                modelData.listSelector = nil
                 showInfo = false
                 
                 let indexList: Int = modelData.checkLists.firstIndex(where: { $0.id == ID })!
                 
-                /// To remove notification of all the items in the list
-                for item in modelData.checkLists[indexList].items {
-                    AppNotification().remove(ID: item.id)
-                }
-                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) {
+                    /// To remove notification of all the items in the list
+                    for item in modelData.checkLists[indexList].items {
+                        AppNotification().remove(ID: item.id)
+                    }
+                    
                     modelData.checkLists.remove(at: indexList)
                 }
             }label: {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemMenu: View {
     @EnvironmentObject var modelData: ModelData
+    @Binding var showListInfo: Bool
     
     var indexList: Int
     
@@ -37,16 +38,47 @@ struct ItemMenu: View {
                 }
             }
             
+            /// Pin list
             Button{
-                modelData.checkLists.remove(at: indexList)
+                modelData.checkLists[indexList].isPinned.toggle()
             }label: {
-                Label("Delete", systemImage: "trash")
+                if modelData.checkLists[indexList].isPinned {
+                    Label("UnPin List", systemImage: "pin.slash.fill")
+                }else {
+                    Label("Pin List", systemImage: "pin.fill")
+                }
+            }
+            
+            /// ListInfo
+            Button{
+                showListInfo.toggle()
+                
+            }label: {
+                Label("Edit List", systemImage: "pencil")
+            }
+            
+            /// Delete Button
+            Button{
+                modelData.listSelector = nil
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.20){
+                    /// To remove notification of all the items in the list
+                    for item in modelData.checkLists[indexList].items {
+                        AppNotification().remove(ID: item.id)
+                    }
+                    
+                    modelData.checkLists.remove(at: indexList)
+                }
+                
+            }label: {
+                Label("Delete List", systemImage: "trash")
                     .foregroundColor(.red)
             }
             
         } label: {
             Label("Menu", systemImage: "ellipsis.circle")
                 .font(.title3)
+                .foregroundColor(modelData.checkLists[indexList].color)
         }
         }
     }
@@ -54,7 +86,7 @@ struct ItemMenu: View {
 
 struct ItemMenu_Previews: PreviewProvider {
     static var previews: some View {
-        ItemMenu(indexList: 0)
+        ItemMenu(showListInfo: .constant(false), indexList: 0)
             .environmentObject(ModelData())
     }
 }

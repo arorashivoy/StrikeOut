@@ -22,7 +22,6 @@ struct ListToolBar: View {
             }label: {
                 Text("Cancel")
                     .padding()
-                    .foregroundColor(.accentColor)
             }
             Spacer()
             
@@ -61,9 +60,9 @@ struct ListToolBar: View {
             }label: {
                 Text("Done")
                     .padding()
-                    .foregroundColor(.accentColor)
             }
         }
+        .foregroundColor(draftList.color)
     }
 }
 

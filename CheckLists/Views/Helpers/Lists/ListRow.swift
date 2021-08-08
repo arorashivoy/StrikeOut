@@ -10,7 +10,6 @@ import SwiftUI
 struct ListRow: View {
 	var checkList: CheckList
     var body: some View {
-        VStack {
             HStack{
                 checkList.image
                     .font(.title)
@@ -23,13 +22,8 @@ struct ListRow: View {
                     Image(systemName: "pin.fill")
                         .foregroundColor(checkList.color)
                 }
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.secondary)
             }
             .padding()
-            Divider()
-                .frame(maxWidth: 350)
-        }
     }
 }
 

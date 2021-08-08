@@ -25,7 +25,7 @@ struct ItemToolBar: View {
             }label:{
                 Text("Cancel")
             }
-
+            
             Spacer()
             
             ///Done button
