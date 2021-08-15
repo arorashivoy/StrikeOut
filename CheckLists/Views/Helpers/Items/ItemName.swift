@@ -17,6 +17,7 @@ struct ItemName: View {
                 .foregroundColor(item.isCompleted ? .secondary:.primary)
                 .strikethrough(item.isCompleted)
                 .font(.body)
+            
             if let _ = item.dueDate {
                 Text(dateFormat(date: item.dueDate!, item: item))
                     .font(.caption)

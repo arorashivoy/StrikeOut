@@ -17,7 +17,9 @@ struct ListToolBar: View {
             
             ///Cancel Button
             Button{
-                showInfo = false
+                withAnimation(.spring(dampingFraction: 0.25, blendDuration: 2)) {
+                    showInfo = false
+                }
                 draftList = CheckList.default
             }label: {
                 Text("Cancel")
@@ -27,7 +29,11 @@ struct ListToolBar: View {
             
             /// Done Button
             Button{
-                showInfo = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) {
+                    withAnimation(.spring(dampingFraction: 0.25, blendDuration: 2)) {
+                        showInfo = false
+                    }
+                }
                 
                 if (draftList.id == CheckList.default.id && draftList.listName.trimmingCharacters(in: CharacterSet.whitespaces) != "") {
                     

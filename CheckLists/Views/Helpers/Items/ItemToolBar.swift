@@ -19,7 +19,9 @@ struct ItemToolBar: View {
             
             ///Cancel Button
             Button{
-                showInfo = false
+                withAnimation(.spring(dampingFraction: 0.25, blendDuration: 2)) {
+                    showInfo = false
+                }
                 draftItem = CheckList.Items.default
                 
             }label:{
@@ -30,7 +32,11 @@ struct ItemToolBar: View {
             
             ///Done button
             Button{
-                showInfo = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) {
+                    withAnimation(.spring(dampingFraction: 0.25, blendDuration: 2)){
+                        showInfo = false
+                }
+                }
                 
                 if (draftItem.id == CheckList.Items.default.id && draftItem.itemName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
                     

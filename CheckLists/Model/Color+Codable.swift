@@ -1,8 +1,8 @@
-//This file is for making color codable
+// This file is for making color codable
 //
-//with some extra stuff
-///like get a random color, and
-///accessibiltyFontColor which make foreground color white or black depending on which is more viewable against the background
+// with some extra stuff
+// like get a random color, and
+// accessibleFontColor which make foreground color white or black depending on which is more viewable against the background
 
 import SwiftUI
 
@@ -65,6 +65,7 @@ extension Color: Codable {
 
     // MARK: - font colors
     /// This color is either black or white, whichever is more accessible when viewed against the background color.
+    /// Syntax :- .foregroundColor(backgroundColor.accessibleFontColor)
     var accessibleFontColor: Color {
         var red: CGFloat = 0
         var green: CGFloat = 0

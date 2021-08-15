@@ -33,6 +33,7 @@ struct ListSelection: View {
                                 selection: $modelData.listSelector
                             ){
                                 ListRow(checkList: checkList)
+                                    .environmentObject(modelData)
                             }
                         }
                         .onDelete { indexSet in
@@ -73,19 +74,19 @@ struct ListSelection: View {
                         modelData.checkLists.remove(atOffsets: indexSet)
                     }
                     
-                    ///adding list button
+                    /// adding list button
                     Button{
-                        addSheet.toggle()
+                        withAnimation(.spring(dampingFraction: 0.25, blendDuration: 2)){
+                            addSheet.toggle()
+                        }
                         draftList = CheckList.default
                         
                     }label: {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 20, height: 20, alignment: .leading)
+                        Label("Add Item", systemImage: "plus")
+                            .font(.body)
                             .foregroundColor(.accentColor)
-                            .padding(.leading, 20)
-//                            .padding([.top,.bottom])
                     }
+                    .scaleEffect(addSheet ? 1.5 : 1)
                     .sheet(isPresented: $addSheet, content: {
                         ListInfo(showInfo: $addSheet, draftList: $draftList)
                             .environmentObject(modelData)

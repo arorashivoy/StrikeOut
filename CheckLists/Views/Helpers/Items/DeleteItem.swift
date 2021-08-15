@@ -21,8 +21,9 @@ struct DeleteItem: View {
                 showInfo = false
                 AppNotification().remove(ID: ID)
                 
-                let index = modelData.checkLists[indexList].items.firstIndex(where: { $0.id == ID })!
-                modelData.checkLists[indexList].items.remove(at: index)
+                if let index = modelData.checkLists[indexList].items.firstIndex(where: { $0.id == ID }) {
+                    modelData.checkLists[indexList].items.remove(at: index)
+                }
                 
             } label: {
                 Text("Delete Record")

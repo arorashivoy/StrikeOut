@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ItemInfo: View {
 	@EnvironmentObject var modelData: ModelData
+    @AppStorage("compAsked") var compAsked: Bool = false
+    @State private var compOption: Bool = false
 	@Binding var showInfo: Bool
     @Binding var draftItem: CheckList.Items
 	
-	var checkList: CheckList
+    var indexList: Int
 	
 	var body: some View {
-		
-		let indexList: Int = modelData.checkLists.firstIndex(where: {$0.id == checkList.id})!
 		
 		VStack(alignment: .center, spacing: 20) {
 			
@@ -40,7 +40,7 @@ struct ItemInfo: View {
 				}
                 
 ///             Quantity stepper only when showQuantity is enabled for checklist
-				if checkList.showQuantity {
+                if modelData.checkLists[indexList].showQuantity {
 					HStack {
 						Stepper("Quantity: \(draftItem.itemQuantity)", onIncrement: {
 							draftItem.itemQuantity += 1
@@ -56,21 +56,39 @@ struct ItemInfo: View {
 				})
                 .onChange(of: draftItem.isCompleted) { val in
                     if val {
+                        /// remove notification
                         AppNotification().remove(ID: draftItem.id)
+                        
+                        /// ask if you want to enable show notification
+                        if !compAsked {
+                            compOption = true
+                        }
                     }
                 }
+                .sheet(isPresented: $compOption, content: {
+                    CompletedOption(compOption: $compOption, indexList: indexList)
+                        .environmentObject(modelData)
+                })
+                
+                /// Flag
+                Toggle(isOn: $draftItem.flagged, label: {
+                    Text("Flag")
+                })
                 
 ///             Date and time
                 DateSelection(dueDate: draftItem.dueDate ?? Date(),
                               dueTime: draftItem.dueDate ?? Date(), editItem: $draftItem, indexList: indexList)
                     .environmentObject(modelData)
                 
-///             Notes text editor
-                ItemNote(editItem: $draftItem)
-                    .environmentObject(modelData)
 			}
 			.listStyle(DefaultListStyle())
-			
+            .frame(height: 180) // Hard coding frame to remove space that swiftui adds
+            
+            /// Notes text editor
+            ItemNote(editItem: $draftItem)
+                .environmentObject(modelData)
+                .padding([.leading, .trailing])
+                .padding(.top, 0)
             
 ///         Delete button
             DeleteItem(showInfo: $showInfo, ID: draftItem.id, indexList: indexList)
@@ -84,8 +102,9 @@ struct ItemInfo: View {
 }
 
 struct ItemInfo_Previews: PreviewProvider {
+    @State static private var draftItem = ModelData().checkLists[0].items[0]
 	static var previews: some View {
-        ItemInfo(showInfo: .constant(true), draftItem: .constant(ModelData().checkLists[0].items[0]), checkList: ModelData().checkLists[0])
+        ItemInfo(showInfo: .constant(true), draftItem: $draftItem, indexList: 0)
 			.preferredColorScheme(.dark)
 			.environmentObject(ModelData())
 	}

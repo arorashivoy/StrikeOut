@@ -14,7 +14,6 @@ struct ItemList: View {
     @State private var draftItem: CheckList.Items = CheckList.Items.default
     @State private var showListInfo: Bool = false
     @State private var draftList: CheckList = CheckList.default
-    @State private var listDeleted: Bool = false
     
     var checkList: CheckList
     
@@ -33,13 +32,13 @@ struct ItemList: View {
                         ToggleCompleted(item: item, indexList: indexList)
                             .environmentObject(modelData)
                         
-                        ///                 Item name
+                        /// Item name
                         ItemName(item: item)
                         
                         Spacer()
                         
                         /// quantity
-                        if modelData.checkLists[indexList].showQuantity {
+                        if checkList.showQuantity {
                             
                             Text("\(item.itemQuantity)")
                                 .foregroundColor(.gray)
@@ -47,21 +46,16 @@ struct ItemList: View {
                                 .padding()
                         }
                         
+                        /// Flag icon
+                        FlagItem(item: item, indexList: indexList)
+                            .environmentObject(modelData)
+                        
                         /// info button
-                        Button{
-                            showInfo.toggle()
-                            draftItem = item
-                        } label: {
-                            Image(systemName: "info.circle")
-                                .resizable()
-                                .frame(width: 25, height: 25, alignment: .center)
-                                .foregroundColor(modelData.checkLists[indexList].color)
-                            
-                        }
+                        AddInfoButton(showInfo: $showInfo, draftItem: $draftItem, checkList: checkList, item: item)
                         .sheet(isPresented: $showInfo) {
-                            ItemInfo(showInfo: $showInfo, draftItem: $draftItem, checkList: checkList)
+                            ItemInfo(showInfo: $showInfo, draftItem: $draftItem, indexList: indexList)
                                 .environmentObject(modelData)
-                            
+
                         }
                         
                     }
@@ -77,18 +71,9 @@ struct ItemList: View {
                 }
                 
                 /// new item button
-                Button{
-                    newItem.toggle()
-                    draftItem = CheckList.Items.default
-                    
-                } label: {
-                    Image(systemName: "plus")
-                        .resizable()
-                        .frame(width: 20, height: 20, alignment: .leading)
-                        .foregroundColor(modelData.checkLists[indexList].color)
-                }
+                AddInfoButton(showInfo: $newItem, draftItem: $draftItem, checkList: checkList, item: CheckList.Items.default)
                 .sheet(isPresented: $newItem) {
-                    ItemInfo(showInfo: $newItem, draftItem: $draftItem, checkList: checkList)
+                    ItemInfo(showInfo: $newItem, draftItem: $draftItem, indexList: indexList)
                         .environmentObject(modelData)
                     
                 }
@@ -97,8 +82,8 @@ struct ItemList: View {
             .navigationTitle(checkList.listName)
             .foregroundColor(modelData.checkLists[indexList].color)
             .toolbar{
-                ///Menu
-                ItemMenu(showListInfo: $showListInfo, indexList: indexList)
+                /// Toolbar
+                ItemListToolBar(showListInfo: $showListInfo, indexList: indexList)
                     .environmentObject(modelData)
             }
             
@@ -116,9 +101,11 @@ struct ItemList: View {
 
 func filterItems(checkList: CheckList) -> [CheckList.Items] {
     if checkList.showCompleted {
-        return checkList.items.filter{ !$0.isCompleted || !checkList.completedAtBottom } + checkList.items.filter{ $0.isCompleted && checkList.completedAtBottom }
+        let completedList = checkList.items.filter{ (!$0.isCompleted || !checkList.completedAtBottom) && $0.flagged} + checkList.items.filter{ (!$0.isCompleted || !checkList.completedAtBottom) && !$0.flagged }
+        let incompleteList = checkList.items.filter{ ($0.isCompleted && checkList.completedAtBottom) && $0.flagged } + checkList.items.filter{ ($0.isCompleted && checkList.completedAtBottom) && !$0.flagged}
+        return  completedList + incompleteList
     }else {
-        return checkList.items.filter{ !$0.isCompleted }
+        return checkList.items.filter{ !$0.isCompleted && $0.flagged} + checkList.items.filter{ !$0.isCompleted && !$0.flagged}
     }
 }
 

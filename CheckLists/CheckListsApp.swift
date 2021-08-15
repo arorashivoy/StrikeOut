@@ -32,10 +32,3 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler([.banner, .sound])
     }
 }
-
-/// Extension for swipe buttons
-extension View {
-    func addButtonActions(leadingButtons: [SwipeButton], trailingButtons: [SwipeButton], onClick: @escaping (SwipeButton) -> Void) -> some View {
-        self.modifier(SwipeContainer(leadingButtons: leadingButtons, trailingButtons: trailingButtons, onCLick: onClick))
-    }
-}

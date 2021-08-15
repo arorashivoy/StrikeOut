@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8303EAE626B15AB90026E279 /* ItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303EAE526B15AB90026E279 /* ItemMenu.swift */; };
-		83132B4D26BAD41E00E4EE5A /* SwipeButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83132B4C26BAD41E00E4EE5A /* SwipeButtons.swift */; };
-		83132B5126BAD92600E4EE5A /* SwipeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83132B5026BAD92600E4EE5A /* SwipeContainer.swift */; };
+		8303EAE626B15AB90026E279 /* ItemListToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303EAE526B15AB90026E279 /* ItemListToolBar.swift */; };
 		83132B5326BB112300E4EE5A /* DeleteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83132B5226BB112300E4EE5A /* DeleteList.swift */; };
 		831890B426B5710D0053E4A4 /* DeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831890B326B5710D0053E4A4 /* DeleteItem.swift */; };
 		831890B626B59C3C0053E4A4 /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831890B526B59C3C0053E4A4 /* NotificationPermission.swift */; };
@@ -18,6 +16,8 @@
 		831890C026B5AC5D0053E4A4 /* NotificationBell.json in Resources */ = {isa = PBXBuildFile; fileRef = 831890BF26B5AC5D0053E4A4 /* NotificationBell.json */; };
 		8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDAB2677EAF9000A21C7 /* ItemList.swift */; };
 		8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDB72678DBE7000A21C7 /* ItemInfo.swift */; };
+		8354BAE426C0AA8200F69DA5 /* AddInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */; };
+		8354BAE826C0B16F00F69DA5 /* FlagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354BAE726C0B16F00F69DA5 /* FlagItem.swift */; };
 		838754BC267A348C00E71CD7 /* ToggleCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838754BB267A348C00E71CD7 /* ToggleCompleted.swift */; };
 		83B2986E26B69B6200C86510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B2986D26B69B6200C86510 /* AppDelegate.swift */; };
 		83BBCACF267C0BED00CB8DA6 /* ListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */; };
@@ -36,12 +36,13 @@
 		83D4B02526779A5E00C3994A /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02426779A5E00C3994A /* ListRow.swift */; };
 		83D4B02D2677A0F800C3994A /* CheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02C2677A0F800C3994A /* CheckList.swift */; };
 		83D4B02F2677A95800C3994A /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D4B02E2677A95800C3994A /* ModelData.swift */; };
+		83D64DA926C13EFA00061FE1 /* CompletedOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D64DA826C13EFA00061FE1 /* CompletedOption.swift */; };
+		83D64DAF26C1409700061FE1 /* CompletedOptionAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D64DAE26C1409700061FE1 /* CompletedOptionAnimation.json */; };
+		83D64DB126C14FFB00061FE1 /* CheckListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D64DB026C14FFB00061FE1 /* CheckListDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8303EAE526B15AB90026E279 /* ItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemMenu.swift; sourceTree = "<group>"; };
-		83132B4C26BAD41E00E4EE5A /* SwipeButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeButtons.swift; sourceTree = "<group>"; };
-		83132B5026BAD92600E4EE5A /* SwipeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeContainer.swift; sourceTree = "<group>"; };
+		8303EAE526B15AB90026E279 /* ItemListToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListToolBar.swift; sourceTree = "<group>"; };
 		83132B5226BB112300E4EE5A /* DeleteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteList.swift; sourceTree = "<group>"; };
 		831890B326B5710D0053E4A4 /* DeleteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItem.swift; sourceTree = "<group>"; };
 		831890B526B59C3C0053E4A4 /* NotificationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
@@ -49,6 +50,8 @@
 		831890BF26B5AC5D0053E4A4 /* NotificationBell.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NotificationBell.json; sourceTree = "<group>"; };
 		8339EDAB2677EAF9000A21C7 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		8339EDB72678DBE7000A21C7 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
+		8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoButton.swift; sourceTree = "<group>"; };
+		8354BAE726C0B16F00F69DA5 /* FlagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagItem.swift; sourceTree = "<group>"; };
 		838754BB267A348C00E71CD7 /* ToggleCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCompleted.swift; sourceTree = "<group>"; };
 		83B2986D26B69B6200C86510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInfo.swift; sourceTree = "<group>"; };
@@ -69,6 +72,9 @@
 		83D4B02426779A5E00C3994A /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		83D4B02C2677A0F800C3994A /* CheckList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckList.swift; sourceTree = "<group>"; };
 		83D4B02E2677A95800C3994A /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		83D64DA826C13EFA00061FE1 /* CompletedOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedOption.swift; sourceTree = "<group>"; };
+		83D64DAE26C1409700061FE1 /* CompletedOptionAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CompletedOptionAnimation.json; sourceTree = "<group>"; };
+		83D64DB026C14FFB00061FE1 /* CheckListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				83D4B02426779A5E00C3994A /* ListRow.swift */,
-				83132B4C26BAD41E00E4EE5A /* SwipeButtons.swift */,
 				83D0269C26AF3F2D00FC29B2 /* ListToolBar.swift */,
 				83132B5226BB112300E4EE5A /* DeleteList.swift */,
 			);
@@ -98,11 +103,13 @@
 			isa = PBXGroup;
 			children = (
 				838754BB267A348C00E71CD7 /* ToggleCompleted.swift */,
+				8354BAE726C0B16F00F69DA5 /* FlagItem.swift */,
+				8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */,
 				83D0269826AF3A6A00FC29B2 /* DateSelection.swift */,
+				8303EAE526B15AB90026E279 /* ItemListToolBar.swift */,
 				83D0269A26AF3F2400FC29B2 /* ItemToolBar.swift */,
 				83D0269E26AF5AF000FC29B2 /* ItemNote.swift */,
 				83BF7DDF26B14A9F000645E9 /* ItemName.swift */,
-				8303EAE526B15AB90026E279 /* ItemMenu.swift */,
 				831890B326B5710D0053E4A4 /* DeleteItem.swift */,
 			);
 			path = Items;
@@ -111,6 +118,7 @@
 		831890BA26B5A4BE0053E4A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				83D64DAE26C1409700061FE1 /* CompletedOptionAnimation.json */,
 				831890BF26B5AC5D0053E4A4 /* NotificationBell.json */,
 			);
 			path = Resources;
@@ -140,6 +148,7 @@
 				83132B4E26BAD88D00E4EE5A /* Lists */,
 				83132B4F26BAD89C00E4EE5A /* Items */,
 				831890B526B59C3C0053E4A4 /* NotificationPermission.swift */,
+				83D64DA826C13EFA00061FE1 /* CompletedOption.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -197,9 +206,9 @@
 		83D4B02626779D2800C3994A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				83D4B02C2677A0F800C3994A /* CheckList.swift */,
 				83D4B02E2677A95800C3994A /* ModelData.swift */,
-				83132B5026BAD92600E4EE5A /* SwipeContainer.swift */,
+				83D4B02C2677A0F800C3994A /* CheckList.swift */,
+				83D64DB026C14FFB00061FE1 /* CheckListDTO.swift */,
 				83CC35CC26B08C3A00B08F79 /* AppNotification.swift */,
 				83D0CFAD268A2C3200BD1553 /* Color+Codable.swift */,
 				831890BD26B5A5E80053E4A4 /* LottieView.swift */,
@@ -273,6 +282,7 @@
 				83D4B01A2677857800C3994A /* Preview Assets.xcassets in Resources */,
 				83D4B0172677857800C3994A /* Assets.xcassets in Resources */,
 				831890C026B5AC5D0053E4A4 /* NotificationBell.json in Resources */,
+				83D64DAF26C1409700061FE1 /* CompletedOptionAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,25 +296,27 @@
 				83B2986E26B69B6200C86510 /* AppDelegate.swift in Sources */,
 				83BBCACF267C0BED00CB8DA6 /* ListInfo.swift in Sources */,
 				831890B626B59C3C0053E4A4 /* NotificationPermission.swift in Sources */,
-				83132B4D26BAD41E00E4EE5A /* SwipeButtons.swift in Sources */,
 				83D4B02526779A5E00C3994A /* ListRow.swift in Sources */,
 				831890B426B5710D0053E4A4 /* DeleteItem.swift in Sources */,
 				83CC35CD26B08C3A00B08F79 /* AppNotification.swift in Sources */,
+				8354BAE826C0B16F00F69DA5 /* FlagItem.swift in Sources */,
 				83BF7DE026B14A9F000645E9 /* ItemName.swift in Sources */,
 				83D0269926AF3A6A00FC29B2 /* DateSelection.swift in Sources */,
 				83D4B0152677857600C3994A /* ContentView.swift in Sources */,
 				83D4B02326779A0900C3994A /* ListSelection.swift in Sources */,
 				8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */,
-				8303EAE626B15AB90026E279 /* ItemMenu.swift in Sources */,
+				8303EAE626B15AB90026E279 /* ItemListToolBar.swift in Sources */,
+				83D64DA926C13EFA00061FE1 /* CompletedOption.swift in Sources */,
 				83132B5326BB112300E4EE5A /* DeleteList.swift in Sources */,
 				838754BC267A348C00E71CD7 /* ToggleCompleted.swift in Sources */,
 				8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */,
 				83D4B02D2677A0F800C3994A /* CheckList.swift in Sources */,
 				83D0269D26AF3F2D00FC29B2 /* ListToolBar.swift in Sources */,
+				83D64DB126C14FFB00061FE1 /* CheckListDTO.swift in Sources */,
 				83D4B0132677857600C3994A /* CheckListsApp.swift in Sources */,
 				83D0269F26AF5AF000FC29B2 /* ItemNote.swift in Sources */,
 				83D0CFAE268A2C3200BD1553 /* Color+Codable.swift in Sources */,
-				83132B5126BAD92600E4EE5A /* SwipeContainer.swift in Sources */,
+				8354BAE426C0AA8200F69DA5 /* AddInfoButton.swift in Sources */,
 				831890BE26B5A5E80053E4A4 /* LottieView.swift in Sources */,
 				83D0269B26AF3F2400FC29B2 /* ItemToolBar.swift in Sources */,
 				83D4B02F2677A95800C3994A /* ModelData.swift in Sources */,
@@ -445,6 +457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.CheckLists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -467,6 +480,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.CheckLists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

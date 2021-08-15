@@ -46,7 +46,7 @@ struct DateSelection: View {
         }
         ///full screen cover for notification permission view
         .sheet(isPresented: $notiPermission, content: {
-            NotificationPermission(notiPermission: $notiPermission)
+            NotificationPermission(notiPermission: $notiPermission, checkListColor: modelData.checkLists[indexList].color)
         })
         
         if editItem.haveDueDate {

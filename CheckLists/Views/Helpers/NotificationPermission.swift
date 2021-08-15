@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct NotificationPermission: View {
+    @AppStorage("notiAsked") var notiAsked: Bool = false
     @Binding var notiPermission: Bool
     
-    @AppStorage("notiAsked") var notiAsked: Bool = false
+    var checkListColor: Color
     
     var body: some View {
         VStack{
@@ -21,6 +22,7 @@ struct NotificationPermission: View {
                     notiPermission = false
                 }label: {
                     Text("Cancel")
+                        .foregroundColor(checkListColor)
                 }
                 Spacer()
             }
@@ -40,8 +42,9 @@ struct NotificationPermission: View {
                 ZStack{
                     Rectangle()
                         .frame(width: 170, height: 50, alignment: .center)
+                        .foregroundColor(checkListColor)
                     Text("Enable Notifications")
-                        .foregroundColor(.white)
+                        .foregroundColor(checkListColor.accessibleFontColor)
                 }
                 .padding()
             }
@@ -52,7 +55,7 @@ struct NotificationPermission: View {
 
 struct NotificationPermission_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationPermission(notiPermission: .constant(true))
+        NotificationPermission(notiPermission: .constant(true), checkListColor: ModelData().checkLists[0].color)
             .preferredColorScheme(.dark)
     }
 }

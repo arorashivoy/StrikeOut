@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ListRow: View {
+    @EnvironmentObject var modelData: ModelData
+    
 	var checkList: CheckList
+    
     var body: some View {
+        if let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id}) {
             HStack{
                 checkList.image
                     .font(.title)
-                    .scaledToFit()
                     .foregroundColor(checkList.color)
                 Text(checkList.listName)
                     .foregroundColor(.primary)
@@ -21,9 +24,14 @@ struct ListRow: View {
                 if checkList.isPinned {
                     Image(systemName: "pin.fill")
                         .foregroundColor(checkList.color)
+                        .padding(.trailing)
+                        .onTapGesture {
+                            modelData.checkLists[indexList].isPinned = false
+                        }
                 }
             }
-            .padding()
+            .padding([.top, .bottom])
+        }
     }
 }
 

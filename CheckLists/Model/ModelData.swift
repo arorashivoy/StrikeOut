@@ -39,11 +39,11 @@ final class ModelData: ObservableObject {
                 }
                 return
             }
-            guard let lists = try? JSONDecoder().decode([CheckList].self, from: data) else {
+            guard let lists = try? JSONDecoder().decode([CheckListDTO].self, from: data) else {
                 fatalError("Can't decode saved Lists data.")
             }
             DispatchQueue.main.async {
-                self?.checkLists = lists
+                self?.checkLists = CheckListDTOMapper.map(lists)
             }
         }
     }
@@ -52,7 +52,7 @@ final class ModelData: ObservableObject {
     func save() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let checkLists = self?.checkLists else { fatalError("Self out of scope") }
-            guard let data = try? JSONEncoder().encode(checkLists) else { fatalError("Error encoding data") }
+            guard let data = try? JSONEncoder().encode(CheckListMapper.map(checkLists)) else { fatalError("Error encoding data") }
             do {
                 let outFile = Self.fileURL
                 try data.write(to: outFile)

@@ -8,9 +8,8 @@
 import Foundation
 import SwiftUI
 
-//TODO: make default json decode work
-
-struct CheckList: Hashable,Codable, Identifiable {
+/// Domain Model
+struct CheckList: Hashable, Identifiable {
 	var listName: String
 	var id = UUID()
 	var color: Color
@@ -28,7 +27,7 @@ struct CheckList: Hashable,Codable, Identifiable {
 	
 	var items: [Items]
 	
-	struct Items: Hashable, Codable, Identifiable {
+	struct Items: Hashable, Identifiable {
 		
 		var id = UUID()
 		var itemName: String
@@ -38,15 +37,16 @@ struct CheckList: Hashable,Codable, Identifiable {
         var dueDate: Date?
         var haveDueDate: Bool = false
         var haveDueTime: Bool = false
+        var flagged: Bool = false
         
-///     setting some inbuilt item
+        /// setting some inbuilt item
         static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
         
         static let data = Items(itemName: "Donate", itemQuantity: 0, isCompleted: false, note: "Support me by donating")
 		
 	}
     
-/// setting enum for images name
+    /// setting enum for images name
     enum Images: String, CaseIterable, Identifiable {
         case bulletList = "list.bullet"
         case starList = "list.star"
@@ -135,6 +135,12 @@ struct CheckList: Hashable,Codable, Identifiable {
 	
 }
 
+
+/// Make a date with time components for default time for each checkList
+/// - Parameters:
+///   - hr: Hour in int
+///   - min: minutes in int
+/// - Returns: date made with the following time components
 func defTimeMaker(hour hr: Int, minute min: Int) -> Date {
     var timeComp = DateComponents()
     timeComp.hour = hr
