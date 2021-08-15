@@ -18,7 +18,7 @@ struct ItemInfo: View {
 	
 	var body: some View {
 		
-		VStack(alignment: .center, spacing: 20) {
+		VStack(alignment: .center) {
 			
 ///         To display cancel(only when the new item is created) and done button
             ItemToolBar(draftItem: $draftItem, showInfo: $showInfo, indexList: indexList)
@@ -83,6 +83,7 @@ struct ItemInfo: View {
 			}
 			.listStyle(DefaultListStyle())
             .frame(height: 180) // Hard coding frame to remove space that SwiftUi adds
+            .padding(.bottom, 0)
             
             /// Notes text editor
             ItemNote(editItem: $draftItem)

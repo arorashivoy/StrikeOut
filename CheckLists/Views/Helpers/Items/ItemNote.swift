@@ -19,7 +19,7 @@ struct ItemNote: View {
                 Text("Notes")
                     .font(.body)
                     .foregroundColor(.secondary)
-                    .padding([.top, .leading], 5.0)
+                    .padding([.leading, .top], 5.0)
             }
         }
     }

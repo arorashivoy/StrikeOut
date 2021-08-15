@@ -62,21 +62,15 @@ struct ListInfo: View {
                         }
                     }
                 }
-
-///             For description
-                ZStack(alignment:.leading){
-                    TextEditor(text: $draftList.description)
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                    if draftList.description.trimmingCharacters(in: [" "]) == "" {
-                        Text("Description")
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                            .padding(.leading, 5)
-                    }
-                }
             }
             .listStyle(DefaultListStyle())
+            .frame(height: 480)
+            .padding(.bottom, 0)
+            
+            /// For description
+            ListDescription(draftList: $draftList)
+                .padding(.top, 0)
+            
             Spacer()
             
 ///         Delete button

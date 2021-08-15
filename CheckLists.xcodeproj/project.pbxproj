@@ -16,6 +16,7 @@
 		831890C026B5AC5D0053E4A4 /* NotificationBell.json in Resources */ = {isa = PBXBuildFile; fileRef = 831890BF26B5AC5D0053E4A4 /* NotificationBell.json */; };
 		8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDAB2677EAF9000A21C7 /* ItemList.swift */; };
 		8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDB72678DBE7000A21C7 /* ItemInfo.swift */; };
+		8343625C26C987EA00792B8C /* ListDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8343625B26C987EA00792B8C /* ListDescription.swift */; };
 		8354BAE426C0AA8200F69DA5 /* AddInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */; };
 		8354BAE826C0B16F00F69DA5 /* FlagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354BAE726C0B16F00F69DA5 /* FlagItem.swift */; };
 		838754BC267A348C00E71CD7 /* ToggleCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838754BB267A348C00E71CD7 /* ToggleCompleted.swift */; };
@@ -50,6 +51,7 @@
 		831890BF26B5AC5D0053E4A4 /* NotificationBell.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NotificationBell.json; sourceTree = "<group>"; };
 		8339EDAB2677EAF9000A21C7 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		8339EDB72678DBE7000A21C7 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
+		8343625B26C987EA00792B8C /* ListDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDescription.swift; sourceTree = "<group>"; };
 		8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoButton.swift; sourceTree = "<group>"; };
 		8354BAE726C0B16F00F69DA5 /* FlagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagItem.swift; sourceTree = "<group>"; };
 		838754BB267A348C00E71CD7 /* ToggleCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCompleted.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				83D4B02426779A5E00C3994A /* ListRow.swift */,
 				83D0269C26AF3F2D00FC29B2 /* ListToolBar.swift */,
 				83132B5226BB112300E4EE5A /* DeleteList.swift */,
+				8343625B26C987EA00792B8C /* ListDescription.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8343625C26C987EA00792B8C /* ListDescription.swift in Sources */,
 				83B2986E26B69B6200C86510 /* AppDelegate.swift in Sources */,
 				83BBCACF267C0BED00CB8DA6 /* ListInfo.swift in Sources */,
 				831890B626B59C3C0053E4A4 /* NotificationPermission.swift in Sources */,
@@ -448,6 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CheckLists/Preview Content\"";
 				DEVELOPMENT_TEAM = 62W399JN7W;
 				ENABLE_PREVIEWS = YES;
@@ -471,6 +476,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CheckLists/Preview Content\"";
 				DEVELOPMENT_TEAM = 62W399JN7W;
 				ENABLE_PREVIEWS = YES;
