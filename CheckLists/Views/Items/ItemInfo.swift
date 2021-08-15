@@ -82,7 +82,7 @@ struct ItemInfo: View {
                 
 			}
 			.listStyle(DefaultListStyle())
-            .frame(height: 180) // Hard coding frame to remove space that swiftui adds
+            .frame(height: 180) // Hard coding frame to remove space that SwiftUi adds
             
             /// Notes text editor
             ItemNote(editItem: $draftItem)
