@@ -64,7 +64,7 @@ struct ListInfo: View {
                                 imagePicker.toggle()
                             }
                         }label: {
-                            Label("Image", systemImage: draftList.imageName)
+                            Label("Thumbnail", systemImage: draftList.imageName)
                         }
                     }
                     /// For description

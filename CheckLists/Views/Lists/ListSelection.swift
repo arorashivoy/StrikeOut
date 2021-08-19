@@ -82,7 +82,7 @@ struct ListSelection: View {
                             draftList = CheckList.default
                             
                         }label: {
-                            Label("Add Item", systemImage: "plus")
+                            Label("Add List", systemImage: "plus")
                                 .font(.body)
                                 .foregroundColor(.accentColor)
                         }
