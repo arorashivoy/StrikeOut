@@ -1,5 +1,5 @@
 //
-//  ItemToolBar.swift
+//  ItemInfoToolBar.swift
 //  CheckLists
 //
 //  Created by Shivoy Arora on 27/07/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ItemToolBar: View {
+struct ItemInfoToolBar: View {
     @EnvironmentObject var modelData: ModelData
     @Binding var draftItem: CheckList.Items
     @Binding var showInfo: Bool
@@ -35,7 +35,7 @@ struct ItemToolBar: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) {
                     withAnimation(.spring(dampingFraction: 0.25, blendDuration: 2)){
                         showInfo = false
-                }
+                    }
                 }
                 
                 if (draftItem.id == CheckList.Items.default.id && draftItem.itemName.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
@@ -73,7 +73,7 @@ struct ItemToolBar: View {
 
 struct ItemToolBar_Previews: PreviewProvider {
     static var previews: some View {
-        ItemToolBar(draftItem: .constant(ModelData().checkLists[0].items[0]), showInfo: .constant(true), indexList: 0)
+        ItemInfoToolBar(draftItem: .constant(ModelData().checkLists[0].items[0]), showInfo: .constant(true), indexList: 0)
             .environmentObject(ModelData())
     }
 }

@@ -15,6 +15,13 @@ struct ItemNote: View {
             TextEditor(text: $editItem.note)
                 .font(.body)
                 .foregroundColor(.secondary)
+            
+            /// This transparent text is to make the text editor size dynamic in ScrollView
+            Text(editItem.note)
+                .font(.body)
+                .opacity(0)
+                .padding(.all, 5)
+            
             if editItem.note.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == ""{
                 Text("Notes")
                     .font(.body)

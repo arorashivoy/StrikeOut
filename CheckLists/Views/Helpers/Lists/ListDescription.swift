@@ -16,6 +16,13 @@ struct ListDescription: View {
             TextEditor(text: $draftList.description)
                 .font(.body)
                 .foregroundColor(.secondary)
+            
+            /// This transparent text is to make the text editor size dynamic in ScrollView
+            Text(draftList.description)
+                .font(.body)
+                .opacity(0)
+                .padding(.all, 5)
+            
             if draftList.description.trimmingCharacters(in: [" "]) == "" {
                 Text("Description")
                     .font(.body)

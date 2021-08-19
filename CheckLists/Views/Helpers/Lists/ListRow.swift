@@ -10,7 +10,7 @@ import SwiftUI
 struct ListRow: View {
     @EnvironmentObject var modelData: ModelData
     
-	var checkList: CheckList
+    var checkList: CheckList
     
     var body: some View {
         if let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id}) {
@@ -36,11 +36,11 @@ struct ListRow: View {
 }
 
 struct ListRow_Previews: PreviewProvider {
-	static var checkLists = ModelData().checkLists
+    static var checkLists = ModelData().checkLists
     static var previews: some View {
         ListRow(checkList: checkLists[0])
             .previewLayout(.fixed(width: 300, height: 70))
             .preferredColorScheme(.dark)
-		
+        
     }
 }

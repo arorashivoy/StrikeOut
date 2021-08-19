@@ -59,20 +59,20 @@ struct CheckListDTOMapper {
         
         for dtoItem in dtoItems {
             itemsList.append( CheckList.Items(id: dtoItem.id,
-                                         itemName: dtoItem.itemName,
-                                         itemQuantity: dtoItem.itemQuantity,
-                                         isCompleted: dtoItem.isCompleted,
-                                         note: dtoItem.note,
-                                         dueDate: dtoItem.dueDate,
-                                         haveDueDate: dtoItem.haveDueDate,
-                                         haveDueTime: dtoItem.haveDueTime,
-                                         flagged: dtoItem.flagged ?? false)
+                                              itemName: dtoItem.itemName,
+                                              itemQuantity: dtoItem.itemQuantity,
+                                              isCompleted: dtoItem.isCompleted,
+                                              note: dtoItem.note,
+                                              dueDate: dtoItem.dueDate,
+                                              haveDueDate: dtoItem.haveDueDate,
+                                              haveDueTime: dtoItem.haveDueTime,
+                                              flagged: dtoItem.flagged ?? false)
             )
         }
         
         return itemsList
     }
-
+    
     /// Mapping CheckLIsts
     /// - Parameter dtos: Lists decoded from json( [CheckListDTO] )
     /// - Returns: List that is for domain model
@@ -81,16 +81,16 @@ struct CheckListDTOMapper {
         
         for dto in dtos {
             checkLists.append( CheckList(listName: dto.listName,
-                                        id: dto.id,
-                                        color: dto.color,
-                                        description: dto.description,
-                                        showQuantity: dto.showQuantity,
-                                        showCompleted: dto.showQuantity,
-                                        completedAtBottom: dto.completedAtBottom,
-                                        isPinned: dto.isPinned,
-                                        defaultTime: dto.defaultTime,
-                                        imageName: dto.imageName,
-                                        items: self.mapItems(dto.items))
+                                         id: dto.id,
+                                         color: dto.color,
+                                         description: dto.description,
+                                         showQuantity: dto.showQuantity,
+                                         showCompleted: dto.showQuantity,
+                                         completedAtBottom: dto.completedAtBottom,
+                                         isPinned: dto.isPinned,
+                                         defaultTime: dto.defaultTime,
+                                         imageName: dto.imageName,
+                                         items: self.mapItems(dto.items))
             )
         }
         return checkLists

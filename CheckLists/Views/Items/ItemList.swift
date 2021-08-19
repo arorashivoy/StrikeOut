@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ItemList: View {
-	@EnvironmentObject var modelData: ModelData
-	@State private var showInfo: Bool = false
+    @EnvironmentObject var modelData: ModelData
+    @State private var showInfo: Bool = false
     @State private var newItem: Bool = false
     @State private var draftItem: CheckList.Items = CheckList.Items.default
     @State private var showListInfo: Bool = false
@@ -21,10 +21,10 @@ struct ItemList: View {
         
         if let indexList: Int = modelData.checkLists.firstIndex(where: {$0.id == checkList.id}) {
             
-            let filteredItems = filterItems(checkList: modelData.checkLists[indexList])
+            let sortedItems = sortItems(checkList: modelData.checkLists[indexList])
             
             List(){
-                ForEach(filteredItems) { item in
+                ForEach(sortedItems) { item in
                     
                     HStack{
                         
@@ -52,11 +52,11 @@ struct ItemList: View {
                         
                         /// info button
                         AddInfoButton(showInfo: $showInfo, draftItem: $draftItem, checkList: checkList, item: item)
-                        .sheet(isPresented: $showInfo) {
-                            ItemInfo(showInfo: $showInfo, draftItem: $draftItem, indexList: indexList)
-                                .environmentObject(modelData)
-
-                        }
+                            .sheet(isPresented: $showInfo) {
+                                ItemInfo(showInfo: $showInfo, draftItem: $draftItem, indexList: indexList)
+                                    .environmentObject(modelData)
+                                
+                            }
                         
                     }
                 }
@@ -72,11 +72,11 @@ struct ItemList: View {
                 
                 /// new item button
                 AddInfoButton(showInfo: $newItem, draftItem: $draftItem, checkList: checkList, item: CheckList.Items.default)
-                .sheet(isPresented: $newItem) {
-                    ItemInfo(showInfo: $newItem, draftItem: $draftItem, indexList: indexList)
-                        .environmentObject(modelData)
-                    
-                }
+                    .sheet(isPresented: $newItem) {
+                        ItemInfo(showInfo: $newItem, draftItem: $draftItem, indexList: indexList)
+                            .environmentObject(modelData)
+                        
+                    }
             }
             .listStyle(InsetGroupedListStyle())
             .navigationTitle(checkList.listName)
@@ -99,7 +99,11 @@ struct ItemList: View {
     }
 }
 
-func filterItems(checkList: CheckList) -> [CheckList.Items] {
+
+/// sort items to show completed at bottom (if asked) and flagged at top
+/// - Parameter checkList: The list whose items are to be sort
+/// - Returns: the sorted items list
+func sortItems(checkList: CheckList) -> [CheckList.Items] {
     if checkList.showCompleted {
         let completedList = checkList.items.filter{ (!$0.isCompleted || !checkList.completedAtBottom) && $0.flagged} + checkList.items.filter{ (!$0.isCompleted || !checkList.completedAtBottom) && !$0.flagged }
         let incompleteList = checkList.items.filter{ ($0.isCompleted && checkList.completedAtBottom) && $0.flagged } + checkList.items.filter{ ($0.isCompleted && checkList.completedAtBottom) && !$0.flagged}

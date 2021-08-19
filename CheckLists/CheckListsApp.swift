@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct CheckListsApp: App {
-	@StateObject private var modelData = ModelData()
+    @StateObject private var modelData = ModelData()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-				.environmentObject(modelData)
+                .environmentObject(modelData)
                 .onAppear(){
                     modelData.load()
                 }
@@ -27,8 +27,10 @@ struct CheckListsApp: App {
 /// Extension for foreground notification
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
-    ///foreground notification
+    /// foreground notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        /// To tell the app that we have finished processing 
         completionHandler([.banner, .sound])
     }
 }

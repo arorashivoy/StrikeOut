@@ -10,30 +10,30 @@ import SwiftUI
 
 /// Domain Model
 struct CheckList: Hashable, Identifiable {
-	var listName: String
-	var id = UUID()
-	var color: Color
-	var description: String = ""
-	var showQuantity: Bool = false
+    var listName: String
+    var id = UUID()
+    var color: Color
+    var description: String = ""
+    var showQuantity: Bool = false
     var showCompleted: Bool = false
     var completedAtBottom: Bool = false
     var isPinned: Bool = false
     var defaultTime: Date = defTimeMaker(hour: 8, minute: 0)
-	
-	var imageName: String
-	var image: Image {
-		Image(systemName: imageName)
-	}
-	
-	var items: [Items]
-	
-	struct Items: Hashable, Identifiable {
-		
-		var id = UUID()
-		var itemName: String
-		var itemQuantity: Int = 0
-		var isCompleted: Bool = false
-		var note: String = ""
+    
+    var imageName: String
+    var image: Image {
+        Image(systemName: imageName)
+    }
+    
+    var items: [Items]
+    
+    struct Items: Hashable, Identifiable {
+        
+        var id = UUID()
+        var itemName: String
+        var itemQuantity: Int = 0
+        var isCompleted: Bool = false
+        var note: String = ""
         var dueDate: Date?
         var haveDueDate: Bool = false
         var haveDueTime: Bool = false
@@ -43,8 +43,8 @@ struct CheckList: Hashable, Identifiable {
         static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
         
         static let data = Items(itemName: "Donate", itemQuantity: 0, isCompleted: false, note: "Support me by donating")
-		
-	}
+        
+    }
     
     /// setting enum for images name
     enum Images: String, CaseIterable, Identifiable {
@@ -127,12 +127,12 @@ struct CheckList: Hashable, Identifiable {
         var id: String {self.rawValue}
         
     }
-
-/// setting some inbuilt checklists
+    
+    /// setting some inbuilt checklists
     static let `default` = CheckList(listName: "", id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [])
     
     static let data = CheckList(listName: "To Do", color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [Items.data])
-	
+    
 }
 
 

@@ -78,7 +78,7 @@ extension Color: Codable {
         let lightRed = red > 0.65
         let lightGreen = green > 0.65
         let lightBlue = blue > 0.65
-
+        
         let lightness = [lightRed, lightGreen, lightBlue].reduce(0) { $1 ? $0 + 1 : $0 }
         return lightness >= 2
     }

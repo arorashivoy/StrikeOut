@@ -20,25 +20,51 @@ struct ListSelection: View {
         
         NavigationView {
             Form{
-            List{
-                
-                ///Showing all the available pinned List
-                if pinnedList.count > 0 {
-                    Section(header: Text("Pinned")) {
+                List{
+                    
+                    /// Showing all the available pinned List
+                    if pinnedList.count > 0 {
+                        Section(header: Text("Pinned")) {
+                            
+                            ForEach(pinnedList){ checkList in
+                                NavigationLink(
+                                    destination: ItemList(checkList: checkList).environmentObject(modelData),
+                                    tag: checkList.id,
+                                    selection: $modelData.listSelector
+                                ){
+                                    ListRow(checkList: checkList)
+                                        .environmentObject(modelData)
+                                }
+                            }
+                            .onDelete { indexSet in
+                                
+                                /// removing Notifications
+                                for i in indexSet {
+                                    for item in modelData.checkLists[i].items {
+                                        AppNotification().remove(ID: item.id)
+                                    }
+                                }
+                                
+                                modelData.checkLists.remove(atOffsets: indexSet)
+                            }
+                        }
+                    }
+                    
+                    /// Showing all the available Unpinned List
+                    Section{
                         
-                        ForEach(pinnedList){ checkList in
+                        ForEach(unPinnedList){ checkList in
                             NavigationLink(
                                 destination: ItemList(checkList: checkList).environmentObject(modelData),
                                 tag: checkList.id,
                                 selection: $modelData.listSelector
                             ){
                                 ListRow(checkList: checkList)
-                                    .environmentObject(modelData)
                             }
                         }
                         .onDelete { indexSet in
                             
-                            ///removing Notifications
+                            /// removing Notifications
                             for i in indexSet {
                                 for item in modelData.checkLists[i].items {
                                     AppNotification().remove(ID: item.id)
@@ -47,52 +73,26 @@ struct ListSelection: View {
                             
                             modelData.checkLists.remove(atOffsets: indexSet)
                         }
-                    }
-                }
-                
-                ///Showing all the available Unpinned List
-                Section{
-                    
-                    ForEach(unPinnedList){ checkList in
-                        NavigationLink(
-                            destination: ItemList(checkList: checkList).environmentObject(modelData),
-                            tag: checkList.id,
-                            selection: $modelData.listSelector
-                        ){
-                            ListRow(checkList: checkList)
-                        }
-                    }
-                    .onDelete { indexSet in
                         
-                        ///removing Notifications
-                        for i in indexSet {
-                            for item in modelData.checkLists[i].items {
-                                AppNotification().remove(ID: item.id)
+                        /// adding list button
+                        Button{
+                            withAnimation(.spring(dampingFraction: 0.25, blendDuration: 2)){
+                                addSheet.toggle()
                             }
+                            draftList = CheckList.default
+                            
+                        }label: {
+                            Label("Add Item", systemImage: "plus")
+                                .font(.body)
+                                .foregroundColor(.accentColor)
                         }
-                        
-                        modelData.checkLists.remove(atOffsets: indexSet)
+                        .scaleEffect(addSheet ? 1.5 : 1)
+                        .sheet(isPresented: $addSheet, content: {
+                            ListInfo(showInfo: $addSheet, draftList: $draftList)
+                                .environmentObject(modelData)
+                        })
                     }
-                    
-                    /// adding list button
-                    Button{
-                        withAnimation(.spring(dampingFraction: 0.25, blendDuration: 2)){
-                            addSheet.toggle()
-                        }
-                        draftList = CheckList.default
-                        
-                    }label: {
-                        Label("Add Item", systemImage: "plus")
-                            .font(.body)
-                            .foregroundColor(.accentColor)
-                    }
-                    .scaleEffect(addSheet ? 1.5 : 1)
-                    .sheet(isPresented: $addSheet, content: {
-                        ListInfo(showInfo: $addSheet, draftList: $draftList)
-                            .environmentObject(modelData)
-                    })
                 }
-            }
             }
             .navigationTitle("Lists")
         }

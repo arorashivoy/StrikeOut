@@ -9,12 +9,12 @@ import SwiftUI
 import UserNotifications
 
 struct ContentView: View {
-	@EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var modelData: ModelData
     @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         ListSelection()
-			.environmentObject(modelData)
+            .environmentObject(modelData)
             .onChange(of: scenePhase, perform: { phase in
                 if phase == .inactive {
                     modelData.save()
