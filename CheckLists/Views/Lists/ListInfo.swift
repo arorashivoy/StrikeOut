@@ -72,7 +72,6 @@ struct ListInfo: View {
                     
                 }
                 .listStyle(InsetGroupedListStyle())
-                .padding(.bottom, 0)
                 Spacer()
                 
                 /// Delete button

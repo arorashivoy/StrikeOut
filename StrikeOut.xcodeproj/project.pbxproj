@@ -20,6 +20,7 @@
 		8343625C26C987EA00792B8C /* ListDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8343625B26C987EA00792B8C /* ListDescription.swift */; };
 		8354BAE426C0AA8200F69DA5 /* AddInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */; };
 		8354BAE826C0B16F00F69DA5 /* FlagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354BAE726C0B16F00F69DA5 /* FlagItem.swift */; };
+		8387188726CEEAE8006EF0B7 /* DonateLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387188626CEEAE8006EF0B7 /* DonateLink.swift */; };
 		838754BC267A348C00E71CD7 /* ToggleCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838754BB267A348C00E71CD7 /* ToggleCompleted.swift */; };
 		83B2986E26B69B6200C86510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B2986D26B69B6200C86510 /* AppDelegate.swift */; };
 		83BBCACF267C0BED00CB8DA6 /* ListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */; };
@@ -56,6 +57,7 @@
 		8343625B26C987EA00792B8C /* ListDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDescription.swift; sourceTree = "<group>"; };
 		8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoButton.swift; sourceTree = "<group>"; };
 		8354BAE726C0B16F00F69DA5 /* FlagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagItem.swift; sourceTree = "<group>"; };
+		8387188626CEEAE8006EF0B7 /* DonateLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateLink.swift; sourceTree = "<group>"; };
 		838754BB267A348C00E71CD7 /* ToggleCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCompleted.swift; sourceTree = "<group>"; };
 		83B2986D26B69B6200C86510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInfo.swift; sourceTree = "<group>"; };
@@ -67,7 +69,7 @@
 		83D0269C26AF3F2D00FC29B2 /* ListToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListToolBar.swift; sourceTree = "<group>"; };
 		83D0269E26AF5AF000FC29B2 /* ItemNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNote.swift; sourceTree = "<group>"; };
 		83D0CFAD268A2C3200BD1553 /* Color+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Codable.swift"; sourceTree = "<group>"; };
-		83D4B00F2677857600C3994A /* CheckLists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckLists.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		83D4B00F2677857600C3994A /* StrikeOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrikeOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D4B0122677857600C3994A /* CheckListsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListsApp.swift; sourceTree = "<group>"; };
 		83D4B0142677857600C3994A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		83D4B0162677857800C3994A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				83132B4F26BAD89C00E4EE5A /* Items */,
 				831890B526B59C3C0053E4A4 /* NotificationPermission.swift */,
 				83D64DA826C13EFA00061FE1 /* CompletedOption.swift */,
+				8387188626CEEAE8006EF0B7 /* DonateLink.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -170,7 +173,7 @@
 		83D4B0102677857600C3994A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				83D4B00F2677857600C3994A /* CheckLists.app */,
+				83D4B00F2677857600C3994A /* StrikeOut.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,9 +228,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		83D4B00E2677857600C3994A /* CheckLists */ = {
+		83D4B00E2677857600C3994A /* StrikeOut */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 83D4B01E2677857800C3994A /* Build configuration list for PBXNativeTarget "CheckLists" */;
+			buildConfigurationList = 83D4B01E2677857800C3994A /* Build configuration list for PBXNativeTarget "StrikeOut" */;
 			buildPhases = (
 				83D4B00B2677857600C3994A /* Sources */,
 				83D4B00C2677857600C3994A /* Frameworks */,
@@ -237,12 +240,12 @@
 			);
 			dependencies = (
 			);
-			name = CheckLists;
+			name = StrikeOut;
 			packageProductDependencies = (
 				831890B826B5A2CB0053E4A4 /* Lottie */,
 			);
 			productName = CheckLists;
-			productReference = 83D4B00F2677857600C3994A /* CheckLists.app */;
+			productReference = 83D4B00F2677857600C3994A /* StrikeOut.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -259,7 +262,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83D4B00A2677857600C3994A /* Build configuration list for PBXProject "CheckLists" */;
+			buildConfigurationList = 83D4B00A2677857600C3994A /* Build configuration list for PBXProject "StrikeOut" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -275,7 +278,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				83D4B00E2677857600C3994A /* CheckLists */,
+				83D4B00E2677857600C3994A /* StrikeOut */,
 			);
 		};
 /* End PBXProject section */
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8387188726CEEAE8006EF0B7 /* DonateLink.swift in Sources */,
 				8343625C26C987EA00792B8C /* ListDescription.swift in Sources */,
 				83B2986E26B69B6200C86510 /* AppDelegate.swift in Sources */,
 				83BBCACF267C0BED00CB8DA6 /* ListInfo.swift in Sources */,
@@ -453,10 +457,10 @@
 		83D4B01F2677857800C3994A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CheckLists/Preview Content\"";
 				DEVELOPMENT_TEAM = 62W399JN7W;
 				ENABLE_PREVIEWS = YES;
@@ -466,7 +470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.CheckLists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -477,10 +481,10 @@
 		83D4B0202677857800C3994A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CheckLists/Preview Content\"";
 				DEVELOPMENT_TEAM = 62W399JN7W;
 				ENABLE_PREVIEWS = YES;
@@ -490,7 +494,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.CheckLists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -501,7 +505,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		83D4B00A2677857600C3994A /* Build configuration list for PBXProject "CheckLists" */ = {
+		83D4B00A2677857600C3994A /* Build configuration list for PBXProject "StrikeOut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83D4B01C2677857800C3994A /* Debug */,
@@ -510,7 +514,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83D4B01E2677857800C3994A /* Build configuration list for PBXNativeTarget "CheckLists" */ = {
+		83D4B01E2677857800C3994A /* Build configuration list for PBXNativeTarget "StrikeOut" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83D4B01F2677857800C3994A /* Debug */,

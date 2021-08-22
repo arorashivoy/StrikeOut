@@ -83,11 +83,14 @@ struct ItemInfo: View {
                 /// Notes text editor
                 ItemNote(editItem: $draftItem)
                     .environmentObject(modelData)
-                    .padding([.leading, .trailing])
                     .padding(.top, 0)
+                
+                /// Adding donate link
+                if draftItem.id == CheckList.Items.data.id {
+                    DonateLink()
+                }
             }
             .listStyle(DefaultListStyle())
-//            .frame(height: 180) // Hard coding frame to remove space that SwiftUi adds
             .padding(.bottom, 0)
             
             Spacer()

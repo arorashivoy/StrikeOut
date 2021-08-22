@@ -42,7 +42,7 @@ struct CheckList: Hashable, Identifiable {
         /// setting some inbuilt item
         static let `default` = Items(id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, itemName: "", itemQuantity: 0, isCompleted: false, note: "")
         
-        static let data = Items(itemName: "Donate", itemQuantity: 0, isCompleted: false, note: "Support me by donating")
+        static let data = Items(id: UUID(uuidString: "5b39714d-7384-416a-81b5-5459d464e4fd")!, itemName: "Donate", itemQuantity: 0, isCompleted: false, note: "Support me by donating ")
         
     }
     

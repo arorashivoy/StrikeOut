@@ -20,7 +20,7 @@ struct FlagItem: View {
                 if item.flagged {
                     Image(systemName: "flag.fill")
                         .foregroundColor(modelData.checkLists[indexList].color)
-                        .padding()
+                        .padding(.trailing, 0)
                         .onTapGesture {
                             withAnimation(.easeOut(duration: 0.25)) {
                                 modelData.checkLists[indexList].items[index].flagged = false

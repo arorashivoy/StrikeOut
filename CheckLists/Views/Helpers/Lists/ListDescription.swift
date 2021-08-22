@@ -30,7 +30,6 @@ struct ListDescription: View {
                     .padding([.top, .leading], 5.0)
             }
         }
-        .padding(.leading)
     }
 }
 

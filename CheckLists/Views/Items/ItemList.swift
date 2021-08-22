@@ -37,6 +37,10 @@ struct ItemList: View {
                         
                         Spacer()
                         
+                        /// Flag icon
+                        FlagItem(item: item, indexList: indexList)
+                            .environmentObject(modelData)
+                        
                         /// quantity
                         if checkList.showQuantity {
                             
@@ -45,10 +49,6 @@ struct ItemList: View {
                                 .font(.subheadline)
                                 .padding()
                         }
-                        
-                        /// Flag icon
-                        FlagItem(item: item, indexList: indexList)
-                            .environmentObject(modelData)
                         
                         /// info button
                         AddInfoButton(showInfo: $showInfo, draftItem: $draftItem, checkList: checkList, item: item)
