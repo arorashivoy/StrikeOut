@@ -13,15 +13,15 @@ struct ListDescription: View {
     var body: some View {
         
         ZStack(alignment:.topLeading){
-            TextEditor(text: $draftList.description)
-                .font(.body)
-                .foregroundColor(.secondary)
-            
             /// This transparent text is to make the text editor size dynamic in ScrollView
             Text(draftList.description)
                 .font(.body)
                 .opacity(0)
                 .padding(.all, 5)
+            
+            TextEditor(text: $draftList.description)
+                .font(.body)
+                .foregroundColor(.secondary)
             
             if draftList.description.trimmingCharacters(in: [" "]) == "" {
                 Text("Description")

@@ -9,8 +9,11 @@ import Foundation
 import SwiftUI
 import UserNotifications
 import NotificationCenter
+import AVFoundation
 
 class AppNotification {
+    
+    var systemSoundID: SystemSoundID = 1005
     
     func requestPermission() -> Void {
         /// To request permission to show notifications
@@ -29,6 +32,7 @@ class AppNotification {
             content.title = item.itemName
             content.body = item.note
             content.sound = UNNotificationSound.default
+//            content.sound = UNNotificationSound(named: )
             
             /// getting date components
             let components = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute],

@@ -11,8 +11,14 @@ struct ImagePicker: View {
     @Binding var draftList: CheckList
     @Binding var imagePicker: Bool
     
+    let layout = [
+        GridItem(.adaptive(minimum: 80))
+    ]
+    
     var body: some View {
-        VStack {
+        VStack{
+            
+            /// ToolBar
             HStack{
                 Spacer()
                 
@@ -25,19 +31,46 @@ struct ImagePicker: View {
                 }
                 .padding([.top, .trailing])
             }
-            Divider()
-                .brightness(0.5)
-                .padding([.leading, .trailing], 7)
             
-            Picker("Choose the thumbnail image", selection: $draftList.imageName){
-                ForEach(CheckList.Images.allCases){
-                    Image(systemName: "\($0.rawValue)").tag($0)
-                        .foregroundColor(.primary)
+            /// Main
+            ScrollView{
+                
+                /// Grid of thumbnails
+                LazyVGrid(columns: layout, spacing: 20) {
+                    ForEach(CheckList.Images.allCases) { image in
+                        let selection: Bool = draftList.imageName == image.rawValue
+                            
+                        /// thumbnail image
+                        Button{
+                            withAnimation{
+                                draftList.imageName = image.rawValue
+                            }
+                        }label: {
+                            ZStack {
+                                
+                                /// Border
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(selection ? Color.gray : Color.clear, lineWidth: 2)
+                                    .frame(width: 65, height: 65, alignment: .center)
+                                    .animation(.easeInOut)
+                                
+                                /// background
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.gray.opacity(0.3))
+                                    .frame(width: 60, height: 60, alignment: .center)
+                                
+                                /// image
+                                Image(systemName: image.rawValue)
+                                    .foregroundColor(draftList.color)
+                                    .font(.title)
+                            }
+                            
+                        }
+                    }
                 }
+                .padding()
             }
         }
-        .background(Color.primary.colorInvert())
-        .cornerRadius(10)
     }
 }
 

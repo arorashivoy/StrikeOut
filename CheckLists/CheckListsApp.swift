@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 @main
 struct CheckListsApp: App {
@@ -30,7 +31,18 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     /// foreground notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        /// To tell the app that we have finished processing 
-        completionHandler([.banner, .sound])
+        AudioServicesPlaySystemSound(SystemSoundID(1005))
+        /// To tell the app that we have finished processing
+        completionHandler([.banner])
+    }
+    
+    /// To manage what happens when user clicks the notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        /// What to do
+        AudioServicesPlaySystemSound(SystemSoundID(1005))
+        
+        /// To tell the app that we have finished processing
+        completionHandler()
     }
 }

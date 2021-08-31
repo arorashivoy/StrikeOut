@@ -58,7 +58,7 @@ struct ItemListToolBar: View {
                         modelData.checkLists[indexList].isPinned.toggle()
                     }label: {
                         if modelData.checkLists[indexList].isPinned {
-                            Label("UnPin List", systemImage: "pin.slash.fill")
+                            Label("Unpin List", systemImage: "pin.slash.fill")
                         }else {
                             Label("Pin List", systemImage: "pin.fill")
                         }

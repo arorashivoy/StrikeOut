@@ -56,10 +56,8 @@ struct DateSelection: View {
                        selection: $dueDate,
                        displayedComponents: .date)
                 .onChange(of: dueDate) { val in
-                    let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: val)
-                    
                     if editItem.haveDueTime {
-                        editItem.dueDate = Calendar.current.date(from: dateComponents)
+                        editItem.dueDate = setDateTime(date: val, time: editItem.dueDate ?? modelData.checkLists[indexList].defaultTime)
                     }else {
                         editItem.dueDate = setDateTime(date: val, time: modelData.checkLists[indexList].defaultTime)
                     }
