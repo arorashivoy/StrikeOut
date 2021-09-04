@@ -65,7 +65,6 @@
 		8303EAE526B15AB90026E279 /* ItemListToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListToolBar.swift; sourceTree = "<group>"; };
 		83132B5226BB112300E4EE5A /* DeleteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteList.swift; sourceTree = "<group>"; };
 		8313919026DFFA4500C1B348 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		8313919226E0017400C1B348 /* Licenses.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Licenses.md; sourceTree = "<group>"; };
 		8313919326E01C8400C1B348 /* iPhone-Note-SMS.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iPhone-Note-SMS.m4r"; sourceTree = "<group>"; };
 		8313919626E01CB000C1B348 /* mixkit-achievement-bell-600.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-achievement-bell-600.wav"; sourceTree = "<group>"; };
 		8313919826E01CC500C1B348 /* mixkit-bell-notification-933.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-bell-notification-933.wav"; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		833F1F4626CDD8DE00CB506D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8343625B26C987EA00792B8C /* ListDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDescription.swift; sourceTree = "<group>"; };
 		834E95A326E36B920003682A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		834E95A526E3C2180003682A /* Licenses.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Licenses.md; sourceTree = "<group>"; };
 		8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoButton.swift; sourceTree = "<group>"; };
 		8362ECCA26DC52B8004A874D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8387188626CEEAE8006EF0B7 /* DonateLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateLink.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 		83D4B0062677857600C3994A = {
 			isa = PBXGroup;
 			children = (
-				8313919226E0017400C1B348 /* Licenses.md */,
+				834E95A526E3C2180003682A /* Licenses.md */,
 				8362ECCA26DC52B8004A874D /* README.md */,
 				83D4B0112677857600C3994A /* CheckLists */,
 				83D4B0102677857600C3994A /* Products */,
