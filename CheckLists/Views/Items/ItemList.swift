@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ItemList: View {
     @EnvironmentObject var modelData: ModelData
+    @AppStorage("colorSchemes") var colorSchemes: appColorScheme = appColorScheme.system
     @State private var showInfo: Bool = false
     @State private var newItem: Bool = false
     @State private var draftItem: CheckList.Items = CheckList.Items.default
     @State private var showListInfo: Bool = false
     @State private var draftList: CheckList = CheckList.default
+    @State private var deniedAlert: Bool = false
     
     var checkList: CheckList
     
@@ -25,46 +27,15 @@ struct ItemList: View {
             
             List(){
                 ForEach(sortedItems) { item in
-                    
-                    HStack{
-                        
-                        /// Completed button
-                        ToggleCompleted(item: item, indexList: indexList)
-                            .environmentObject(modelData)
-                        
-                        /// Item name
-                        ItemName(item: item)
-                        
-                        Spacer()
-                        
-                        /// Flag icon
-                        FlagItem(item: item, indexList: indexList)
-                            .environmentObject(modelData)
-                        
-                        /// quantity
-                        if checkList.showQuantity {
-                            
-                            Text("\(item.itemQuantity)")
-                                .foregroundColor(.gray)
-                                .font(.subheadline)
-                                .padding()
-                        }
-                        
-                        /// info button
-                        AddInfoButton(showInfo: $showInfo, draftItem: $draftItem, checkList: checkList, item: item)
-                            .sheet(isPresented: $showInfo) {
-                                ItemInfo(showInfo: $showInfo, draftItem: $draftItem, indexList: indexList)
-                                    .environmentObject(modelData)
-                                
-                            }
-                        
-                    }
+                    ItemRow(draftItem: $draftItem, deniedAlert: $deniedAlert, item: item, indexList: indexList)
+                        .environmentObject(modelData)
                 }
+                
                 /// Drag to delete
                 .onDelete{ indexSet in
                     ///removing notification
                     for i in indexSet {
-                        AppNotification().remove(ID: modelData.checkLists[indexList].items[i].id)
+                        AppNotification().remove(list: checkList, itemID: modelData.checkLists[indexList].items[i].id)
                     }
                     
                     modelData.checkLists[indexList].items.remove(atOffsets: indexSet)
@@ -73,9 +44,17 @@ struct ItemList: View {
                 /// new item button
                 AddInfoButton(showInfo: $newItem, draftItem: $draftItem, checkList: checkList, item: CheckList.Items.default)
                     .sheet(isPresented: $newItem) {
-                        ItemInfo(showInfo: $newItem, draftItem: $draftItem, indexList: indexList)
+                        ItemInfo(showInfo: $newItem, draftItem: $draftItem, deniedAlert: $deniedAlert, indexList: indexList)
                             .environmentObject(modelData)
+                            .preferredColorScheme(setColorScheme())
                         
+                    }
+                    /// To show alert if noti is denied
+                    .alert(isPresented: $deniedAlert) {
+                        Alert(title: Text("Enable Notifications"),
+                              message: Text("To never forget anything"),
+                              primaryButton: .default( Text("Go to Settings"), action: openSetting),
+                              secondaryButton: .destructive(Text("Cancel")))
                     }
             }
             .listStyle(InsetGroupedListStyle())
@@ -91,10 +70,24 @@ struct ItemList: View {
             .sheet(isPresented: $showListInfo, content: {
                 ListInfo(showInfo: $showListInfo, draftList: $draftList)
                     .environmentObject(modelData)
+                    .preferredColorScheme(setColorScheme())
                     .onAppear(perform: {
                         draftList = modelData.checkLists[indexList]
                     })
             })
+        }
+    }
+    
+    /// To set color scheme which the user chooses
+    /// - Returns: colorScheme
+    func setColorScheme() -> ColorScheme? {
+        switch colorSchemes {
+        case .dark:
+            return .dark
+        case .light:
+            return .light
+        case .system:
+            return nil
         }
     }
 }
@@ -110,6 +103,15 @@ func sortItems(checkList: CheckList) -> [CheckList.Items] {
         return  completedList + incompleteList
     }else {
         return checkList.items.filter{ !$0.isCompleted && $0.flagged} + checkList.items.filter{ !$0.isCompleted && !$0.flagged}
+    }
+}
+
+/// To open setting in the alert if notification was denied
+func openSetting() {
+    if let bundleIdentifier = Bundle.main.bundleIdentifier, let appSettings = URL(string: UIApplication.openSettingsURLString + bundleIdentifier) {
+        if UIApplication.shared.canOpenURL(appSettings) {
+            UIApplication.shared.open(appSettings)
+        }
     }
 }
 

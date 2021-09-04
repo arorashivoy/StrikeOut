@@ -1,11 +1,14 @@
 // This file is for making color codable
+// and making color to be stored in UserDefault
 //
 // with some extra stuff
 // like get a random color, and
 // accessibleFontColor which make foreground color white or black depending on which is more viewable against the background
 
+import Foundation
 import SwiftUI
 
+/// For making color codable
 extension Color: Codable {
     private struct Components {
         let red: Double
@@ -82,4 +85,39 @@ extension Color: Codable {
         let lightness = [lightRed, lightGreen, lightBlue].reduce(0) { $1 ? $0 + 1 : $0 }
         return lightness >= 2
     }
+}
+
+/// To store in UserDefault
+extension Color: RawRepresentable {
+
+    public init?(rawValue: String) {
+        
+        guard let data = Data(base64Encoded: rawValue) else{
+            self = .blue
+            return
+        }
+        
+        do{
+            let color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? UIColor ?? .blue
+            self = Color(color)
+        }catch{
+            self = .blue
+        }
+        
+    }
+
+    public var rawValue: String {
+        
+        do{
+            let data = try NSKeyedArchiver.archivedData(withRootObject: UIColor(self), requiringSecureCoding: false) as Data
+            return data.base64EncodedString()
+            
+        }catch{
+            
+            return ""
+            
+        }
+        
+    }
+
 }

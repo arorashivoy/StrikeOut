@@ -25,7 +25,7 @@ struct DeleteList: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) {
                     /// To remove notification of all the items in the list
                     for item in modelData.checkLists[indexList].items {
-                        AppNotification().remove(ID: item.id)
+                        AppNotification().remove(list: modelData.checkLists[indexList], itemID: item.id)
                     }
                     
                     modelData.checkLists.remove(at: indexList)

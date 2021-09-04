@@ -69,7 +69,7 @@ struct ListInfo: View {
                         ImagePicker(draftList: $draftList, imagePicker: $imagePicker)
                     })
                 }
-                Section(header: Text("Description").foregroundColor(.secondary).padding(.leading)) {
+                Section(header: Text("Description").foregroundColor(.secondary)) {
                     /// For description
                     ListDescription(draftList: $draftList)
                 }
@@ -85,6 +85,7 @@ struct ListInfo: View {
         }
         .foregroundColor(draftList.color)
         .navigationTitle(draftList.listName)
+        .accentColor(draftList.color)
         
     }
 }

@@ -51,7 +51,7 @@ struct ListToolBar: View {
                             draftList.items[index].dueDate = setDateTime(date: draftList.items[index].dueDate!, time: draftList.defaultTime)
                             
                             /// Rescheduling
-                            AppNotification().schedule(item: draftList.items[index])
+                            AppNotification().schedule(list: draftList, item: draftList.items[index])
                         }
                     }
 

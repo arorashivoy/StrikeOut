@@ -38,7 +38,7 @@ struct ToggleCompleted: View {
                         
                         if modelData.checkLists[indexList].items[index].isCompleted {
                             ///remove notification
-                            AppNotification().remove(ID: item.id)
+                            AppNotification().remove(list: modelData.checkLists[indexList], itemID: item.id)
                             
                         }
                     })

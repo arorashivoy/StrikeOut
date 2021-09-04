@@ -19,7 +19,7 @@ struct DeleteItem: View {
             
             Button{
                 showInfo = false
-                AppNotification().remove(ID: ID)
+                AppNotification().remove(list: modelData.checkLists[indexList], itemID: ID)
                 
                 if let index = modelData.checkLists[indexList].items.firstIndex(where: { $0.id == ID }) {
                     modelData.checkLists[indexList].items.remove(at: index)

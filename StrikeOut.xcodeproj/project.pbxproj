@@ -9,6 +9,21 @@
 /* Begin PBXBuildFile section */
 		8303EAE626B15AB90026E279 /* ItemListToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303EAE526B15AB90026E279 /* ItemListToolBar.swift */; };
 		83132B5326BB112300E4EE5A /* DeleteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83132B5226BB112300E4EE5A /* DeleteList.swift */; };
+		8313919126DFFA4500C1B348 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313919026DFFA4500C1B348 /* SettingsView.swift */; };
+		8313919426E01C8400C1B348 /* iPhone-Note-SMS.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 8313919326E01C8400C1B348 /* iPhone-Note-SMS.m4r */; };
+		8313919726E01CB000C1B348 /* mixkit-achievement-bell-600.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8313919626E01CB000C1B348 /* mixkit-achievement-bell-600.wav */; };
+		8313919926E01CC500C1B348 /* mixkit-bell-notification-933.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8313919826E01CC500C1B348 /* mixkit-bell-notification-933.wav */; };
+		8313919B26E01CD100C1B348 /* mixkit-bells-of-mystery-581.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8313919A26E01CD100C1B348 /* mixkit-bells-of-mystery-581.wav */; };
+		8313919D26E01CDE00C1B348 /* mixkit-correct-answer-reward-952.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8313919C26E01CDE00C1B348 /* mixkit-correct-answer-reward-952.wav */; };
+		8313919F26E01CEB00C1B348 /* mixkit-dance-with-me-3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8313919E26E01CEB00C1B348 /* mixkit-dance-with-me-3.mp3 */; };
+		831391A126E01CF300C1B348 /* mixkit-dreaming-big-31.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 831391A026E01CF300C1B348 /* mixkit-dreaming-big-31.mp3 */; };
+		831391A326E01CFD00C1B348 /* mixkit-happy-bells-notification-937.wav in Resources */ = {isa = PBXBuildFile; fileRef = 831391A226E01CFD00C1B348 /* mixkit-happy-bells-notification-937.wav */; };
+		831391A526E01D0700C1B348 /* mixkit-home-standard-ding-dong-109.wav in Resources */ = {isa = PBXBuildFile; fileRef = 831391A426E01D0700C1B348 /* mixkit-home-standard-ding-dong-109.wav */; };
+		831391A726E01D1700C1B348 /* mixkit-musical-reveal-961.wav in Resources */ = {isa = PBXBuildFile; fileRef = 831391A626E01D1700C1B348 /* mixkit-musical-reveal-961.wav */; };
+		831391A926E01D2900C1B348 /* mixkit-raising-me-higher-34.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 831391A826E01D2900C1B348 /* mixkit-raising-me-higher-34.mp3 */; };
+		831391AB26E01D3300C1B348 /* mixkit-retro-game-emergency-alarm-1000.wav in Resources */ = {isa = PBXBuildFile; fileRef = 831391AA26E01D3300C1B348 /* mixkit-retro-game-emergency-alarm-1000.wav */; };
+		831391AD26E01D3F00C1B348 /* mixkit-school-calling-bell-580.wav in Resources */ = {isa = PBXBuildFile; fileRef = 831391AC26E01D3F00C1B348 /* mixkit-school-calling-bell-580.wav */; };
+		831391AF26E0214A00C1B348 /* AlarmPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831391AE26E0214A00C1B348 /* AlarmPicker.swift */; };
 		831890B426B5710D0053E4A4 /* DeleteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831890B326B5710D0053E4A4 /* DeleteItem.swift */; };
 		831890B626B59C3C0053E4A4 /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831890B526B59C3C0053E4A4 /* NotificationPermission.swift */; };
 		831890B926B5A2CB0053E4A4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 831890B826B5A2CB0053E4A4 /* Lottie */; };
@@ -18,14 +33,15 @@
 		8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDB72678DBE7000A21C7 /* ItemInfo.swift */; };
 		833F1F4726CDD8DE00CB506D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833F1F4626CDD8DE00CB506D /* ImagePicker.swift */; };
 		8343625C26C987EA00792B8C /* ListDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8343625B26C987EA00792B8C /* ListDescription.swift */; };
+		834E95A426E36B920003682A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E95A326E36B920003682A /* AudioPlayer.swift */; };
 		8354BAE426C0AA8200F69DA5 /* AddInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */; };
-		8354BAE826C0B16F00F69DA5 /* FlagItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354BAE726C0B16F00F69DA5 /* FlagItem.swift */; };
 		8362ECCB26DC52B9004A874D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8362ECCA26DC52B8004A874D /* README.md */; };
 		8387188726CEEAE8006EF0B7 /* DonateLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387188626CEEAE8006EF0B7 /* DonateLink.swift */; };
 		838754BC267A348C00E71CD7 /* ToggleCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838754BB267A348C00E71CD7 /* ToggleCompleted.swift */; };
 		83B2986E26B69B6200C86510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B2986D26B69B6200C86510 /* AppDelegate.swift */; };
+		83B82ADE26E1F713006E9805 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B82ADD26E1F713006E9805 /* ItemRow.swift */; };
+		83B82AE026E23DD3006E9805 /* Cookie-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83B82ADF26E23DD3006E9805 /* Cookie-Regular.ttf */; };
 		83BBCACF267C0BED00CB8DA6 /* ListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */; };
-		83BF7DE026B14A9F000645E9 /* ItemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BF7DDF26B14A9F000645E9 /* ItemName.swift */; };
 		83CC35CD26B08C3A00B08F79 /* AppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CC35CC26B08C3A00B08F79 /* AppNotification.swift */; };
 		83D0269926AF3A6A00FC29B2 /* DateSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0269826AF3A6A00FC29B2 /* DateSelection.swift */; };
 		83D0269B26AF3F2400FC29B2 /* ItemInfoToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D0269A26AF3F2400FC29B2 /* ItemInfoToolBar.swift */; };
@@ -48,6 +64,22 @@
 /* Begin PBXFileReference section */
 		8303EAE526B15AB90026E279 /* ItemListToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListToolBar.swift; sourceTree = "<group>"; };
 		83132B5226BB112300E4EE5A /* DeleteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteList.swift; sourceTree = "<group>"; };
+		8313919026DFFA4500C1B348 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8313919226E0017400C1B348 /* Licenses.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Licenses.md; sourceTree = "<group>"; };
+		8313919326E01C8400C1B348 /* iPhone-Note-SMS.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iPhone-Note-SMS.m4r"; sourceTree = "<group>"; };
+		8313919626E01CB000C1B348 /* mixkit-achievement-bell-600.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-achievement-bell-600.wav"; sourceTree = "<group>"; };
+		8313919826E01CC500C1B348 /* mixkit-bell-notification-933.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-bell-notification-933.wav"; sourceTree = "<group>"; };
+		8313919A26E01CD100C1B348 /* mixkit-bells-of-mystery-581.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-bells-of-mystery-581.wav"; sourceTree = "<group>"; };
+		8313919C26E01CDE00C1B348 /* mixkit-correct-answer-reward-952.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-correct-answer-reward-952.wav"; sourceTree = "<group>"; };
+		8313919E26E01CEB00C1B348 /* mixkit-dance-with-me-3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mixkit-dance-with-me-3.mp3"; sourceTree = "<group>"; };
+		831391A026E01CF300C1B348 /* mixkit-dreaming-big-31.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mixkit-dreaming-big-31.mp3"; sourceTree = "<group>"; };
+		831391A226E01CFD00C1B348 /* mixkit-happy-bells-notification-937.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-happy-bells-notification-937.wav"; sourceTree = "<group>"; };
+		831391A426E01D0700C1B348 /* mixkit-home-standard-ding-dong-109.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-home-standard-ding-dong-109.wav"; sourceTree = "<group>"; };
+		831391A626E01D1700C1B348 /* mixkit-musical-reveal-961.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-musical-reveal-961.wav"; sourceTree = "<group>"; };
+		831391A826E01D2900C1B348 /* mixkit-raising-me-higher-34.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mixkit-raising-me-higher-34.mp3"; sourceTree = "<group>"; };
+		831391AA26E01D3300C1B348 /* mixkit-retro-game-emergency-alarm-1000.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-retro-game-emergency-alarm-1000.wav"; sourceTree = "<group>"; };
+		831391AC26E01D3F00C1B348 /* mixkit-school-calling-bell-580.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-school-calling-bell-580.wav"; sourceTree = "<group>"; };
+		831391AE26E0214A00C1B348 /* AlarmPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPicker.swift; sourceTree = "<group>"; };
 		831890B326B5710D0053E4A4 /* DeleteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItem.swift; sourceTree = "<group>"; };
 		831890B526B59C3C0053E4A4 /* NotificationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		831890BD26B5A5E80053E4A4 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -56,14 +88,15 @@
 		8339EDB72678DBE7000A21C7 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		833F1F4626CDD8DE00CB506D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8343625B26C987EA00792B8C /* ListDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDescription.swift; sourceTree = "<group>"; };
+		834E95A326E36B920003682A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoButton.swift; sourceTree = "<group>"; };
-		8354BAE726C0B16F00F69DA5 /* FlagItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagItem.swift; sourceTree = "<group>"; };
 		8362ECCA26DC52B8004A874D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8387188626CEEAE8006EF0B7 /* DonateLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateLink.swift; sourceTree = "<group>"; };
 		838754BB267A348C00E71CD7 /* ToggleCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCompleted.swift; sourceTree = "<group>"; };
 		83B2986D26B69B6200C86510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		83B82ADD26E1F713006E9805 /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
+		83B82ADF26E23DD3006E9805 /* Cookie-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cookie-Regular.ttf"; sourceTree = "<group>"; };
 		83BBCACE267C0BED00CB8DA6 /* ListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInfo.swift; sourceTree = "<group>"; };
-		83BF7DDF26B14A9F000645E9 /* ItemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemName.swift; sourceTree = "<group>"; };
 		83CC35C926B0864500B08F79 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83CC35CC26B08C3A00B08F79 /* AppNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotification.swift; sourceTree = "<group>"; };
 		83D0269826AF3A6A00FC29B2 /* DateSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelection.swift; sourceTree = "<group>"; };
@@ -112,24 +145,45 @@
 		83132B4F26BAD89C00E4EE5A /* Items */ = {
 			isa = PBXGroup;
 			children = (
+				83B82ADD26E1F713006E9805 /* ItemRow.swift */,
 				838754BB267A348C00E71CD7 /* ToggleCompleted.swift */,
-				8354BAE726C0B16F00F69DA5 /* FlagItem.swift */,
 				8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */,
 				83D0269826AF3A6A00FC29B2 /* DateSelection.swift */,
 				8303EAE526B15AB90026E279 /* ItemListToolBar.swift */,
 				83D0269A26AF3F2400FC29B2 /* ItemInfoToolBar.swift */,
 				83D0269E26AF5AF000FC29B2 /* ItemNote.swift */,
-				83BF7DDF26B14A9F000645E9 /* ItemName.swift */,
 				831890B326B5710D0053E4A4 /* DeleteItem.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
 		};
+		8313919526E01C8F00C1B348 /* AlarmTones */ = {
+			isa = PBXGroup;
+			children = (
+				8313919326E01C8400C1B348 /* iPhone-Note-SMS.m4r */,
+				8313919626E01CB000C1B348 /* mixkit-achievement-bell-600.wav */,
+				8313919826E01CC500C1B348 /* mixkit-bell-notification-933.wav */,
+				8313919A26E01CD100C1B348 /* mixkit-bells-of-mystery-581.wav */,
+				8313919C26E01CDE00C1B348 /* mixkit-correct-answer-reward-952.wav */,
+				8313919E26E01CEB00C1B348 /* mixkit-dance-with-me-3.mp3 */,
+				831391A026E01CF300C1B348 /* mixkit-dreaming-big-31.mp3 */,
+				831391A226E01CFD00C1B348 /* mixkit-happy-bells-notification-937.wav */,
+				831391A426E01D0700C1B348 /* mixkit-home-standard-ding-dong-109.wav */,
+				831391A626E01D1700C1B348 /* mixkit-musical-reveal-961.wav */,
+				831391A826E01D2900C1B348 /* mixkit-raising-me-higher-34.mp3 */,
+				831391AA26E01D3300C1B348 /* mixkit-retro-game-emergency-alarm-1000.wav */,
+				831391AC26E01D3F00C1B348 /* mixkit-school-calling-bell-580.wav */,
+			);
+			path = AlarmTones;
+			sourceTree = "<group>";
+		};
 		831890BA26B5A4BE0053E4A4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				83B82ADF26E23DD3006E9805 /* Cookie-Regular.ttf */,
 				83D64DAE26C1409700061FE1 /* CompletedOptionAnimation.json */,
 				831890BF26B5AC5D0053E4A4 /* NotificationBell.json */,
+				8313919526E01C8F00C1B348 /* AlarmTones */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -160,6 +214,7 @@
 				831890B526B59C3C0053E4A4 /* NotificationPermission.swift */,
 				83D64DA826C13EFA00061FE1 /* CompletedOption.swift */,
 				8387188626CEEAE8006EF0B7 /* DonateLink.swift */,
+				831391AE26E0214A00C1B348 /* AlarmPicker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -167,6 +222,7 @@
 		83D4B0062677857600C3994A = {
 			isa = PBXGroup;
 			children = (
+				8313919226E0017400C1B348 /* Licenses.md */,
 				8362ECCA26DC52B8004A874D /* README.md */,
 				83D4B0112677857600C3994A /* CheckLists */,
 				83D4B0102677857600C3994A /* Products */,
@@ -208,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				83D4B0142677857600C3994A /* ContentView.swift */,
+				8313919026DFFA4500C1B348 /* SettingsView.swift */,
 				8339EDAD2677EB97000A21C7 /* Lists */,
 				8339EDAE2677EBA9000A21C7 /* Items */,
 				838754BD267A349400E71CD7 /* Helpers */,
@@ -224,6 +281,7 @@
 				83CC35CC26B08C3A00B08F79 /* AppNotification.swift */,
 				83D0CFAD268A2C3200BD1553 /* Color+Codable.swift */,
 				831890BD26B5A5E80053E4A4 /* LottieView.swift */,
+				834E95A326E36B920003682A /* AudioPlayer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,8 +349,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B82AE026E23DD3006E9805 /* Cookie-Regular.ttf in Resources */,
+				831391AD26E01D3F00C1B348 /* mixkit-school-calling-bell-580.wav in Resources */,
+				8313919F26E01CEB00C1B348 /* mixkit-dance-with-me-3.mp3 in Resources */,
 				83D4B01A2677857800C3994A /* Preview Assets.xcassets in Resources */,
+				831391A726E01D1700C1B348 /* mixkit-musical-reveal-961.wav in Resources */,
+				8313919D26E01CDE00C1B348 /* mixkit-correct-answer-reward-952.wav in Resources */,
+				831391A926E01D2900C1B348 /* mixkit-raising-me-higher-34.mp3 in Resources */,
 				83D4B0172677857800C3994A /* Assets.xcassets in Resources */,
+				8313919B26E01CD100C1B348 /* mixkit-bells-of-mystery-581.wav in Resources */,
+				8313919726E01CB000C1B348 /* mixkit-achievement-bell-600.wav in Resources */,
+				831391A126E01CF300C1B348 /* mixkit-dreaming-big-31.mp3 in Resources */,
+				831391A526E01D0700C1B348 /* mixkit-home-standard-ding-dong-109.wav in Resources */,
+				831391AB26E01D3300C1B348 /* mixkit-retro-game-emergency-alarm-1000.wav in Resources */,
+				831391A326E01CFD00C1B348 /* mixkit-happy-bells-notification-937.wav in Resources */,
+				8313919426E01C8400C1B348 /* iPhone-Note-SMS.m4r in Resources */,
+				8313919926E01CC500C1B348 /* mixkit-bell-notification-933.wav in Resources */,
 				8362ECCB26DC52B9004A874D /* README.md in Resources */,
 				831890C026B5AC5D0053E4A4 /* NotificationBell.json in Resources */,
 				83D64DAF26C1409700061FE1 /* CompletedOptionAnimation.json in Resources */,
@@ -314,11 +386,10 @@
 				83D4B02526779A5E00C3994A /* ListRow.swift in Sources */,
 				831890B426B5710D0053E4A4 /* DeleteItem.swift in Sources */,
 				83CC35CD26B08C3A00B08F79 /* AppNotification.swift in Sources */,
-				8354BAE826C0B16F00F69DA5 /* FlagItem.swift in Sources */,
-				83BF7DE026B14A9F000645E9 /* ItemName.swift in Sources */,
 				83D0269926AF3A6A00FC29B2 /* DateSelection.swift in Sources */,
 				83D4B0152677857600C3994A /* ContentView.swift in Sources */,
 				83D4B02326779A0900C3994A /* ListSelection.swift in Sources */,
+				834E95A426E36B920003682A /* AudioPlayer.swift in Sources */,
 				8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */,
 				8303EAE626B15AB90026E279 /* ItemListToolBar.swift in Sources */,
 				83D64DA926C13EFA00061FE1 /* CompletedOption.swift in Sources */,
@@ -329,12 +400,15 @@
 				83D4B02D2677A0F800C3994A /* CheckList.swift in Sources */,
 				83D0269D26AF3F2D00FC29B2 /* ListToolBar.swift in Sources */,
 				83D64DB126C14FFB00061FE1 /* CheckListDTO.swift in Sources */,
+				831391AF26E0214A00C1B348 /* AlarmPicker.swift in Sources */,
 				83D4B0132677857600C3994A /* CheckListsApp.swift in Sources */,
 				83D0269F26AF5AF000FC29B2 /* ItemNote.swift in Sources */,
 				83D0CFAE268A2C3200BD1553 /* Color+Codable.swift in Sources */,
 				8354BAE426C0AA8200F69DA5 /* AddInfoButton.swift in Sources */,
 				831890BE26B5A5E80053E4A4 /* LottieView.swift in Sources */,
 				83D0269B26AF3F2400FC29B2 /* ItemInfoToolBar.swift in Sources */,
+				83B82ADE26E1F713006E9805 /* ItemRow.swift in Sources */,
+				8313919126DFFA4500C1B348 /* SettingsView.swift in Sources */,
 				83D4B02F2677A95800C3994A /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

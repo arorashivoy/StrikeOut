@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import AVFoundation
 
 @main
 struct CheckListsApp: App {
-    @StateObject private var modelData = ModelData()
+    @StateObject private var modelData = ModelData.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
@@ -27,20 +26,23 @@ struct CheckListsApp: App {
 
 /// Extension for foreground notification
 extension AppDelegate: UNUserNotificationCenterDelegate {
+//    @StateObject var modelData = ModelData()
     
     /// foreground notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        AudioServicesPlaySystemSound(SystemSoundID(1005))
         /// To tell the app that we have finished processing
-        completionHandler([.banner])
+        completionHandler([.banner, .sound])
     }
     
     /// To manage what happens when user clicks the notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         /// What to do
-        AudioServicesPlaySystemSound(SystemSoundID(1005))
+        let IDs = response.notification.request.identifier.split(separator: "+")
+        print(IDs) // Debug
+        
+        ModelData.shared.listSelector = UUID(uuidString: String(IDs[0]))
         
         /// To tell the app that we have finished processing
         completionHandler()

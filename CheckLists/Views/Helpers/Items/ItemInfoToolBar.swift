@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemInfoToolBar: View {
     @EnvironmentObject var modelData: ModelData
+    @Binding var deniedAlert: Bool
     @Binding var draftItem: CheckList.Items
     @Binding var showInfo: Bool
     
@@ -51,17 +52,27 @@ struct ItemInfoToolBar: View {
                     modelData.checkLists[indexList].items[index] = draftItem
                 }
                 
-                // Notification
+                /// Notification
                 if draftItem.haveDueDate {
                     ///sending notification
-                    AppNotification().schedule(item: draftItem)
+                    AppNotification().schedule(list: modelData.checkLists[indexList], item: draftItem)
                 }else {
                     ///removing notification
-                    AppNotification().remove(ID: draftItem.id)
+                    AppNotification().remove(list: modelData.checkLists[indexList], itemID: draftItem.id)
                 }
                 
                 /// Stay in the ItemList View
                 modelData.listSelector = modelData.checkLists[indexList].id
+                
+                /// send alert if noti request was denied
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.40) {
+                    UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
+                        if settings.authorizationStatus == .denied {
+                            deniedAlert = true
+                            
+                        }
+                    })
+                }
                 
             }label: {
                 Text("Done")
@@ -73,7 +84,7 @@ struct ItemInfoToolBar: View {
 
 struct ItemToolBar_Previews: PreviewProvider {
     static var previews: some View {
-        ItemInfoToolBar(draftItem: .constant(ModelData().checkLists[0].items[0]), showInfo: .constant(true), indexList: 0)
+        ItemInfoToolBar(deniedAlert: .constant(false), draftItem: .constant(ModelData().checkLists[0].items[0]), showInfo: .constant(true), indexList: 0)
             .environmentObject(ModelData())
     }
 }

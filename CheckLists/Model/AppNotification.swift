@@ -9,11 +9,9 @@ import Foundation
 import SwiftUI
 import UserNotifications
 import NotificationCenter
-import AVFoundation
 
 class AppNotification {
-    
-    var systemSoundID: SystemSoundID = 1005
+    @AppStorage("alarmSound") var alarmSound: String = alarmSounds.notifications.Note.rawValue
     
     func requestPermission() -> Void {
         /// To request permission to show notifications
@@ -24,15 +22,15 @@ class AppNotification {
         }
     }
     
-    func schedule(item: CheckList.Items) -> Void {
+    func schedule(list: CheckList, item: CheckList.Items) -> Void {
         
         ///to only send notification when not completed
         if !item.isCompleted {
             let content = UNMutableNotificationContent()
             content.title = item.itemName
             content.body = item.note
-            content.sound = UNNotificationSound.default
-//            content.sound = UNNotificationSound(named: )
+            content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: alarmSound))
+//            content.sound = UNNotificationSound.default
             
             /// getting date components
             let components = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute],
@@ -42,15 +40,19 @@ class AppNotification {
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
             
             /// requesting the notification
-            let request = UNNotificationRequest(identifier: item.id.uuidString, content: content, trigger: trigger)
+            let ID = "\(list.id.uuidString)+\(item.id.uuidString)"
+            print(ID) //Debug
+            let request = UNNotificationRequest(identifier: ID, content: content, trigger: trigger)
             
             /// add our notification request
             UNUserNotificationCenter.current().add(request)
         }
     }
     
-    func remove(ID: CheckList.Items.ID) -> Void {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [ID.uuidString])
+    func remove(list: CheckList, itemID: CheckList.Items.ID) -> Void {
+        let ID = "\(list.id.uuidString)+\(itemID.uuidString)"
+        
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [ID])
     }
     
 }

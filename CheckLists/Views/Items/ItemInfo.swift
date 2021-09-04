@@ -13,6 +13,7 @@ struct ItemInfo: View {
     @State private var compOption: Bool = false
     @Binding var showInfo: Bool
     @Binding var draftItem: CheckList.Items
+    @Binding var deniedAlert: Bool
     
     var indexList: Int
     
@@ -21,7 +22,7 @@ struct ItemInfo: View {
         VStack(alignment: .center) {
             
             /// To display cancel(only when the new item is created) and done button
-            ItemInfoToolBar(draftItem: $draftItem, showInfo: $showInfo, indexList: indexList)
+            ItemInfoToolBar(deniedAlert: $deniedAlert, draftItem: $draftItem, showInfo: $showInfo, indexList: indexList)
                 .environmentObject(modelData)
             
             /// Item editing options
@@ -57,7 +58,7 @@ struct ItemInfo: View {
                 .onChange(of: draftItem.isCompleted) { val in
                     if val {
                         /// remove notification
-                        AppNotification().remove(ID: draftItem.id)
+                        AppNotification().remove(list: modelData.checkLists[indexList], itemID: draftItem.id)
                         
                         /// ask if you want to enable show notification
                         if !compAsked {
@@ -87,11 +88,10 @@ struct ItemInfo: View {
                 
                 /// Adding donate link
                 if draftItem.id == CheckList.Items.data.id {
-                    DonateLink()
+                    DonateLink(bgColor: modelData.checkLists[indexList].color)
                 }
             }
             .listStyle(DefaultListStyle())
-            .padding(.bottom, 0)
             
             Spacer()
             
@@ -102,6 +102,7 @@ struct ItemInfo: View {
         }
         .foregroundColor(modelData.checkLists[indexList].color)
         .padding()
+        .accentColor(modelData.checkLists[indexList].color)
         
     }
 }
@@ -109,8 +110,9 @@ struct ItemInfo: View {
 struct ItemInfo_Previews: PreviewProvider {
     @State static private var draftItem = ModelData().checkLists[0].items[0]
     static var previews: some View {
-        ItemInfo(showInfo: .constant(true), draftItem: $draftItem, indexList: 0)
+        ItemInfo(showInfo: .constant(true), draftItem: $draftItem, deniedAlert: .constant(false), indexList: 0)
             .preferredColorScheme(.dark)
             .environmentObject(ModelData())
+            .previewDevice("iPhone 12 Pro")
     }
 }
