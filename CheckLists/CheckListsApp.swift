@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct CheckListsApp: App {
-    @StateObject private var modelData = ModelData.shared
+    @StateObject private var modelData = ModelData()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
@@ -26,7 +26,6 @@ struct CheckListsApp: App {
 
 /// Extension for foreground notification
 extension AppDelegate: UNUserNotificationCenterDelegate {
-//    @StateObject var modelData = ModelData()
     
     /// foreground notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -40,7 +39,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         /// What to do
         let IDs = response.notification.request.identifier.split(separator: "+")
-        print(IDs) // Debug
         
         ModelData.shared.listSelector = UUID(uuidString: String(IDs[0]))
         

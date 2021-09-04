@@ -39,15 +39,7 @@ struct ListSelection: View {
                             }
                         }
                         .onDelete { indexSet in
-                            
-                            /// removing Notifications
-                            for i in indexSet {
-                                for item in modelData.checkLists[i].items {
-                                    AppNotification().remove(list: modelData.checkLists[i], itemID: item.id)
-                                }
-                            }
-                            
-                            modelData.checkLists.remove(atOffsets: indexSet)
+                            removeRow(pinnedList, at: indexSet)
                         }
                     }
                 }
@@ -64,16 +56,8 @@ struct ListSelection: View {
                             ListRow(checkList: checkList)
                         }
                     }
-                    .onDelete { indexSet in
-                        
-                        /// removing Notifications
-                        for i in indexSet {
-                            for item in modelData.checkLists[i].items {
-                                AppNotification().remove(list: modelData.checkLists[i], itemID: item.id)
-                            }
-                        }
-                        
-                        modelData.checkLists.remove(atOffsets: indexSet)
+                    .onDelete{ indexSet in
+                        removeRow(unPinnedList, at: indexSet)
                     }
                     
                     /// adding list button
@@ -124,6 +108,25 @@ struct ListSelection: View {
             return .light
         case .system:
             return nil
+        }
+    }
+    
+    
+    /// remove row with .onDelete method
+    /// - Parameters:
+    ///   - list: list used in ForEach
+    ///   - offset: indexSet of the above list
+    func removeRow(_ list: [CheckList], at offset: IndexSet) {
+        for i in offset {
+            if let indexList = modelData.checkLists.firstIndex(where: {$0.id == list[i].id}) {
+            
+                /// removing Notifications
+                for item in modelData.checkLists[indexList].items {
+                    AppNotification().remove(list: modelData.checkLists[i], itemID: item.id)
+                }
+                
+                modelData.checkLists.remove(at: indexList)
+            }
         }
     }
 }

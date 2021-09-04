@@ -33,12 +33,7 @@ struct ItemList: View {
                 
                 /// Drag to delete
                 .onDelete{ indexSet in
-                    ///removing notification
-                    for i in indexSet {
-                        AppNotification().remove(list: checkList, itemID: modelData.checkLists[indexList].items[i].id)
-                    }
-                    
-                    modelData.checkLists[indexList].items.remove(atOffsets: indexSet)
+                    removeRow(sortedItems, indexList: indexList, at: indexSet)
                 }
                 
                 /// new item button
@@ -88,6 +83,24 @@ struct ItemList: View {
             return .light
         case .system:
             return nil
+        }
+    }
+    
+    
+    /// to remove item using .onDelete method
+    /// - Parameters:
+    ///   - list: list used in ForEach
+    ///   - indexList: index of the CheckList
+    ///   - offset: indexSet of the above list
+    func removeRow(_ list: [CheckList.Items], indexList: Int, at offset: IndexSet) {
+        for i in offset {
+            if let index = modelData.checkLists[indexList].items.firstIndex(where: {$0.id == list[i].id}) {
+                
+                /// removing Notification
+                AppNotification().remove(list: checkList, itemID: modelData.checkLists[indexList].items[index].id)
+                
+                modelData.checkLists[indexList].items.remove(at: index)
+            }
         }
     }
 }

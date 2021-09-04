@@ -1,15 +1,15 @@
 #  Licenses 
 
-## Completed options animation
+### Completed options animation
 From lottie files
 https://lottiefiles.com/46848-transaction-completed
 
-## Donation Button
+### Donation Button
 From BMC Developer kit
 
-## Notification permission animation
+### Notification permission animation
 From lottie files
 https://lottiefiles.com/58221-notification-bell
 
-## Alarm sounds
+### Alarm sounds
 https://mixkit.co/free-sound-effects/alarm/

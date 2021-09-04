@@ -41,7 +41,6 @@ class AppNotification {
             
             /// requesting the notification
             let ID = "\(list.id.uuidString)+\(item.id.uuidString)"
-            print(ID) //Debug
             let request = UNNotificationRequest(identifier: ID, content: content, trigger: trigger)
             
             /// add our notification request

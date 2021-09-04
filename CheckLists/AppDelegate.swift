@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-//    var modelData = ModelData()
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
