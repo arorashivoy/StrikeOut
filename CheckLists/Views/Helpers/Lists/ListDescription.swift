@@ -24,7 +24,7 @@ struct ListDescription: View {
                 .foregroundColor(.secondary)
             
             if draftList.description.trimmingCharacters(in: [" "]) == "" {
-                Text("Description")
+                Text("What's on your mind")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .padding([.top, .leading], 5.0)

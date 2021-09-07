@@ -16,7 +16,7 @@ struct DonateLink: View {
             
             ZStack{
                 RoundedRectangle(cornerRadius: 10)
-                    .frame(width: 170, height: 55, alignment: .center)
+                    .frame(width: 180, height: 55, alignment: .center)
                     .foregroundColor(bgColor)
                 HStack {
                     Image("bmcCup")

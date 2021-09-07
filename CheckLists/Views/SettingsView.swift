@@ -13,17 +13,15 @@ struct SettingsView: View {
     @AppStorage("themeColor") var themeColor = Color.blue
     @AppStorage("colorSchemes") var colorSchemes: appColorScheme = appColorScheme.system
     
+    var checkLists: [CheckList]
+    
     var body: some View {
         NavigationView{
             Form{
                 
-                
-                // change labels
-                
-                
                 Section{
                     /// accent color picker
-                    ColorPicker("Choose accent color", selection: $themeColor)
+                    ColorPicker("Choose accent color", selection: $themeColor, supportsOpacity: false)
                     
                     /// dark, light mode picker
                     VStack(alignment: .leading) {
@@ -40,14 +38,20 @@ struct SettingsView: View {
                 Section{
                     /// alarm tone picker
                     NavigationLink(
-                        destination: AlarmPicker().environmentObject(audioPlayer).onDisappear(perform: audioPlayer.stopAudio)
+                        destination: AlarmPicker(checkLists: checkLists).environmentObject(audioPlayer).onDisappear(perform: audioPlayer.stopAudio)
                     )
                     {
-                        Text("Alarm tone picker")
+                        Text("Alarm tone")
                     }
                 }
-                /// donate link
-                DonateLink(bgColor: .accentColor)
+                
+                Section{
+                    /// donate link
+                    DonateLink(bgColor: .accentColor)
+                    
+                    /// Github page link
+                    ViewOnGithub(bgColor: .accentColor)
+                }
             }
             .navigationTitle("Settings")
             .toolbar(content: {
@@ -74,6 +78,6 @@ enum appColorScheme: Int, CaseIterable, Identifiable {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(checkLists: [CheckList.data])
     }
 }

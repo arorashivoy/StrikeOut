@@ -23,7 +23,7 @@ struct ItemNote: View {
                 .padding(.all, 5)
             
             if editItem.note.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == ""{
-                Text("Notes")
+                Text("Put your thoughts into words")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .padding([.leading, .top], 5.0)

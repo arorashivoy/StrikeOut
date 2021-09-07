@@ -24,6 +24,7 @@ struct ItemInfo: View {
             /// To display cancel(only when the new item is created) and done button
             ItemInfoToolBar(deniedAlert: $deniedAlert, draftItem: $draftItem, showInfo: $showInfo, indexList: indexList)
                 .environmentObject(modelData)
+                .padding([.leading, .trailing, .top])
             
             /// Item editing options
             List{
@@ -91,7 +92,7 @@ struct ItemInfo: View {
                     DonateLink(bgColor: modelData.checkLists[indexList].color)
                 }
             }
-            .listStyle(DefaultListStyle())
+            .listStyle(InsetGroupedListStyle())
             
             Spacer()
             
@@ -101,7 +102,6 @@ struct ItemInfo: View {
             
         }
         .foregroundColor(modelData.checkLists[indexList].color)
-        .padding()
         .accentColor(modelData.checkLists[indexList].color)
         
     }

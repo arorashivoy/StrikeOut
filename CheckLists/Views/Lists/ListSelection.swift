@@ -91,7 +91,7 @@ struct ListSelection: View {
             }
             /// Settings panel
             .fullScreenCover(isPresented: $settingsView, content: {
-                SettingsView()
+                SettingsView(checkLists: modelData.checkLists)
                     .accentColor(themeColor)
                     .preferredColorScheme(setColorScheme())
             })
