@@ -19,7 +19,7 @@ struct CheckListDTO: Hashable, Codable {
     var color: Color
     var description: String = ""
     var showQuantity: Bool = false
-    var showCompleted: Bool = false
+    var showCompleted: Bool?
     var completedAtBottom: Bool = false
     var isPinned: Bool = false
     var defaultTime: Date = defTimeMaker(hour: 8, minute: 0)

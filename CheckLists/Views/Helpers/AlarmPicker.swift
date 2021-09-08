@@ -9,7 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct AlarmPicker: View {
-    @AppStorage("alarmSound") var alarmSound: String = alarmSounds.notifications.Note.rawValue
+    @AppStorage(StorageString.alarmSound.rawValue) var alarmSound: String = alarmSounds.notifications.Note.rawValue
     @EnvironmentObject var audioPlayer: AudioPlayer
     
     var checkLists: [CheckList]

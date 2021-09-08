@@ -11,7 +11,7 @@ import AVFoundation
 import Combine
 
 class AudioPlayer: ObservableObject {
-    @AppStorage("alarmSound") var alarmSound: String = alarmSounds.notifications.Note.rawValue
+    @AppStorage(StorageString.alarmSound.rawValue) var alarmSound: String = alarmSounds.notifications.Note.rawValue
     
     
     let objectWillChange = PassthroughSubject<AudioPlayer, Never>()

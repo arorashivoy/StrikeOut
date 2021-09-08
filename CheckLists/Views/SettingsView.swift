@@ -10,8 +10,9 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject var audioPlayer = AudioPlayer()
     @Environment(\.presentationMode) var presentationMode
-    @AppStorage("themeColor") var themeColor = Color.blue
-    @AppStorage("colorSchemes") var colorSchemes: appColorScheme = appColorScheme.system
+    @AppStorage(StorageString.themeColor.rawValue) var themeColor = Color.blue
+    @AppStorage(StorageString.colorSchemes.rawValue) var colorSchemes = AppColorScheme.system
+    @AppStorage(StorageString.defaultCompleted.rawValue) var defaultCompleted: Bool = false
     
     var checkLists: [CheckList]
     
@@ -27,7 +28,7 @@ struct SettingsView: View {
                     VStack(alignment: .leading) {
                         Text("Choose theme")
                         Picker("Choose theme", selection: $colorSchemes) {
-                            ForEach(appColorScheme.allCases) { scheme in
+                            ForEach(AppColorScheme.allCases) { scheme in
                                 let name = "\(scheme)"
                                 Text(name)
                             }
@@ -35,6 +36,11 @@ struct SettingsView: View {
                         .pickerStyle(SegmentedPickerStyle())
                     }
                 }
+                Section {
+                    /// Change whether to show completed by default
+                    Toggle("Show Completed by default", isOn: $defaultCompleted)
+                }
+                
                 Section{
                     /// alarm tone picker
                     NavigationLink(
@@ -68,12 +74,12 @@ struct SettingsView: View {
     }
 }
 
-enum appColorScheme: Int, CaseIterable, Identifiable {
+enum AppColorScheme: Int, CaseIterable, Identifiable {
     case dark = 0
     case light = 1
     case system = 2
     
-    var id: appColorScheme {self}
+    var id: AppColorScheme {self}
 }
 
 struct SettingsView_Previews: PreviewProvider {

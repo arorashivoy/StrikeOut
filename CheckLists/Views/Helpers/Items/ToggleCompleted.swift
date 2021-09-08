@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ToggleCompleted: View {
     @EnvironmentObject var modelData: ModelData
-    @AppStorage("compAsked") var compAsked: Bool = false
+    @AppStorage(StorageString.compAsked.rawValue) var compAsked: Bool = false
     @State private var scaleAnimation: Bool = false
     @State private var compOption: Bool = false
     

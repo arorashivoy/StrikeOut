@@ -9,12 +9,11 @@ import SwiftUI
 
 struct DateSelection: View {
     @EnvironmentObject var modelData: ModelData
+    @AppStorage(StorageString.notiAsked.rawValue) var notiAsked: Bool = false
     @State var dueDate: Date
     @State var dueTime: Date
     @State var notiPermission: Bool = false
     @Binding var editItem: CheckList.Items
-    
-    @AppStorage("notiAsked") var notiAsked: Bool = false
     
     var indexList: Int
     

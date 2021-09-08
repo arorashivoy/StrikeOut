@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemInfo: View {
     @EnvironmentObject var modelData: ModelData
-    @AppStorage("compAsked") var compAsked: Bool = false
+    @AppStorage(StorageString.compAsked.rawValue) var compAsked: Bool = false
     @State private var compOption: Bool = false
     @Binding var showInfo: Bool
     @Binding var draftItem: CheckList.Items

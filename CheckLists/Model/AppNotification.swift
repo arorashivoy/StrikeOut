@@ -11,7 +11,7 @@ import UserNotifications
 import NotificationCenter
 
 class AppNotification {
-    @AppStorage("alarmSound") var alarmSound: String = alarmSounds.notifications.Note.rawValue
+    @AppStorage(StorageString.alarmSound.rawValue) var alarmSound: String = alarmSounds.notifications.Note.rawValue
     
     func requestPermission() -> Void {
         /// To request permission to show notifications

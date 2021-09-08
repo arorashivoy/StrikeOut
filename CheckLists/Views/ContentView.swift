@@ -11,8 +11,8 @@ import UserNotifications
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @Environment(\.scenePhase) private var scenePhase
-    @AppStorage("themeColor") var themeColor = Color.blue
-    @AppStorage("colorSchemes") var colorSchemes: appColorScheme = appColorScheme.system
+    @AppStorage(StorageString.themeColor.rawValue) var themeColor = Color.blue
+    @AppStorage(StorageString.colorSchemes.rawValue) var colorSchemes: AppColorScheme = AppColorScheme.system
     
     var body: some View {
         ListSelection()
@@ -26,7 +26,6 @@ struct ContentView: View {
             })
     }
     
-    
     /// To set color scheme which the user chooses
     /// - Returns: colorScheme
     func setColorScheme() -> ColorScheme? {
@@ -39,6 +38,17 @@ struct ContentView: View {
             return nil
         }
     }
+}
+
+
+/// Keys for @AppStorage wrapper
+enum StorageString: String {
+    case themeColor
+    case colorSchemes
+    case alarmSound
+    case defaultCompleted
+    case notiAsked
+    case compAsked
 }
 
 struct ContentView_Previews: PreviewProvider {

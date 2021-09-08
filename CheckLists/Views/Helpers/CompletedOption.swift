@@ -47,6 +47,7 @@ struct CompletedOption: View {
                 
                 Spacer()
                 
+                //TODO: change it to change defaultCompleted to true
                 /// Show Completed button
                 Button{
                     modelData.checkLists[indexList].showCompleted = true

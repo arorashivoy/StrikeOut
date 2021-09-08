@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemRow: View {
     @EnvironmentObject var modelData: ModelData
-    @AppStorage("colorSchemes") var colorSchemes: appColorScheme = appColorScheme.system
+    @AppStorage(StorageString.colorSchemes.rawValue) var colorSchemes: AppColorScheme = AppColorScheme.system
     @State private var showInfo: Bool = false
     @Binding var draftItem: CheckList.Items
     @Binding var deniedAlert: Bool

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NotificationPermission: View {
-    @AppStorage("notiAsked") var notiAsked: Bool = false
+    @AppStorage(StorageString.notiAsked.rawValue) var notiAsked: Bool = false
     @Binding var notiPermission: Bool
     
     var checkListColor: Color

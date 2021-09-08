@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ItemList: View {
     @EnvironmentObject var modelData: ModelData
-    @AppStorage("colorSchemes") var colorSchemes: appColorScheme = appColorScheme.system
+    @AppStorage(StorageString.colorSchemes.rawValue) var colorSchemes: AppColorScheme = AppColorScheme.system
+    @AppStorage(StorageString.defaultCompleted.rawValue) var defaultCompleted = false
     @State private var showInfo: Bool = false
     @State private var newItem: Bool = false
     @State private var draftItem: CheckList.Items = CheckList.Items.default
@@ -103,19 +104,18 @@ struct ItemList: View {
             }
         }
     }
-}
-
-
-/// sort items to show completed at bottom (if asked) and flagged at top
-/// - Parameter checkList: The list whose items are to be sort
-/// - Returns: the sorted items list
-func sortItems(checkList: CheckList) -> [CheckList.Items] {
-    if checkList.showCompleted {
-        let completedList = checkList.items.filter{ (!$0.isCompleted || !checkList.completedAtBottom) && $0.flagged} + checkList.items.filter{ (!$0.isCompleted || !checkList.completedAtBottom) && !$0.flagged }
-        let incompleteList = checkList.items.filter{ ($0.isCompleted && checkList.completedAtBottom) && $0.flagged } + checkList.items.filter{ ($0.isCompleted && checkList.completedAtBottom) && !$0.flagged}
-        return  completedList + incompleteList
-    }else {
-        return checkList.items.filter{ !$0.isCompleted && $0.flagged} + checkList.items.filter{ !$0.isCompleted && !$0.flagged}
+    
+    /// sort items to show completed at bottom (if asked) and flagged at top
+    /// - Parameter checkList: The list whose items are to be sort
+    /// - Returns: the sorted items list
+    func sortItems(checkList: CheckList) -> [CheckList.Items] {
+        if checkList.showCompleted  ?? defaultCompleted {
+            let completedList = checkList.items.filter{ (!$0.isCompleted || !checkList.completedAtBottom) && $0.flagged} + checkList.items.filter{ (!$0.isCompleted || !checkList.completedAtBottom) && !$0.flagged }
+            let incompleteList = checkList.items.filter{ ($0.isCompleted && checkList.completedAtBottom) && $0.flagged } + checkList.items.filter{ ($0.isCompleted && checkList.completedAtBottom) && !$0.flagged}
+            return  completedList + incompleteList
+        }else {
+            return checkList.items.filter{ !$0.isCompleted && $0.flagged} + checkList.items.filter{ !$0.isCompleted && !$0.flagged}
+        }
     }
 }
 

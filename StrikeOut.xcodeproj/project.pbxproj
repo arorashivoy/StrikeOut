@@ -31,11 +31,11 @@
 		8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDAB2677EAF9000A21C7 /* ItemList.swift */; };
 		8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDB72678DBE7000A21C7 /* ItemInfo.swift */; };
 		833F1F4726CDD8DE00CB506D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833F1F4626CDD8DE00CB506D /* ImagePicker.swift */; };
+		833FF82926E8AB4F007570EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833FF82826E8AB4F007570EF /* SettingsView.swift */; };
 		8343625C26C987EA00792B8C /* ListDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8343625B26C987EA00792B8C /* ListDescription.swift */; };
 		834E95A426E36B920003682A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E95A326E36B920003682A /* AudioPlayer.swift */; };
 		83536C3C26E6A130009AFCAC /* mixkit-oh-779.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 83536C3B26E6A130009AFCAC /* mixkit-oh-779.mp3 */; };
 		83536C3E26E6A206009AFCAC /* mixkit-life-is-a-dream-837.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 83536C3D26E6A206009AFCAC /* mixkit-life-is-a-dream-837.mp3 */; };
-		83536C3F26E6A578009AFCAC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8313919026DFFA4500C1B348 /* SettingsView.swift */; };
 		8354BAE426C0AA8200F69DA5 /* AddInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */; };
 		8362ECCB26DC52B9004A874D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8362ECCA26DC52B8004A874D /* README.md */; };
 		837FAE2D26E5F85E009ADA43 /* ViewOnGithub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837FAE2C26E5F85E009ADA43 /* ViewOnGithub.swift */; };
@@ -76,7 +76,6 @@
 /* Begin PBXFileReference section */
 		8303EAE526B15AB90026E279 /* ItemListToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListToolBar.swift; sourceTree = "<group>"; };
 		83132B5226BB112300E4EE5A /* DeleteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteList.swift; sourceTree = "<group>"; };
-		8313919026DFFA4500C1B348 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8313919326E01C8400C1B348 /* iPhone-Note-SMS.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iPhone-Note-SMS.m4r"; sourceTree = "<group>"; };
 		8313919626E01CB000C1B348 /* mixkit-achievement-bell-600.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-achievement-bell-600.wav"; sourceTree = "<group>"; };
 		8313919826E01CC500C1B348 /* mixkit-bell-notification-933.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-bell-notification-933.wav"; sourceTree = "<group>"; };
@@ -98,6 +97,7 @@
 		8339EDAB2677EAF9000A21C7 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		8339EDB72678DBE7000A21C7 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		833F1F4626CDD8DE00CB506D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		833FF82826E8AB4F007570EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8343625B26C987EA00792B8C /* ListDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDescription.swift; sourceTree = "<group>"; };
 		834E95A326E36B920003682A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		834E95A526E3C2180003682A /* Licenses.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Licenses.md; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				83D4B0142677857600C3994A /* ContentView.swift */,
-				8313919026DFFA4500C1B348 /* SettingsView.swift */,
+				833FF82826E8AB4F007570EF /* SettingsView.swift */,
 				8339EDAD2677EB97000A21C7 /* Lists */,
 				8339EDAE2677EBA9000A21C7 /* Items */,
 				838754BD267A349400E71CD7 /* Helpers */,
@@ -446,7 +446,7 @@
 				833F1F4726CDD8DE00CB506D /* ImagePicker.swift in Sources */,
 				8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */,
 				83D4B02D2677A0F800C3994A /* CheckList.swift in Sources */,
-				83536C3F26E6A578009AFCAC /* SettingsView.swift in Sources */,
+				833FF82926E8AB4F007570EF /* SettingsView.swift in Sources */,
 				83D0269D26AF3F2D00FC29B2 /* ListToolBar.swift in Sources */,
 				83D64DB126C14FFB00061FE1 /* CheckListDTO.swift in Sources */,
 				831391AF26E0214A00C1B348 /* AlarmPicker.swift in Sources */,

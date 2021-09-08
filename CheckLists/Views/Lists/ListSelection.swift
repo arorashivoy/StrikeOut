@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ListSelection: View {
     @EnvironmentObject var modelData: ModelData
-    @AppStorage("themeColor") var themeColor = Color.blue
-    @AppStorage("colorSchemes") var colorSchemes: appColorScheme = appColorScheme.system
+    @AppStorage(StorageString.themeColor.rawValue) var themeColor = Color.blue
+    @AppStorage(StorageString.colorSchemes.rawValue) var colorSchemes: AppColorScheme = AppColorScheme.system
     @State private var addSheet: Bool = false
     @State private var editSheet: Bool = false
     @State private var draftList: CheckList = CheckList.default

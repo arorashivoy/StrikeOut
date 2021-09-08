@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemListToolBar: View {
     @EnvironmentObject var modelData: ModelData
+    @AppStorage(StorageString.defaultCompleted.rawValue) var defaultCompleted = false
     @Binding var showListInfo: Bool
     
     var indexList: Int
@@ -33,10 +34,16 @@ struct ItemListToolBar: View {
                 Menu{
                     /// show Completed button
                     Button{
-                        modelData.checkLists[indexList].showCompleted.toggle()
+                        if modelData.checkLists[indexList].showCompleted == true {
+                            modelData.checkLists[indexList].showCompleted = false
+                        }else if modelData.checkLists[indexList].showCompleted == false {
+                            modelData.checkLists[indexList].showCompleted = true
+                        }else {
+                            modelData.checkLists[indexList].showCompleted = !defaultCompleted
+                        }
                         
                     } label: {
-                        if modelData.checkLists[indexList].showCompleted {
+                        if (modelData.checkLists[indexList].showCompleted ?? defaultCompleted) {
                             Label("Hide Completed", systemImage: "eye.slash")
                         } else {
                             Label("Show Completed", systemImage: "eye")
@@ -44,7 +51,7 @@ struct ItemListToolBar: View {
                     }
                     
                     ///sort Completed
-                    if modelData.checkLists[indexList].showCompleted {
+                    if (modelData.checkLists[indexList].showCompleted ?? defaultCompleted) {
                         Button{
                             modelData.checkLists[indexList].completedAtBottom.toggle()
                             

@@ -10,12 +10,13 @@ import SwiftUI
 
 /// Domain Model
 struct CheckList: Hashable, Identifiable {
+    
     var listName: String
     var id = UUID()
     var color: Color
     var description: String = ""
     var showQuantity: Bool = false
-    var showCompleted: Bool = false
+    var showCompleted: Bool?
     var completedAtBottom: Bool = false
     var isPinned: Bool = false
     var defaultTime: Date = defTimeMaker(hour: 8, minute: 0)
@@ -129,7 +130,7 @@ struct CheckList: Hashable, Identifiable {
     }
     
     /// setting some inbuilt checklists
-    static let `default` = CheckList(listName: "", id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [])
+    static let `default` = CheckList(listName: "", id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!, color: .blue, description: "", showQuantity: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [])
     
     static let data = CheckList(listName: "To Do", color: .blue, description: "", showQuantity: false, showCompleted: false, completedAtBottom: false, isPinned: false, imageName: "list.bullet", items: [Items.data])
     
