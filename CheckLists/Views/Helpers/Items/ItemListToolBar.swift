@@ -25,7 +25,6 @@ struct ItemListToolBar: View {
                     
                 }label: {
                     Label("Edit List", systemImage: "pencil")
-                        .font(.title2)
                         .foregroundColor(modelData.checkLists[indexList].color)
                         .padding(.trailing, 3)
                 }
@@ -94,7 +93,6 @@ struct ItemListToolBar: View {
                 } label: {
                     withAnimation(.easeInOut(duration: 2)){
                         Label("Menu", systemImage: "ellipsis.circle")
-                            .font(.title2)
                             .foregroundColor(modelData.checkLists[indexList].color)
                     }
                 }

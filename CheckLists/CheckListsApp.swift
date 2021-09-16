@@ -10,14 +10,17 @@ import SwiftUI
 @main
 struct CheckListsApp: App {
     @StateObject private var modelData = ModelData()
+    @StateObject private var alarmModel = AlarmModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(modelData)
+                .environmentObject(alarmModel)
                 .onAppear(){
                     modelData.load()
+                    alarmModel.load()
                 }
         }
     }

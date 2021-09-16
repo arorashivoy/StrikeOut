@@ -10,6 +10,7 @@ import UserNotifications
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var alarmModel: AlarmModel
     @Environment(\.scenePhase) private var scenePhase
     @AppStorage(StorageString.themeColor.rawValue) var themeColor = Color.blue
     @AppStorage(StorageString.colorSchemes.rawValue) var colorSchemes: AppColorScheme = AppColorScheme.system
@@ -17,6 +18,7 @@ struct ContentView: View {
     var body: some View {
         ListSelection()
             .environmentObject(modelData)
+            .environmentObject(alarmModel)
             .accentColor(themeColor)
             .preferredColorScheme(setColorScheme())
             .onChange(of: scenePhase, perform: { phase in
@@ -56,6 +58,7 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
                 .preferredColorScheme(.dark)
+                .environmentObject(AlarmModel())
                 .environmentObject(ModelData())
         }
     }

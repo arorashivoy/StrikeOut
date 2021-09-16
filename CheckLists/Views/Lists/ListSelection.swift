@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListSelection: View {
     @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var alarmModel: AlarmModel
     @AppStorage(StorageString.themeColor.rawValue) var themeColor = Color.blue
     @AppStorage(StorageString.colorSchemes.rawValue) var colorSchemes: AppColorScheme = AppColorScheme.system
     @State private var addSheet: Bool = false
@@ -92,6 +93,7 @@ struct ListSelection: View {
             /// Settings panel
             .fullScreenCover(isPresented: $settingsView, content: {
                 SettingsView(checkLists: modelData.checkLists)
+                    .environmentObject(alarmModel)
                     .accentColor(themeColor)
                     .preferredColorScheme(setColorScheme())
             })
@@ -135,6 +137,7 @@ struct ListSelection_Previews: PreviewProvider {
     static var previews: some View {
         ListSelection()
             .preferredColorScheme(.dark)
+            .environmentObject(AlarmModel())
             .environmentObject(ModelData())
     }
 }

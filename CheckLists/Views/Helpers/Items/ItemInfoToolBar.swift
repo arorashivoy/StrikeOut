@@ -65,7 +65,7 @@ struct ItemInfoToolBar: View {
                 modelData.listSelector = modelData.checkLists[indexList].id
                 
                 /// send alert if noti request was denied
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.40) {
+                DispatchQueue.main.async {
                     UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
                         if settings.authorizationStatus == .denied {
                             deniedAlert = true

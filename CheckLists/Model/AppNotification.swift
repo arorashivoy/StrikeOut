@@ -11,7 +11,7 @@ import UserNotifications
 import NotificationCenter
 
 class AppNotification {
-    @AppStorage(StorageString.alarmSound.rawValue) var alarmSound: String = alarmSounds.notifications.Note.rawValue
+    @AppStorage(StorageString.alarmSound.rawValue) var alarmSound: String = AlarmModel.notifications.Note.rawValue
     
     func requestPermission() -> Void {
         /// To request permission to show notifications
@@ -30,7 +30,6 @@ class AppNotification {
             content.title = item.itemName
             content.body = item.note
             content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: alarmSound))
-//            content.sound = UNNotificationSound.default
             
             /// getting date components
             let components = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute],

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @StateObject var audioPlayer = AudioPlayer()
+    @StateObject private var audioPlayer = AudioPlayer()
+    @EnvironmentObject var alarmModel: AlarmModel
     @Environment(\.presentationMode) var presentationMode
     @AppStorage(StorageString.themeColor.rawValue) var themeColor = Color.blue
     @AppStorage(StorageString.colorSchemes.rawValue) var colorSchemes = AppColorScheme.system
@@ -44,7 +45,7 @@ struct SettingsView: View {
                 Section{
                     /// alarm tone picker
                     NavigationLink(
-                        destination: AlarmPicker(checkLists: checkLists).environmentObject(audioPlayer).onDisappear(perform: audioPlayer.stopAudio)
+                        destination: AlarmPicker(checkLists: checkLists).environmentObject(audioPlayer).environmentObject(alarmModel).onDisappear(perform: audioPlayer.stopAudio)
                     )
                     {
                         Text("Alarm tone")
@@ -53,10 +54,10 @@ struct SettingsView: View {
                 
                 Section{
                     /// donate link
-                    DonateLink(bgColor: .accentColor)
+                    DonateLink(bgColor: themeColor)
                     
                     /// Github page link
-                    ViewOnGithub(bgColor: .accentColor)
+                    ViewOnGithub(bgColor: themeColor)
                 }
             }
             .navigationTitle("Settings")
@@ -66,7 +67,6 @@ struct SettingsView: View {
                     presentationMode.wrappedValue.dismiss()
                 }label : {
                     Text("Done")
-                        .foregroundColor(.red)
                 }
             })
             .accentColor(themeColor)
@@ -85,5 +85,6 @@ enum AppColorScheme: Int, CaseIterable, Identifiable {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(checkLists: [CheckList.data])
+            .environmentObject(AlarmModel())
     }
 }
