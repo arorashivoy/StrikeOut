@@ -42,8 +42,40 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         /// What to do
         let IDs = response.notification.request.identifier.split(separator: "+")
+        let notiID = response.notification.request.identifier
+        let notiTitle = response.notification.request.content.title
+        let notiBody = response.notification.request.content.body
+        let notiSound = response.notification.request.content.sound
         
         ModelData.shared.listSelector = UUID(uuidString: String(IDs[0]))
+        
+        switch response.actionIdentifier {
+        case "SNOOZE":
+            /// Setting up new Notification after 5 min
+            let content = UNMutableNotificationContent()
+            content.title = notiTitle
+            content.body = notiBody
+            content.sound = notiSound
+            content.categoryIdentifier = "ALARM"
+            
+            var timeInterval = UserDefaults.standard.integer(forKey: StorageString.snoozeTime.rawValue)
+            
+            if timeInterval == 0 {
+                timeInterval = 5
+            }
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(timeInterval * 60) , repeats: false)
+            let request = UNNotificationRequest(identifier: notiID, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request)
+            
+            break
+            
+        default:
+            ModelData.shared.listSelector = UUID(uuidString: String(IDs[0]))
+            
+            break
+        }
         
         /// To tell the app that we have finished processing
         completionHandler()

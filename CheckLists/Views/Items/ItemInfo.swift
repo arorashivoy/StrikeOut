@@ -68,7 +68,7 @@ struct ItemInfo: View {
                     }
                 }
                 .sheet(isPresented: $compOption, content: {
-                    CompletedOption(compOption: $compOption, indexList: indexList)
+                    CompletedOption(compOption: $compOption, listColor: modelData.checkLists[indexList].color)
                         .environmentObject(modelData)
                 })
                 

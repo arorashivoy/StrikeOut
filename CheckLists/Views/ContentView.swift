@@ -51,6 +51,7 @@ enum StorageString: String {
     case defaultCompleted
     case notiAsked
     case compAsked
+    case snoozeTime
 }
 
 struct ContentView_Previews: PreviewProvider {

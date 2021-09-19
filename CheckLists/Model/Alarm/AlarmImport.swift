@@ -70,7 +70,6 @@ struct AlarmImport {
         
         /// Setting the url name
         AlarmModel.shared.audioName = audioName
-        print(AlarmModel.shared.audioName)
         
         /// Trim audio
         AudioTrim(audioURL: outputURL, nameExterntion: String(nameExtension[1]), asset: AVURLAsset(url: outputURL, options: [AVURLAssetPreferPreciseDurationAndTimingKey : true])).trim()

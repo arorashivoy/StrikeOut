@@ -16,11 +16,11 @@ struct AlarmImportInfo: View {
             LottieView(name: "SpeakerMusic", loopMode: .loop)
                 .frame(width: 300, height: 400, alignment: .top)
             
-            //TODO: Change the text
             Text("Note")
                 .font(.title)
                 .padding(5)
-            Text("Only .wav, .aiff, .caf and .m4a files are supported")
+            Text("Only **.wav**, **.aiff**, **.caf** and **.m4a** files are supported")
+                .multilineTextAlignment(.center)
                 .padding([.bottom, .leading, .trailing])
             
             Spacer()

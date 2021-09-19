@@ -39,14 +39,12 @@ struct NotificationPermission: View {
                 notiPermission = false
                 notiAsked = true
             }label: {
-                ZStack{
-                    Rectangle()
-                        .frame(width: 170, height: 50, alignment: .center)
-                        .foregroundColor(checkListColor)
-                    Text("Enable Notifications")
-                        .foregroundColor(checkListColor.accessibleFontColor)
-                }
-                .padding()
+                Text("Enable Notifications")
+                    .frame(width: 170, height: 50, alignment: .center)
+                    .foregroundColor(checkListColor.accessibleFontColor)
+                    .background(checkListColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .padding()
             }
         }
         .padding()

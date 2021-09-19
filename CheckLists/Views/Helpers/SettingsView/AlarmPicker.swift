@@ -29,8 +29,6 @@ struct AlarmPicker: View {
                     /// Custom tones
                     if !alarmModel.customAlarms.isEmpty {
                         Section(header: Text("Custom")) {
-                            //TODO: add button
-                            //TODO: Also add AudioPlayer to play from Sounds folder
                             ForEach(alarmModel.customAlarms){ customAlarm in
                                 Button {
                                     alarmSound = customAlarm.url
@@ -127,6 +125,7 @@ struct AlarmPicker: View {
                 
                 AlarmImportName(musicImportName: $musicImportName)
                     .environmentObject(alarmModel)
+                    .environmentObject(audioPlayer)
             }
         }
     }
@@ -135,7 +134,6 @@ struct AlarmPicker: View {
         Button{
             musicImportInfo.toggle()
         }label: {
-            //TODO: change button text
             Label("Add Alarm Tone", systemImage: "plus.circle.fill")
         }
         /// Import Info sheet

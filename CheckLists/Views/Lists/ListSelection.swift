@@ -20,46 +20,36 @@ struct ListSelection: View {
     var body: some View {
         
         let pinnedList = modelData.checkLists.filter{ $0.isPinned }
-        let unPinnedList = modelData.checkLists.filter{ !$0.isPinned }
+        let unpinnedList = modelData.checkLists.filter{ !$0.isPinned }
         
         NavigationView {
             Form{
-                
                 /// Showing all the available pinned List
                 if pinnedList.count > 0 {
                     Section(header: Text("Pinned")) {
                         
-                        ForEach(pinnedList){ checkList in
-                            NavigationLink(
-                                destination: ItemList(checkList: checkList).environmentObject(modelData),
-                                tag: checkList.id,
-                                selection: $modelData.listSelector
-                            ){
-                                ListRow(checkList: checkList)
+                        /// Showing Lists
+                        ListDisplay(draftList: $draftList, editSheet: $editSheet, checkLists: pinnedList)
+                            .environmentObject(modelData)
+                            .sheet(isPresented: $editSheet) {
+                                ListInfo(showInfo: $editSheet, draftList: $draftList)
                                     .environmentObject(modelData)
+                                    .preferredColorScheme(setColorScheme())
                             }
-                        }
-                        .onDelete { indexSet in
-                            removeRow(pinnedList, at: indexSet)
-                        }
                     }
                 }
                 
                 /// Showing all the available Unpinned List
                 Section{
                     
-                    ForEach(unPinnedList){ checkList in
-                        NavigationLink(
-                            destination: ItemList(checkList: checkList).environmentObject(modelData),
-                            tag: checkList.id,
-                            selection: $modelData.listSelector
-                        ){
-                            ListRow(checkList: checkList)
+                    /// Showing Lists
+                    ListDisplay(draftList: $draftList, editSheet: $editSheet, checkLists: unpinnedList)
+                        .environmentObject(modelData)
+                        .sheet(isPresented: $editSheet) {
+                            ListInfo(showInfo: $editSheet, draftList: $draftList)
+                                .environmentObject(modelData)
+                                .preferredColorScheme(setColorScheme())
                         }
-                    }
-                    .onDelete{ indexSet in
-                        removeRow(unPinnedList, at: indexSet)
-                    }
                     
                     /// adding list button
                     Button{
@@ -98,6 +88,7 @@ struct ListSelection: View {
                     .preferredColorScheme(setColorScheme())
             })
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     /// To set color scheme which the user chooses
@@ -113,7 +104,7 @@ struct ListSelection: View {
         }
     }
     
-    
+    //TODO: remove after final iOS 15 release
     /// remove row with .onDelete method
     /// - Parameters:
     ///   - list: list used in ForEach

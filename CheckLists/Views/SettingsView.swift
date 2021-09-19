@@ -14,6 +14,7 @@ struct SettingsView: View {
     @AppStorage(StorageString.themeColor.rawValue) var themeColor = Color.blue
     @AppStorage(StorageString.colorSchemes.rawValue) var colorSchemes = AppColorScheme.system
     @AppStorage(StorageString.defaultCompleted.rawValue) var defaultCompleted: Bool = false
+    @AppStorage(StorageString.snoozeTime.rawValue) var snoozeTime: Int = 5
     
     var checkLists: [CheckList]
     
@@ -43,6 +44,16 @@ struct SettingsView: View {
                 }
                 
                 Section{
+                    /// Snooze time picker
+                    Stepper("Snooze Time:\t \(snoozeTime) min",
+                            onIncrement: {
+                        snoozeTime += 1
+                    }, onDecrement: {
+                        if snoozeTime > 1 {
+                            snoozeTime -= 1
+                        }
+                    })
+                    
                     /// alarm tone picker
                     NavigationLink(
                         destination: AlarmPicker(checkLists: checkLists).environmentObject(audioPlayer).environmentObject(alarmModel).onDisappear(perform: audioPlayer.stopAudio)

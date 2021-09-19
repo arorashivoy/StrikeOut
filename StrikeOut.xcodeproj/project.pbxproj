@@ -74,6 +74,7 @@
 		83D64DA926C13EFA00061FE1 /* CompletedOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D64DA826C13EFA00061FE1 /* CompletedOption.swift */; };
 		83D64DAF26C1409700061FE1 /* CompletedOptionAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 83D64DAE26C1409700061FE1 /* CompletedOptionAnimation.json */; };
 		83D64DB126C14FFB00061FE1 /* CheckListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D64DB026C14FFB00061FE1 /* CheckListDTO.swift */; };
+		83DCBBC426F7D62500ABB9AB /* ListDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362C9A526F4EF6E00D5744B /* ListDisplay.swift */; };
 		83DE6FA626F0FC2E007D36D9 /* AlarmImportInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE6FA526F0FC2E007D36D9 /* AlarmImportInfo.swift */; };
 		83DE6FAA26F100B2007D36D9 /* SpeakerMusic.json in Resources */ = {isa = PBXBuildFile; fileRef = 83DE6FA926F100B2007D36D9 /* SpeakerMusic.json */; };
 		83DE6FAE26F244A5007D36D9 /* AlarmImportName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE6FAD26F244A5007D36D9 /* AlarmImportName.swift */; };
@@ -113,6 +114,7 @@
 		83536C3B26E6A130009AFCAC /* mixkit-oh-779.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mixkit-oh-779.mp3"; sourceTree = "<group>"; };
 		83536C3D26E6A206009AFCAC /* mixkit-life-is-a-dream-837.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mixkit-life-is-a-dream-837.mp3"; sourceTree = "<group>"; };
 		8354BAE326C0AA8200F69DA5 /* AddInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoButton.swift; sourceTree = "<group>"; };
+		8362C9A526F4EF6E00D5744B /* ListDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDisplay.swift; sourceTree = "<group>"; };
 		8362ECCA26DC52B8004A874D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		837FAE2C26E5F85E009ADA43 /* ViewOnGithub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOnGithub.swift; sourceTree = "<group>"; };
 		837FAE2E26E68EAB009ADA43 /* mixkit-marimba-waiting-ringtone-1360.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "mixkit-marimba-waiting-ringtone-1360.wav"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				83D4B02426779A5E00C3994A /* ListRow.swift */,
+				8362C9A526F4EF6E00D5744B /* ListDisplay.swift */,
 				83D0269C26AF3F2D00FC29B2 /* ListToolBar.swift */,
 				83132B5226BB112300E4EE5A /* DeleteList.swift */,
 				8343625B26C987EA00792B8C /* ListDescription.swift */,
@@ -482,6 +485,7 @@
 				83132B5326BB112300E4EE5A /* DeleteList.swift in Sources */,
 				838754BC267A348C00E71CD7 /* ToggleCompleted.swift in Sources */,
 				83DE6FAE26F244A5007D36D9 /* AlarmImportName.swift in Sources */,
+				83DCBBC426F7D62500ABB9AB /* ListDisplay.swift in Sources */,
 				833F1F4726CDD8DE00CB506D /* ImagePicker.swift in Sources */,
 				8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */,
 				83D4B02D2677A0F800C3994A /* CheckList.swift in Sources */,
@@ -636,7 +640,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.CheckLists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -660,7 +664,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arorashivoy.CheckLists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -29,6 +29,7 @@ class AppNotification {
             let content = UNMutableNotificationContent()
             content.title = item.itemName
             content.body = item.note
+            content.categoryIdentifier = "ALARM"
             content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: alarmSound))
             
             /// getting date components

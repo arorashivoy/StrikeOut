@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AlarmImportName: View {
+    @EnvironmentObject var audioPlayer: AudioPlayer
     @EnvironmentObject var alarmModel: AlarmModel
     @AppStorage(StorageString.themeColor.rawValue) var themeColor: Color = .blue
     @AppStorage(StorageString.alarmSound.rawValue) var alarmSound: String = AlarmModel.notifications.Note.rawValue
@@ -33,7 +34,6 @@ struct AlarmImportName: View {
                     .padding()
                     .padding(.leading)
                 
-                //TODO: set this tone as the alarm
                 Button{
                     /// Setting default name
                     if alarmName.trimmingCharacters(in: .whitespaces) == "" {
@@ -48,6 +48,7 @@ struct AlarmImportName: View {
                     
                     /// Setting this tone as alarm tone
                     alarmSound = AlarmModel.shared.audioName
+                    audioPlayer.playAudioLibrary()
                     
                     /// exiting th view
                     musicImportName = false
@@ -73,5 +74,6 @@ struct AlarmImportName_Previews: PreviewProvider {
     static var previews: some View {
         AlarmImportName(musicImportName: .constant(true))
             .environmentObject(AlarmModel())
+            .environmentObject(AudioPlayer())
     }
 }
