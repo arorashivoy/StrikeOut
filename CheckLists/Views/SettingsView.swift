@@ -64,9 +64,6 @@ struct SettingsView: View {
                 }
                 
                 Section{
-                    /// donate link
-                    DonateLink(bgColor: themeColor)
-                    
                     /// Github page link
                     ViewOnGithub(bgColor: themeColor)
                 }

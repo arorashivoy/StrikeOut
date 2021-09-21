@@ -20,28 +20,28 @@ struct ContentView: View {
             .environmentObject(modelData)
             .environmentObject(alarmModel)
             .accentColor(themeColor)
-            .preferredColorScheme(setColorScheme())
+            .preferredColorScheme(setColorScheme(colorSchemes: colorSchemes))
             .onChange(of: scenePhase, perform: { phase in
                 if phase == .inactive {
                     modelData.save()
                 }
             })
     }
-    
-    /// To set color scheme which the user chooses
-    /// - Returns: colorScheme
-    func setColorScheme() -> ColorScheme? {
-        switch colorSchemes {
-        case .dark:
-            return .dark
-        case .light:
-            return .light
-        case .system:
-            return nil
-        }
-    }
 }
 
+/// To set color scheme which the user chooses
+/// - Parameter colorSchemes: Value selected from the picker in Settings
+/// - Returns: colorScheme
+func setColorScheme(colorSchemes: AppColorScheme) -> ColorScheme? {
+    switch colorSchemes {
+    case .dark:
+        return .dark
+    case .light:
+        return .light
+    case .system:
+        return nil
+    }
+}
 
 /// Keys for @AppStorage wrapper
 enum StorageString: String {

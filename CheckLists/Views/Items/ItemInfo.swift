@@ -87,10 +87,6 @@ struct ItemInfo: View {
                     .environmentObject(modelData)
                     .padding(.top, 0)
                 
-                /// Adding donate link
-                if draftItem.id == CheckList.Items.data.id {
-                    DonateLink(bgColor: modelData.checkLists[indexList].color)
-                }
             }
             .listStyle(InsetGroupedListStyle())
             

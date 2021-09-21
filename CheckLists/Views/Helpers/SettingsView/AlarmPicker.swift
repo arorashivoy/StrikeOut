@@ -13,6 +13,7 @@ struct AlarmPicker: View {
     @EnvironmentObject var alarmModel: AlarmModel
     @EnvironmentObject var audioPlayer: AudioPlayer
     @AppStorage(StorageString.alarmSound.rawValue) var alarmSound: String = AlarmModel.notifications.Note.rawValue
+    @AppStorage(StorageString.colorSchemes.rawValue) var colorScheme = AppColorScheme.system
     @State private var musicImportInfo: Bool = false
     @State private var musicImport: Bool = false
     @State private var musicImportName: Bool = false
@@ -126,6 +127,7 @@ struct AlarmPicker: View {
                 AlarmImportName(musicImportName: $musicImportName)
                     .environmentObject(alarmModel)
                     .environmentObject(audioPlayer)
+                    .preferredColorScheme(setColorScheme(colorSchemes: colorScheme))
             }
         }
     }
@@ -139,6 +141,7 @@ struct AlarmPicker: View {
         /// Import Info sheet
         .sheet(isPresented: $musicImportInfo, content: {
             AlarmImportInfo()
+                .preferredColorScheme(setColorScheme(colorSchemes: colorScheme))
         })
         .onChange(of: musicImportInfo, perform: { value in
             if !value {

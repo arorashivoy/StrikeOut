@@ -42,7 +42,7 @@ struct ItemList: View {
                     .sheet(isPresented: $newItem) {
                         ItemInfo(showInfo: $newItem, draftItem: $draftItem, deniedAlert: $deniedAlert, indexList: indexList)
                             .environmentObject(modelData)
-                            .preferredColorScheme(setColorScheme())
+                            .preferredColorScheme(setColorScheme(colorSchemes: colorSchemes))
                         
                     }
                     /// To show alert if noti is denied
@@ -66,24 +66,11 @@ struct ItemList: View {
             .sheet(isPresented: $showListInfo, content: {
                 ListInfo(showInfo: $showListInfo, draftList: $draftList)
                     .environmentObject(modelData)
-                    .preferredColorScheme(setColorScheme())
+                    .preferredColorScheme(setColorScheme(colorSchemes: colorSchemes))
                     .onAppear(perform: {
                         draftList = modelData.checkLists[indexList]
                     })
             })
-        }
-    }
-    
-    /// To set color scheme which the user chooses
-    /// - Returns: colorScheme
-    func setColorScheme() -> ColorScheme? {
-        switch colorSchemes {
-        case .dark:
-            return .dark
-        case .light:
-            return .light
-        case .system:
-            return nil
         }
     }
     

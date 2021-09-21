@@ -58,7 +58,7 @@ struct ItemRow: View {
                         .sheet(isPresented: $showInfo) {
                             ItemInfo(showInfo: $showInfo, draftItem: $draftItem, deniedAlert: $deniedAlert, indexList: indexList)
                                 .environmentObject(modelData)
-                                .preferredColorScheme(setColorScheme())
+                                .preferredColorScheme(setColorScheme(colorSchemes: colorSchemes))
                             
                         }
                     
@@ -81,19 +81,6 @@ struct ItemRow: View {
             }
         }
         .padding()
-    }
-    
-    /// To set color scheme which the user chooses
-    /// - Returns: colorScheme
-    func setColorScheme() -> ColorScheme? {
-        switch colorSchemes {
-        case .dark:
-            return .dark
-        case .light:
-            return .light
-        case .system:
-            return nil
-        }
     }
 }
 

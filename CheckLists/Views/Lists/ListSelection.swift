@@ -27,29 +27,64 @@ struct ListSelection: View {
                 /// Showing all the available pinned List
                 if pinnedList.count > 0 {
                     Section(header: Text("Pinned")) {
-                        
-                        /// Showing Lists
-                        ListDisplay(draftList: $draftList, editSheet: $editSheet, checkLists: pinnedList)
-                            .environmentObject(modelData)
-                            .sheet(isPresented: $editSheet) {
-                                ListInfo(showInfo: $editSheet, draftList: $draftList)
-                                    .environmentObject(modelData)
-                                    .preferredColorScheme(setColorScheme())
+                        /// For iOS 15
+                        if #available(iOS 15.0, *) {
+                            /// Showing Lists
+                            ListDisplay(draftList: $draftList, editSheet: $editSheet, checkLists: pinnedList)
+                                .environmentObject(modelData)
+                                .sheet(isPresented: $editSheet) {
+                                    ListInfo(showInfo: $editSheet, draftList: $draftList)
+                                        .environmentObject(modelData)
+                                        .preferredColorScheme(setColorScheme(colorSchemes: colorSchemes))
+                                }
+                        }else {
+                            /// Showing Lists
+                            ForEach(pinnedList){ checkList in
+                                NavigationLink(
+                                    destination: ItemList(checkList: checkList).environmentObject(modelData),
+                                    tag: checkList.id,
+                                    selection: $modelData.listSelector
+                                ){
+                                    ListRow(checkList: checkList)
+                                        .environmentObject(modelData)
+                                }
                             }
+                            .onDelete { indexSet in
+                                removeRow(pinnedList, at: indexSet)
+                            }
+                        }
                     }
                 }
                 
                 /// Showing all the available Unpinned List
                 Section{
                     
-                    /// Showing Lists
-                    ListDisplay(draftList: $draftList, editSheet: $editSheet, checkLists: unpinnedList)
-                        .environmentObject(modelData)
-                        .sheet(isPresented: $editSheet) {
-                            ListInfo(showInfo: $editSheet, draftList: $draftList)
-                                .environmentObject(modelData)
-                                .preferredColorScheme(setColorScheme())
+                    /// For iOS 15
+                    if #available(iOS 15.0, *) {
+                        /// Showing Lists
+                        ListDisplay(draftList: $draftList, editSheet: $editSheet, checkLists: unpinnedList)
+                            .environmentObject(modelData)
+                            .sheet(isPresented: $editSheet) {
+                                ListInfo(showInfo: $editSheet, draftList: $draftList)
+                                    .environmentObject(modelData)
+                                    .preferredColorScheme(setColorScheme(colorSchemes: colorSchemes))
+                            }
+                    }else {
+                        /// Showing Lists
+                        ForEach(unpinnedList){ checkList in
+                            NavigationLink(
+                                destination: ItemList(checkList: checkList).environmentObject(modelData),
+                                tag: checkList.id,
+                                selection: $modelData.listSelector
+                            ){
+                                ListRow(checkList: checkList)
+                                    .environmentObject(modelData)
+                            }
                         }
+                        .onDelete { indexSet in
+                            removeRow(unpinnedList, at: indexSet)
+                        }
+                    }
                     
                     /// adding list button
                     Button{
@@ -67,7 +102,7 @@ struct ListSelection: View {
                     .sheet(isPresented: $addSheet, content: {
                         ListInfo(showInfo: $addSheet, draftList: $draftList)
                             .environmentObject(modelData)
-                            .preferredColorScheme(setColorScheme())
+                            .preferredColorScheme(setColorScheme(colorSchemes: colorSchemes))
                     })
                 }
             }
@@ -85,26 +120,12 @@ struct ListSelection: View {
                 SettingsView(checkLists: modelData.checkLists)
                     .environmentObject(alarmModel)
                     .accentColor(themeColor)
-                    .preferredColorScheme(setColorScheme())
+                    .preferredColorScheme(setColorScheme(colorSchemes: colorSchemes))
             })
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    /// To set color scheme which the user chooses
-    /// - Returns: colorScheme
-    func setColorScheme() -> ColorScheme? {
-        switch colorSchemes {
-        case .dark:
-            return .dark
-        case .light:
-            return .light
-        case .system:
-            return nil
-        }
-    }
-    
-    //TODO: remove after final iOS 15 release
     /// remove row with .onDelete method
     /// - Parameters:
     ///   - list: list used in ForEach
@@ -112,7 +133,7 @@ struct ListSelection: View {
     func removeRow(_ list: [CheckList], at offset: IndexSet) {
         for i in offset {
             if let indexList = modelData.checkLists.firstIndex(where: {$0.id == list[i].id}) {
-            
+                
                 /// removing Notifications
                 for item in modelData.checkLists[indexList].items {
                     AppNotification().remove(list: modelData.checkLists[i], itemID: item.id)

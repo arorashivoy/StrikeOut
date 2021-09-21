@@ -16,7 +16,6 @@ struct ListDisplay: View {
     var body: some View {
         
         /// For iOS 15
-        ///  For swipeOptions
         if #available(iOS 15.0, *) {
             /// Showing Lists
             ForEach(checkLists){ checkList in
@@ -67,23 +66,6 @@ struct ListDisplay: View {
                 }
             }
         }
-        /// For iOS 14
-        else {
-            /// Showing Lists
-            ForEach(checkLists){ checkList in
-                NavigationLink(
-                    destination: ItemList(checkList: checkList).environmentObject(modelData),
-                    tag: checkList.id,
-                    selection: $modelData.listSelector
-                ){
-                    ListRow(checkList: checkList)
-                        .environmentObject(modelData)
-                }
-            }
-            .onDelete { indexSet in
-                removeRow(checkLists, at: indexSet)
-            }
-        }
     }
     
     /// remove row with .onDelete method
@@ -103,6 +85,7 @@ struct ListDisplay: View {
             }
         }
     }
+
 }
 
 struct ListDisplay_Previews: PreviewProvider {

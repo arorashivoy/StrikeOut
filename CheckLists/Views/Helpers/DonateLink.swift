@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//TODO: remove the donate link
 struct DonateLink: View {
     var bgColor: Color
     
