@@ -54,6 +54,19 @@ enum StorageString: String {
     case snoozeTime
 }
 
+struct SetButton: ButtonStyle {
+    var bgColor: Color
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundColor(bgColor.accessibleFontColor)
+            .padding()
+            .padding([.leading, .trailing], 5)
+            .background(bgColor)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

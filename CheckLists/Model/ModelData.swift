@@ -12,7 +12,7 @@ final class ModelData: ObservableObject {
     /// creating shared instance to use in AppDelegate
     static let shared = ModelData()
     
-    @Published var checkLists: [CheckList] = [CheckList.data]
+    @Published var checkLists: [CheckList] = []
     @Published var listSelector: UUID?
     
     var fileName: String = "ListsData.json"

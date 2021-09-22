@@ -114,7 +114,7 @@ func setDateTime(date: Date, time: Date) -> Date? {
 
 struct DateSelection_Previews: PreviewProvider {
     static var previews: some View {
-        DateSelection(dueDate: Date(), dueTime: Date(), editItem: .constant(ModelData().checkLists[0].items[0]), indexList: 0)
+        DateSelection(dueDate: Date(), dueTime: Date(), editItem: .constant(CheckList.data.items[0]), indexList: 0)
             .environmentObject(ModelData())
     }
 }

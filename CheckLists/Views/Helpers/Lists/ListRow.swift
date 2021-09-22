@@ -36,9 +36,8 @@ struct ListRow: View {
 }
 
 struct ListRow_Previews: PreviewProvider {
-    static var checkLists = ModelData().checkLists
     static var previews: some View {
-        ListRow(checkList: checkLists[0])
+        ListRow(checkList: CheckList.data)
             .previewLayout(.fixed(width: 300, height: 70))
             .preferredColorScheme(.dark)
         

@@ -34,7 +34,7 @@ struct AlarmImportName: View {
                     .padding()
                     .padding(.leading)
                 
-                Button{
+                Button("Add Alarm Tone"){
                     /// Setting default name
                     if alarmName.trimmingCharacters(in: .whitespaces) == "" {
                         alarmName = AlarmModel.shared.audioName
@@ -54,15 +54,8 @@ struct AlarmImportName: View {
                     musicImportName = false
                     
                     AlarmModel.shared.audioName = ""
-                }label: {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 15)
-                            .frame(width: 150, height: 50, alignment: .center)
-                            .foregroundColor(themeColor)
-                        Text("Add Alarm Tone")
-                            .foregroundColor(themeColor.accessibleFontColor)
-                    }
                 }
+                .buttonStyle(SetButton(bgColor: themeColor))
                 .padding()
                 .padding(.leading)
             }

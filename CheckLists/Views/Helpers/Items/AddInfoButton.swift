@@ -38,6 +38,6 @@ struct AddInfoButton: View {
 
 struct AddInfoButton_Previews: PreviewProvider {
     static var previews: some View {
-        AddInfoButton(showInfo: .constant(false), draftItem: .constant(ModelData().checkLists[0].items[0]), checkList: ModelData().checkLists[0], item: ModelData().checkLists[0].items[0])
+        AddInfoButton(showInfo: .constant(false), draftItem: .constant(CheckList.Items.data), checkList: CheckList.data, item: CheckList.data.items[0])
     }
 }

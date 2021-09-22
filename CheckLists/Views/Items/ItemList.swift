@@ -117,7 +117,7 @@ func openSetting() {
 
 struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
-        ItemList(checkList: ModelData().checkLists[0])
+        ItemList(checkList: CheckList.data)
             .environmentObject(ModelData())
             .preferredColorScheme(.dark)
     }

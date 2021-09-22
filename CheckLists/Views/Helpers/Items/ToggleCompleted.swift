@@ -63,7 +63,7 @@ struct ToggleCompleted: View {
 
 struct ToggleCompleted_Previews: PreviewProvider {
     static var previews: some View {
-        ToggleCompleted(item: ModelData().checkLists[0].items[0], indexList: 0)
+        ToggleCompleted(item: CheckList.data.items[0], indexList: 0)
             .environmentObject(ModelData())
             .preferredColorScheme(.dark)
     }

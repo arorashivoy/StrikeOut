@@ -43,6 +43,6 @@ struct DeleteList: View {
 
 struct DeleteList_Previews: PreviewProvider {
     static var previews: some View {
-        DeleteList(showInfo: .constant(true), ID: ModelData().checkLists[0].id)
+        DeleteList(showInfo: .constant(true), ID: CheckList.data.id)
     }
 }

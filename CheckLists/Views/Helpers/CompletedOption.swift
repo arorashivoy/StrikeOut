@@ -47,17 +47,11 @@ struct CompletedOption: View {
             Spacer()
             
             /// Show Completed button
-            Button{
+            Button("Show Completed by Default"){
                 defaultCompleted = true
                 compOption = false
-            }label: {
-                Text("Show Completed by Default")
-                    .frame(width: 170, height: 60, alignment: .center)
-                    .foregroundColor(listColor.accessibleFontColor)
-                    .background(listColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                    .padding()
             }
+            .buttonStyle(SetButton(bgColor: listColor))
         }
         .padding()
     }

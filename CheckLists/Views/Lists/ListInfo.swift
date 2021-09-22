@@ -93,7 +93,7 @@ struct ListInfo: View {
 
 struct ListInfo_Previews: PreviewProvider {
     static var previews: some View {
-        ListInfo(showInfo: .constant(true), draftList: .constant(ModelData().checkLists[0]))
+        ListInfo(showInfo: .constant(true), draftList: .constant(CheckList.data))
             .environmentObject(ModelData())
             .preferredColorScheme(.dark)
     }

@@ -34,18 +34,12 @@ struct NotificationPermission: View {
             Spacer()
             
             ///Enable notification button
-            Button{
+            Button("Enable Notifications"){
                 AppNotification().requestPermission()
                 notiPermission = false
                 notiAsked = true
-            }label: {
-                Text("Enable Notifications")
-                    .frame(width: 170, height: 50, alignment: .center)
-                    .foregroundColor(checkListColor.accessibleFontColor)
-                    .background(checkListColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                    .padding()
             }
+            .buttonStyle(SetButton(bgColor: checkListColor))
         }
         .padding()
     }
@@ -53,7 +47,7 @@ struct NotificationPermission: View {
 
 struct NotificationPermission_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationPermission(notiPermission: .constant(true), checkListColor: ModelData().checkLists[0].color)
+        NotificationPermission(notiPermission: .constant(true), checkListColor: CheckList.data.color)
             .preferredColorScheme(.dark)
     }
 }

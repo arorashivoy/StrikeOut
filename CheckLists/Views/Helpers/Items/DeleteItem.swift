@@ -40,6 +40,6 @@ struct DeleteItem: View {
 
 struct DeleteItem_Previews: PreviewProvider {
     static var previews: some View {
-        DeleteItem(showInfo: .constant(true), ID: ModelData().checkLists[0].items[0].id, indexList: 0)
+        DeleteItem(showInfo: .constant(true), ID: CheckList.data.items[0].id, indexList: 0)
     }
 }

@@ -74,7 +74,7 @@ struct ListToolBar: View {
 
 struct ListToolBar_Previews: PreviewProvider {
     static var previews: some View {
-        ListToolBar(showInfo: .constant(true), draftList: .constant(ModelData().checkLists[0]))
+        ListToolBar(showInfo: .constant(true), draftList: .constant(CheckList.data))
             .environmentObject(ModelData())
     }
 }

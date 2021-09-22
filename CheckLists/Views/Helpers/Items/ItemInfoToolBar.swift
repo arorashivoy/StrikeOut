@@ -84,7 +84,7 @@ struct ItemInfoToolBar: View {
 
 struct ItemToolBar_Previews: PreviewProvider {
     static var previews: some View {
-        ItemInfoToolBar(deniedAlert: .constant(false), draftItem: .constant(ModelData().checkLists[0].items[0]), showInfo: .constant(true), indexList: 0)
+        ItemInfoToolBar(deniedAlert: .constant(false), draftItem: .constant(CheckList.data.items[0]), showInfo: .constant(true), indexList: 0)
             .environmentObject(ModelData())
     }
 }

@@ -104,7 +104,7 @@ struct ItemInfo: View {
 }
 
 struct ItemInfo_Previews: PreviewProvider {
-    @State static private var draftItem = ModelData().checkLists[0].items[0]
+    @State static private var draftItem = CheckList.Items.data
     static var previews: some View {
         ItemInfo(showInfo: .constant(true), draftItem: $draftItem, deniedAlert: .constant(false), indexList: 0)
             .preferredColorScheme(.dark)

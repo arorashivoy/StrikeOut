@@ -34,7 +34,7 @@ struct ItemNote: View {
 
 struct ItemNote_Previews: PreviewProvider {
     static var previews: some View {
-        ItemNote(editItem: .constant(ModelData().checkLists[0].items[0]))
+        ItemNote(editItem: .constant(CheckList.data.items[0]))
             .environmentObject(ModelData())
     }
 }
