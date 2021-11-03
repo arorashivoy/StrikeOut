@@ -12,10 +12,6 @@ struct ItemNote: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            TextEditor(text: $editItem.note)
-                .font(.body)
-                .foregroundColor(.secondary)
-            
             /// This transparent text is to make the text editor size dynamic in ScrollView
             Text(editItem.note)
                 .font(.body)
@@ -28,6 +24,10 @@ struct ItemNote: View {
                     .foregroundColor(.secondary)
                     .padding([.leading, .top], 5.0)
             }
+            
+            TextEditor(text: $editItem.note)
+                .font(.body)
+                .foregroundColor(.secondary)
         }
     }
 }

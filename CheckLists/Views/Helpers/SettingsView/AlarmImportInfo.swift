@@ -42,14 +42,14 @@ struct AlarmImportInfo: View {
             Button{
                 presentationMode.wrappedValue.dismiss()
             }label: {
-                    
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 15)
-                            .frame(width: 150, height: 50, alignment: .center)
-                            .foregroundColor(themeColor)
-                        Text("Import Audio")
-                            .foregroundColor(themeColor.accessibleFontColor)
-                    }
+                
+                ZStack{
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 150, height: 50, alignment: .center)
+                        .foregroundColor(themeColor)
+                    Text("Import Audio")
+                        .foregroundColor(themeColor.accessibleFontColor)
+                }
             }
             .padding(.top, 0)
             .padding(.bottom)

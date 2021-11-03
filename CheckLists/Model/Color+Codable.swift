@@ -87,7 +87,7 @@ extension Color: Codable {
     }
 }
 
-/// To store in UserDefault
+//MARK: To store in UserDefault
 extension Color: RawRepresentable {
 
     public init?(rawValue: String) {

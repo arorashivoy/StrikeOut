@@ -8,30 +8,23 @@
 import SwiftUI
 
 struct ListRow: View {
-    @EnvironmentObject var modelData: ModelData
-    
     var checkList: CheckList
     
     var body: some View {
-        if let indexList = modelData.checkLists.firstIndex(where: {$0.id == checkList.id}) {
-            HStack{
-                checkList.image
-                    .font(.title)
+        HStack{
+            checkList.image
+                .font(.title)
+                .foregroundColor(checkList.color)
+            Text(checkList.listName)
+                .foregroundColor(.primary)
+            Spacer()
+            if checkList.isPinned {
+                Image(systemName: "pin.fill")
                     .foregroundColor(checkList.color)
-                Text(checkList.listName)
-                    .foregroundColor(.primary)
-                Spacer()
-                if checkList.isPinned {
-                    Image(systemName: "pin.fill")
-                        .foregroundColor(checkList.color)
-                        .padding(.trailing)
-                        .onTapGesture {
-                            modelData.checkLists[indexList].isPinned = false
-                        }
-                }
+                    .padding(.trailing)
             }
-            .padding([.top, .bottom])
         }
+        .padding([.top, .bottom])
     }
 }
 

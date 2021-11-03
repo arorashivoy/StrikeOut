@@ -46,7 +46,6 @@ struct ListSelection: View {
                                     selection: $modelData.listSelector
                                 ){
                                     ListRow(checkList: checkList)
-                                        .environmentObject(modelData)
                                 }
                             }
                             .onDelete { indexSet in
@@ -78,7 +77,6 @@ struct ListSelection: View {
                                 selection: $modelData.listSelector
                             ){
                                 ListRow(checkList: checkList)
-                                    .environmentObject(modelData)
                             }
                         }
                         .onDelete { indexSet in

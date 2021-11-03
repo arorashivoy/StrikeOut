@@ -19,16 +19,16 @@ struct ListDescription: View {
                 .opacity(0)
                 .padding(.all, 5)
             
-            TextEditor(text: $draftList.description)
-                .font(.body)
-                .foregroundColor(.secondary)
-            
             if draftList.description.trimmingCharacters(in: [" "]) == "" {
                 Text("What's on your mind")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .padding([.top, .leading], 5.0)
             }
+            
+            TextEditor(text: $draftList.description)
+                .font(.body)
+                .foregroundColor(.secondary)
         }
     }
 }

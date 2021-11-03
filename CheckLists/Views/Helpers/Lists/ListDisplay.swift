@@ -25,7 +25,6 @@ struct ListDisplay: View {
                     selection: $modelData.listSelector
                 ){
                     ListRow(checkList: checkList)
-                        .environmentObject(modelData)
                 }
                 /// leading swipe buttons
                 .swipeActions(edge: .leading, allowsFullSwipe: false, content: {
