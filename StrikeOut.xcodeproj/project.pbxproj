@@ -28,6 +28,8 @@
 		831890B926B5A2CB0053E4A4 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 831890B826B5A2CB0053E4A4 /* Lottie */; };
 		831890BE26B5A5E80053E4A4 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831890BD26B5A5E80053E4A4 /* LottieView.swift */; };
 		831890C026B5AC5D0053E4A4 /* NotificationBell.json in Resources */ = {isa = PBXBuildFile; fileRef = 831890BF26B5AC5D0053E4A4 /* NotificationBell.json */; };
+		8331AC302775BA280059848F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8331AC2F2775BA280059848F /* LICENSE */; };
+		8331AC322775BA410059848F /* NOTICE in Resources */ = {isa = PBXBuildFile; fileRef = 8331AC312775BA410059848F /* NOTICE */; };
 		8339EDAC2677EAF9000A21C7 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDAB2677EAF9000A21C7 /* ItemList.swift */; };
 		8339EDB82678DBE7000A21C7 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339EDB72678DBE7000A21C7 /* ItemInfo.swift */; };
 		833F1F4726CDD8DE00CB506D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833F1F4626CDD8DE00CB506D /* ImagePicker.swift */; };
@@ -101,6 +103,8 @@
 		831890B526B59C3C0053E4A4 /* NotificationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		831890BD26B5A5E80053E4A4 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		831890BF26B5AC5D0053E4A4 /* NotificationBell.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NotificationBell.json; sourceTree = "<group>"; };
+		8331AC2F2775BA280059848F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8331AC312775BA410059848F /* NOTICE */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE; sourceTree = "<group>"; };
 		8339EDAB2677EAF9000A21C7 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		8339EDB72678DBE7000A21C7 /* ItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		833F1F4626CDD8DE00CB506D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -275,6 +279,8 @@
 			isa = PBXGroup;
 			children = (
 				834E95A526E3C2180003682A /* Licenses.md */,
+				8331AC2F2775BA280059848F /* LICENSE */,
+				8331AC312775BA410059848F /* NOTICE */,
 				8362ECCA26DC52B8004A874D /* README.md */,
 				83D4B0112677857600C3994A /* CheckLists */,
 				83D4B0102677857600C3994A /* Products */,
@@ -432,12 +438,14 @@
 				831391A926E01D2900C1B348 /* mixkit-raising-me-higher-34.mp3 in Resources */,
 				837FAE3926E68EAB009ADA43 /* mixkit-woosh-wind-1168.wav in Resources */,
 				83D4B0172677857800C3994A /* Assets.xcassets in Resources */,
+				8331AC302775BA280059848F /* LICENSE in Resources */,
 				8313919B26E01CD100C1B348 /* mixkit-bells-of-mystery-581.wav in Resources */,
 				8313919726E01CB000C1B348 /* mixkit-achievement-bell-600.wav in Resources */,
 				831391A126E01CF300C1B348 /* mixkit-dreaming-big-31.mp3 in Resources */,
 				837FAE3F26E68EAB009ADA43 /* mixkit-melodical-flute-music-notification-2310.wav in Resources */,
 				831391A526E01D0700C1B348 /* mixkit-home-standard-ding-dong-109.wav in Resources */,
 				837FAE3826E68EAB009ADA43 /* mixkit-retro-game-notification-212.wav in Resources */,
+				8331AC322775BA410059848F /* NOTICE in Resources */,
 				837FAE3E26E68EAB009ADA43 /* mixkit-wild-lion-animal-roar-6.wav in Resources */,
 				837FAE3A26E68EAB009ADA43 /* mixkit-little-birds-singing-in-the-trees-17.mp3 in Resources */,
 				831391AB26E01D3300C1B348 /* mixkit-retro-game-emergency-alarm-1000.wav in Resources */,
